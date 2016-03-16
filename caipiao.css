@@ -34,64 +34,17 @@ a:active {
 	margin: 8px 0;
 }
 
-.section-scroll-ad {
-	height: 100px;
-	overflow: hidden;
-}
-.section-scroll-ad .slider {
-	width: 100%;
-	height: 100%;
-	max-width: 540px;
-	overflow: hidden;
-}
-.slider {
-	background: tomato;
-	display: flex;
-	position: relative;
-}
-.carousel-inner .item {
-
-}
-.slider-item {
-	width: 100%;
-	position: absolute;
-	left: 100%;
-	top: 0;
-	overflow: hidden;
-	animation: slider 9s infinite;
+.section-scroll-ad {/*顶部轮播的容器*/
 	display: flex;
 	justify-content: center;
 }
-.slider-item img {
-	width: 100%!important;
-	height: auto!important;
+
+#carousel-top {/*顶部轮播*/
+	max-width: 540px;
+	flex: 1 0;
+	height: 100px;
 }
-.slider-item:nth-child(2) {
-	animation-delay: 3s;
-}
-.slider-item:nth-child(3) {
-	animation-delay: 6s;
-}
-@keyframes slider {
-	from{
-		transform: translateX(0);
-		z-index: 1;
-	}
-	8%{
-		transform: translateX(-100%);
-	}
-	40%{
-		transform: translateX(-100%);
-		
-	}
-	50%{
-		transform: translateX(-250%);
-	}
-	to{
-		transform: translateX(-250%);
-	}
-}
-.section-scroll-news {
+.section-scroll-news {/*滚动新闻的容器*/
 	padding: 4px 8px;
 	color: rgba(0,0,0,.54);
 }
