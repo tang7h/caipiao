@@ -4,23 +4,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<title>彩票</title>
-	<link rel="stylesheet" href="caipiao.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="holder.js"></script>
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="caipiao.css">
 </head>
 <body>
+
 	<div class="section-scroll-ad">
-		<ul class="slider">
-			<li class="slider-item">
-				<img src="holder.js/320x100?text=slider2" alt="">
-			</li>
-			<li class="slider-item">
-				<img src="holder.js/320x100?text=slider3" alt="">
-			</li>
-			<li class="slider-item">
-				<img src="holder.js/320x100?text=slider1" alt="">
-			</li>
-		</ul>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item">carousel 1</div>
+				<div class="item">carousel 2</div>
+				<div class="item">carousel 3</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="section-nav-icons card">
