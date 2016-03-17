@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>彩票</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<script src="holder.js"></script>
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="caipiao.css">
+</head>
+<body class="body-cards">
+	
+	<div class="section-cards">
+		<div class="page-card">
+			<div class="card-head">
+				<i></i>
+				<span class="card-title">足球</span>
+				<span class="small">拜仁2:2尤文图斯</span>
+			</div>
+			<div class="page-card-inner">
+			</div>
+		</div>
+		<div class="page-card">
+			<div class="page-card-inner">
+				<div class="card-head">
+					<i></i>
+					<span class="card-title">篮球</span>
+				</div>
+				
+			</div>
+		</div>
+		<div class="page-card">
+			<div class="page-card-inner">
+				<div class="card-head">
+					
+				<span class="card-title">xxx</span>
+				</div>
+				
+			</div>
+		</div>
+		<div class="page-card">
+			<div class="page-card-inner">
+				<div class="card-head">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.page-card').click(function(){
+			$('.page-card').toggleClass('drop');
+			$(this).toggleClass('active').removeClass('drop');
+		});
+	</script>
+	<!-- 底部导航和 floating action button -->
+	<div class="section-bottom">
+		<div class="nav-bottom">
+			<div class="nav-bottom-item">
+				<div class="icon">
+					
+				</div>
+				<div class="icon-label">
+					首页
+				</div>
+			</div>
+			<div class="nav-bottom-item">
+				<div class="icon">
+					
+				</div>
+				<div class="icon-label">
+					tab
+				</div>
+			</div>
+			<div class="nav-bottom-item">
+				<div class="icon">
+					
+				</div>
+				<div class="icon-label">
+					tab
+				</div>
+			</div>
+			<div class="nav-bottom-item">
+				<div class="icon">
+					
+				</div>
+				<div class="icon-label">
+					tab
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
