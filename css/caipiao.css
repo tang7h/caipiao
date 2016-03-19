@@ -310,3 +310,10 @@ body.body-cards {
 	-webkit-filter: saturate(.5);
 	
 }
+
+/*登陆*/
+.login-form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 8px;
+}
