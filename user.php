@@ -82,7 +82,7 @@ else
 	</div>
 	<div class="form-group">
 		<label class="sr-only" for="pass">确认密码<span>*</span></label>
-		<input class="form-control input-lg" name="pass" type="text" id="pass" maxlength="20"placeholder="确认密码"  required/>
+		<input class="form-control input-lg" name="pass" type="password" id="pass" maxlength="20"placeholder="确认密码"  required/>
 	</div>
 	<div class="form-group">
 		<label class="sr-only" for="member_name">真实姓名</label>
@@ -108,7 +108,8 @@ else
 	<div class="form-group">
 		<input class="btn btn-default btn-lg btn-block" type="submit" name="submit" id="submit" value="注册" maxlength="20"/>
 	</div>
-	
+	<a href='user.php'>已有账号，直接登陆</a>
+</form>
 <?php
 } 
 	if(@$_GET['tj']== ''){

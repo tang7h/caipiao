@@ -10,7 +10,7 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="caipiao.css">
+	<link rel="stylesheet" href="css/caipiao.css">
 </head>
 <body>
 	<!-- 顶部轮播 -->
@@ -124,25 +124,4 @@
 				<div class="icon">
 					<img src="images/iconfont-clock-06.png">
 				</div>
-				<div class="icon-label">
-					tab
-				</div>
-			</div>
-			<a href="user.php">
-			<div class="nav-bottom-item">
-				<div class="icon">
-					<img src="images/iconfont-clock-05.png">
-				</div>
-				<div class="icon-label">
-					tab
-				</div>
-			</div>
-			</a>
-		</div>
-
-		<div class="fab">
-			<i class="fab-add"></i>
-		</div>
-	</div>
-</body>
-</html>
+			
