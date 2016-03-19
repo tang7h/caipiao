@@ -21,7 +21,7 @@ a:visited,
 a:hover,
 a:active {
 	text-decoration: none;
-	color: tomato;
+	color: #FF5252;/*red200*/
 }
 
 .card {
@@ -312,8 +312,18 @@ body.body-cards {
 }
 
 /*登陆*/
-.login-form {
+.login-form,
+.register-form {
 	max-width: 500px;
 	margin: 0 auto;
 	padding: 8px;
+}
+body.user {
+	background: #fff;
+}
+.btn-default,
+.btn-default:hover,
+.btn-default:active {
+	color: #fff;
+	background: #FF5252;
 }
