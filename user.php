@@ -4,6 +4,7 @@ require_once ('config.php');
 <!DOCTYPE html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>会员注册</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
@@ -120,6 +121,63 @@ else
 		</tr>
 	</table>
 </form>
+
+
+<form id="theForm" name="theForm" method="post" action="" onSubmit="return chk(this)" runat="server" style="margin-bottom:0px;">
+	<table width="350" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#B3B3B3">
+	<div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+		<tr>
+			<td colspan="2" align="center" bgcolor="#EBEBEB">会员注册&nbsp;&nbsp;以下打“*”为必填项</td>
+		</tr>
+		<tr>
+			<td width="60" align="right" bgcolor="#FFFFFF">账&nbsp;&nbsp;&nbsp;号:</td>
+			<td width="317" bgcolor="#FFFFFF"><input name="member_user" type="text" id="member_user" size="20" maxlength="20" />
+		<font color="#FF0000"> *</font>(由数字或字母组成)</td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">密&nbsp;&nbsp;&nbsp;码:</td>
+			<td bgcolor="#FFFFFF"><input name="member_password" type="password" id="member_password" size="20" maxlength="20" />
+			<font color="#FF0000"> *</font>(由数字或字母组成)</td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">确认密码:</td>
+			<td bgcolor="#FFFFFF"><input name="pass" type="password" id="pass" size="20" />
+			<font color="#FF0000"> *</font>(再次输入密码)</td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">真实姓名:</td>
+			<td bgcolor="#FFFFFF"><input name="member_name" type="text" id="member_name" size="20" />
+			<label><font color="#FF0000">*</font></label></td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">性&nbsp;&nbsp;&nbsp;别:</td>
+			<td align="left" bgcolor="#FFFFFF">
+					<input name="member_sex" type="radio" id="0" value="男" checked="checked" />
+					男
+					<input type="radio" name="member_sex" value="女" id="1" />
+					女&nbsp;</label></td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">Q&nbsp;&nbsp;&nbsp;Q:</td>
+			<td bgcolor="#FFFFFF"><input name="member_qq" type="text" id="member_qq" size="20"/></td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">联系方式:</td>
+			<td bgcolor="#FFFFFF"><input name="member_phone" type="text" id="member_phone" size="20"/></td>
+		</tr>
+		<tr>
+			<td align="right" bgcolor="#FFFFFF">电子邮箱:</td>
+			<td bgcolor="#FFFFFF"><input name="member_email" type="text" id="member_email" size="20"/></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center" bgcolor="#FFFFFF"><input type="reset" name="button" id="button" value="重置表单" />
+			<input type="submit" name="submit" id="submit" value="确定注册" /></td>
+		</tr>
+	</table>
+</form>
 <?php
 } 
 	if(@$_GET['tj']== ''){
@@ -150,26 +208,20 @@ while($rs=mysql_fetch_object($result))
 	}
 }
 ?>
-<form action="" method="post" name="regform" onSubmit="return Checklogin();" style="margin-bottom:0px;">
-<table width="350" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#B3B3B3">
-	<tr>
-		<td colspan="2" align="center" bgcolor="#EBEBEB" class="font">会员登陆</td>
-	</tr>
-		<tr>
-			<td width="65" align="center" bgcolor="#FFFFFF" class="font">用户名:</td>
-			<td width="262" bgcolor="#FFFFFF" class="font"><input name="name" type="text" id="name"></td>
-		</tr>
-		<tr>
-			<td align="center" valign="top" bgcolor="#FFFFFF" class="font">密&nbsp;码:</td>
-			<td bgcolor="#FFFFFF" class="font"><input name="password" type="password" id="name">        </td>
-		</tr>
-		<tr>
-		<td colspan="2" align="center" valign="top" bgcolor="#FFFFFF" class="font"><input name="submit2" type="submit" value="会员登录"/>
-			<a href='user.php?tj=register'>没有账号？立即注册...</a></td>
-	</tr>
-</table>
-</form>
+<form action="" method="post" name="regform" onSubmit="return Checklogin();" class="login-form">
+	<div class="form-group">
+    <label for="name">用户名</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <input  type="submit" name="submit2" value="会员登录" class="btn btn-default"/>
+  <a href='user.php?tj=register'>没有账号？立即注册</a>
+	</form>
 <?php } ?>
+
 <table width="100" border="0" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td height="5"></td>
