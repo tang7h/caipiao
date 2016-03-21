@@ -124,4 +124,25 @@
 				<div class="icon">
 					<img src="images/iconfont-clock-06.png">
 				</div>
-			
+				<div class="icon-label">
+					tab
+				</div>
+			</div>
+			<a href="user.php">
+			<div class="nav-bottom-item">
+				<div class="icon">
+					<img src="images/iconfont-clock-05.png">
+				</div>
+				<div class="icon-label">
+					tab
+				</div>
+			</div>
+			</a>
+		</div>
+
+		<div class="fab">
+			<i class="fab-add"></i>
+		</div>
+	</div>
+</body>
+</html>

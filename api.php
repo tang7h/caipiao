@@ -1,17 +1,18 @@
-﻿<?php
+<?php
     header("Content-Type:text/html;charset=utf-8");
     $data = file_get_contents("http://api.caipiaokong.com/live/?name=jczq&format=json&uid=109324&token=1d9da94d8d6d095d2cf1bc7cca4efe35a98b30ba");
     $data_arr = json_decode($data,true);
 //    echo "<pre>";
 //    print_r($data_arr);
 //    exit();
-    $servername = "127.0.0.1";
+    $servername = "localhost";
     $username = "root";
     $password = "3133974";
     $dbname = "positemall";
     
     // 创建连接
      $conn = new mysqli($servername, $username, $password, $dbname);
+     $conn->query("SET NAMES utf8");//写法一
 //     // 检测连接
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -42,8 +43,7 @@
         //$field="(".trim($field,",").")";
         $value="(".trim($value,",").")";
         //echo $value."<br/>";
-        
-        $sql = "INSERT INTO jczq (".$field1.") VALUES ".$value;
+        $sql = "INSERT INTO jczq (".$field1.") VALUES ".$value ;
         
 //      echo $sql."<br/>";
         if ($conn->query($sql) === TRUE) {

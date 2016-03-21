@@ -1,4 +1,4 @@
-* {
+﻿* {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -133,7 +133,9 @@ ul.scroll-news-list {
 	display: flex;
 	width: 32px;
 	height: 32px;
-	background: #eee;
+}
+.nav-bottom-item .icon img {
+	width: 100%;
 }
 .nav-bottom-item .icon-label {
 	flex: 1 0 100%;
