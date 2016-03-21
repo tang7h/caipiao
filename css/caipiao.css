@@ -16,20 +16,25 @@ ul {
 	list-style: none;
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
+a {
 	text-decoration: none;
 	color: #FF5252;/*red200*/
 }
 
-.card {
+.card,
+section {
 	background: #fff;
 	border-top: .5px solid rgba(0,0,0,.1);
 	border-bottom: .5px solid rgba(0,0,0,.1);
 	margin-top: -1px;
 }
+section.with-padding {
+	padding: 16px;
+}
+section.with-margin {
+	margin: 16px 0;
+}
+
 .card-with-margin {
 	margin: 8px 0;
 }
@@ -315,17 +320,77 @@ body.body-cards {
 
 /*登陆*/
 .login-form,
-.register-form {
-	max-width: 500px;
+.register-form,
+.user-info-form {
+	max-width: 560px;
 	margin: 0 auto;
-	padding: 8px;
 }
 body.user {
-	background: #fff;
+	background: rgba(0,0,0,.05);
 }
-.btn-default,
-.btn-default:hover,
-.btn-default:active {
-	color: #fff;
-	background: #FF5252;
+
+.form-group {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.form-with-label label {
+	color: rgba(0,0,0,.38);
+}
+
+.section-user {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+.user-profile {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	overflow: hidden;
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	border-radius: 50%;
+	border: .5px solid #eee;
+	margin-right: 8px;
+	background: #D9EDF7;
+}
+.user-info {
+	flex: 1 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.user-name {
+	font-weight: 700;
+	flex: 1 0 100%;
+	margin-bottom: 4px
+}
+.user-desc {
+	font-size: .875em;
+	color: rgba(0,0,0,.54);
+}
+.user-tools {
+	display: flex;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	flex: 0 0 4em;
+	font-size: .875em;
+}
+/*按钮组*/
+.radio-group {
+	display: flex;
+}
+.radio-group input[type="radio"] {
+	display: none;
+}
+label.btn {
+	margin-left: -1px;
+}
+label.btn.first {
+	border-radius: .25em 0 0 .25em;
+}
+label.btn.last {
+	border-radius: 0 .25em .25em 0;
 }

@@ -8,119 +8,130 @@ if(empty($_SESSION['member'])){
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>会员主页面</title>
-<link href="style.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	<title>会员主页面</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/caipiao.css">
+	<!-- Bootstrap v4 -->
+	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 </head>
-<body>
-<?php
+<body class="user">
+	<?php
 //注销操作
-if(@$_GET["tj"]=="destroy"){
-session_destroy();
-echo "<script>alert('注销成功');location='user.php';</script>";}
-?>
-<?php
+	if(@$_GET["tj"]=="destroy"){
+		session_destroy();
+		echo "<script>alert('注销成功');location='user.php';</script>";}
+		?>
+		<?php
 //用户修改
-if(@$_GET["tj"]=="modify") {
-if(@$_POST["submit"]){
-	mysql_query($sql="update member set member_name='".$_POST['member_name']."',member_qq='".$_POST['member_qq']."',member_phone='".$_POST['member_phone']."',member_email='".$_POST['member_email']."' where member_user='".$_SESSION['member']."'");
-	echo "<script>alert('修改成功');location='member.php';</script>";
-} ?>
-<?php
+		if(@$_GET["tj"]=="modify") {
+			if(@$_POST["submit"]){
+				mysql_query($sql="update member set member_name='".$_POST['member_name']."',member_qq='".$_POST['member_qq']."',member_phone='".$_POST['member_phone']."',member_email='".$_POST['member_email']."' where member_user='".$_SESSION['member']."'");
+				echo "<script>alert('修改成功');location='member.php';</script>";
+			} ?>
+			<?php
 //显示用户
-$sql="select * from member where member_user='".$_SESSION['member']."'";
-$rs=mysql_fetch_array(mysql_query($sql));
-?>
-<table width="350" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#B3B3B3">
-  <tr>
-    <td align="center" bgcolor="#EBEBEB">修改信息&nbsp;&nbsp;<a href="member.php"> 进入主页面</a></td>
-  </tr>
-</table>
-<form method="post" action="" style="margin-top:3px; margin-bottom:3px;">
-<table width="350" height="212" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#B3B3B3">
-  <tr>
-    <td width="59" height="26" align="center" bgcolor="#FFFFFF">账号：</td>
-    <td width="268" align="left" bgcolor="#FFFFFF"><? echo $rs['member_user'];?></td>
-  </tr>
-  <tr>
-    <td height="28" align="center" bgcolor="#FFFFFF">姓名:</td>
-    <td align="left" bgcolor="#FFFFFF"><input name="member_name" type="text" id="member_name" maxlength="20" value="<? echo $rs['member_name'];?>"/></td>
-  </tr>
-  <tr>
-    <td height="26" align="center" bgcolor="#FFFFFF">性别：</td>
-    <td align="left" bgcolor="#FFFFFF"><? echo $rs['member_sex'];?></td>
-  </tr>
-  <tr>
-    <td height="28" align="center" bgcolor="#FFFFFF">qq：</td>
-    <td align="left" bgcolor="#FFFFFF"><input name="member_qq" type="text" id="member_qq" value="<? echo $rs['member_qq'];?>" maxlength="20"/></td>
-  </tr>
-  <tr>
-    <td height="33" align="center" bgcolor="#FFFFFF">手机号：</td>
-    <td align="left" bgcolor="#FFFFFF"><input name="member_phone" type="text" id="member_phone" value="<? echo $rs['member_phone'];?>" maxlength="20"/></td>
-  </tr>
-  <tr>
-    <td height="36" align="center" bgcolor="#FFFFFF">电子邮箱：</td>
-    <td align="left" bgcolor="#FFFFFF"><input name="member_email" type="text" id="member_email" value="<? echo $rs['member_email'];?>" maxlength="30"/></td>
-  </tr>
-  <tr>
-    <td height="27" colspan="2" align="center" bgcolor="#FFFFFF"><input type="reset" name="button" id="button" value="重置" />
-      <input type="submit" name="submit" id="submit" value="提交" /></td>
-    </tr>
-</table>
-</form>
-<?php } ?>
-<?php
-if($_SESSION['member'])                 
-{?>
-<table width="350" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#B3B3B3">
-  <tr>
-    <td width="327" align="center" bgcolor="#EBEBEB" class="font"><a href='?tj=destroy'>注销本次登录</a>&nbsp;&nbsp;<?php echo "<a href='?tj=modify'>修改个人信息</a>";?>  <?php if($_SESSION['member']=="admin"){?>
-    <a href="user_index.php">管理</a><?php }?></td>
-  </tr>
-</table>
-<table width="100" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td height="3"></td>
-  </tr>
-</table>
-<?php
-$result=mysql_query("select * from member where member_user='".$_SESSION['member']."'"); 
-while($rs=mysql_fetch_array($result)){
-?>
-<table width="350" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#B3B3B3">
-  <tr>
-    <td bgcolor="#FFFFFF">账号:</td>
-    <td bgcolor="#FFFFFF"><?php echo htmlspecialchars($rs['member_user']); ?></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF">姓名</td>
-    <td bgcolor="#FFFFFF"><?php echo htmlspecialchars($rs['member_name']); ?></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF">性别</td>
-    <td bgcolor="#FFFFFF"><?php echo htmlspecialchars($rs['member_sex']); ?></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF">qq</td>
-    <td bgcolor="#FFFFFF"><?php echo htmlspecialchars($rs['member_qq']); ?></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF">手机号码</td>
-    <td bgcolor="#FFFFFF"><?php echo htmlspecialchars($rs['member_phone']); ?></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF">电子邮箱</td>
-    <td bgcolor="#FFFFFF"><?php echo htmlspecialchars($rs['member_email']); ?></td>
-  </tr>
-</table>
+			$sql="select * from member where member_user='".$_SESSION['member']."'";
+			$rs=mysql_fetch_array(mysql_query($sql));
+			?>
 
-<table width="100" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td height="3"></td>
-  </tr>
-</table>
-<?php } 
-}
-?>
-</body>
-</html>
+			<form method="post" action="" class="user-info-form">
+				<small>修改信息</small>
+				<section class="with-padding with-margin">
+					<div class="form-group">
+						<label class="sr-only" for="member_name">真实姓名</label>
+						<input class="form-control" name="member_name" type="text" id="member_name" maxlength="20" placeholder="真实姓名" value="<? echo $rs['member_name'];?>"/>
+					</div>
+					<div class="form-group">
+						<label class="" for="member_sex">性别</label>
+						<? echo $rs['member_sex'];?><!-- 服务器返回 -->
+						<div class="radio-group">
+							<input name="member_sex" type="radio" id="0">
+							<label for="0" class="btn btn-sm btn-primary-outline first">男</label>
+							<input name="member_sex" type="radio" id="1">
+							<label for="1" class="btn btn-sm btn-primary-outline last">女</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="member_qq">QQ</label>
+						<input class="form-control" name="member_qq" type="text" id="member_qq" maxlength="20" placeholder="QQ" value="<? echo $rs['member_qq'];?>" />
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="member_phone">电话</label>
+						<input class="form-control" name="member_phone" type="text" id="member_phone" maxlength="20" placeholder="电话" value="<? echo $rs['member_phone'];?>"/>
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="member_email">电子邮箱</label>
+						<input class="form-control" name="member_email" type="text" id="member_email" maxlength="20" placeholder="电子邮箱" value="<? echo $rs['member_email'];?>"/>
+					</div>
+					<input class="btn btn-secondary" type="reset" name="button" id="button" value="重置"/> 
+					<input class="btn btn-primary" type="submit" name="submit" id="submit" value="提交"/>
+					
+				</section>
+			</form>
+			<?php } ?>
+
+
+			<?php
+			$result=mysql_query("select * from member where member_user='".$_SESSION['member']."'"); 
+			while($rs=mysql_fetch_array($result)){
+				?>
+				<form method="post" action="" class="form-with-label user-info-form">
+					<small>个人信息</small>
+					<section class="with-padding with-margin">
+						<div class="section-user">
+							<div class="user-profile">
+							</div>
+							<div class="user-info">
+								<div class="user-name">用户名</div>
+								<div class="user-desc">用户描述</div>
+							</div>
+							<div class="user-tools">
+							<?php if($_SESSION['member'])
+								{?>
+								
+								<?php echo "<a href='?tj=modify'>修改信息</a>";?>
+								<?php if($_SESSION['member']=="admin"){?>
+								<a href="user_index.php">管理</a>
+								<?php }
+								?>
+							</div>
+						</div>
+					</section>
+					<section class="with-padding with-margin">
+						<div class="form-group">
+							<label class="" for="member_name">真实姓名</label>
+							<p class="form-control-static"><? echo $rs['member_name'];?></p>
+						</div>
+						<div class="form-group">
+							<label class="" for="member_sex">性别</label>
+							<p class="form-control-static"><? echo $rs['member_sex'];?></p>
+						</div>
+						<div class="form-group">
+							<label class="" for="member_qq">QQ</label>
+							<p class="form-control-static"><? echo $rs['member_qq'];?></p>
+						</div>
+						<div class="form-group">
+							<label class="" for="member_phone">电话</label>
+							<p class="form-control-static"><? echo $rs['member_phone'];?></p>
+						</div>
+						<div class="form-group">
+							<label class="" for="member_email">电子邮箱</label>
+							<p class="form-control-static"><? echo $rs['member_email'];?></p>
+						</div>
+						<a href='?tj=destroy' class="btn btn-danger btn-block">退出登陆</a>
+					</section>
+				</form>
+				<?php } 
+			}
+			?>
+		</body>
+		</html>
