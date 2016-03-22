@@ -91,7 +91,7 @@ if(empty($_SESSION['member'])){
 							<div class="user-profile">
 							</div>
 							<div class="user-info">
-								<div class="user-name">用户名</div>
+								<div class="user-name"><? echo $rs['member_user'];?></div>
 								<div class="user-desc">用户描述</div>
 							</div>
 							<div class="user-tools">

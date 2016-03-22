@@ -394,3 +394,204 @@ label.btn.first {
 label.btn.last {
 	border-radius: 0 .25em .25em 0;
 }
+
+/*from yjj*/
+#click_checkbox_s,#click_checkbox_p,#click_checkbox_f,#click_checkbox_rs,#click_checkbox_rp,#click_checkbox_rf  {
+	display: none;
+}
+#click_checkbox_s +.match_s {
+	border:1px solid #999;
+	position: absolute;
+	overflow: hidden;
+	width: 26.5%;
+	height: 42px;
+}
+#click_checkbox_s:checked +.match_s {
+	background: red;
+}
+#click_checkbox_p +.match_p {
+	border:1px solid #999;
+	position: absolute;
+	overflow: hidden;
+	width: 26.5%;
+	height: 42px;
+}
+#click_checkbox_p:checked +.match_p {
+	background: red;
+}
+#click_checkbox_f +.match_f {
+	border:1px solid #999;
+	position: absolute;
+	overflow: hidden;
+	width: 26.5%;
+	height: 42px;
+}
+#click_checkbox_f:checked +.match_f {
+	background: red;
+}
+#click_checkbox_rs +.match_rs {
+	border:1px solid #999;
+	position: absolute;
+	overflow: hidden;
+	width: 26.5%;
+	height: 42px;
+}
+#click_checkbox_rs:checked +.match_rs {
+	background: red;
+}
+#click_checkbox_rp +.match_rp {
+	border:1px solid #999;
+	position: absolute;
+	overflow: hidden;
+	width: 26.5%;
+	height: 42px;
+}
+#click_checkbox_rp:checked +.match_rp {
+	background: red;
+}
+#click_checkbox_rf +.match_rf {
+	border:1px solid #999;
+	position: absolute;
+	overflow: hidden;
+	width: 26.5%;
+	height: 42px;
+}
+#click_checkbox_rf:checked +.match_rf {
+	background: red;
+}
+.range_match {
+	float: left;
+	border: 1px solid #03B2FF;
+	padding: 5px;
+	width: 100%;	
+	background: #e6e6e6;
+	text-align: center;
+}
+.match_id {
+	overflow: hidden;
+}
+.match_id ul {
+	height: 20px;
+	width: 100%;
+}
+.match_id ul li{
+	float: left;
+	margin: 0 10px;
+}
+.match_num {
+	color: #fff;
+	background: #008CCA;
+	width: 40px;
+	height: 22px;
+	border-radius: 6px 0px;
+}
+.match_vs {
+	width: 100%;
+}
+.match_vs_or {
+	margin: 0 auto;
+	/*background: red;*/
+	width: 200px;
+}
+.home_team,.vs_team,.away_team {
+	float: left;
+	width: 33.3%;
+}
+.home_team,.vs_team,.away_team p {
+	font-size: 20px;
+}
+.match_on {
+	width: 100%;
+	height: 82px;
+	float: left;
+}
+.match_handicap {
+	font-size: 12px;
+	float: left;
+	width: 5%;
+}
+.handicap_no {
+	float: left;
+	width: 100%;
+	height: 41px;
+	background: #F7FFF3;
+}
+.handicap_yes {
+	float: left;
+	width: 100%;
+	height: 41px;
+	background: #A5A5A5;
+}
+.changci_header {
+	float: left;
+	width: 81%;
+	height: 81px;
+	background: #565
+}
+.upload_checkbox {
+	float: left;
+}
+.match_odds {
+	float: left;
+	width: 14%;
+	background: pink;
+	height: 100%;
+}
+.handicap_li {
+	float:left; 
+	width:33.2%;
+	height:40px;
+}
+
+/*********弹出层********/
+
+ .match_modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 250ms ease-in;
+	-moz-transition: opacity 250ms ease-in;
+	transition: opacity 250ms ease-in;
+	pointer-events: none;
+}
+
+.match_modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.match_modalDialog > div {
+	width: 90%;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -o-linear-gradient(bottom, rgb(245,245,245) 25%, rgb(232,232,232) 63%);
+background: -moz-linear-gradient(bottom, rgb(245,245,245) 25%, rgb(232,232,232) 63%);
+background: -webkit-linear-gradient(bottom, rgb(245,245,245) 25%, rgb(232,232,232) 63%);
+}
+
+.match_close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: 10px;
+	text-align: center;
+	top: 10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+}
+
+.match_close:hover { background: #57a2d1; }
