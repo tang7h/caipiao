@@ -23,130 +23,95 @@ include ('config.php');
 	$result = mysql_query($sql,$conn);
 	while($row = mysql_fetch_array($result)){ 
 		echo '<div class="range_match">
-		<div class="match_id">
-			<ul>
-				<li class="match_num"><p>'.$row['official_num'].'</p></li><!--official_date-->
-				<li class="match_name"><p>'.$row['match_name'].'</p></li><!--match_name-->
-				<li class="match_date" style="float:right;"><p>截期时间：'.$row['official_date'].'</p></li><!--match_date-->
-
-			</ul>
+	<div class="match_id">
+		<span class="match_num">'.$row['official_num'].'</span><!--official_date-->
+		<span class="match_name">'.$row['match_name'].'</span><!--match_name-->
+		<span class="match_date">截期时间：'.$row['official_date'].'</span><!--match_date-->
+	</div>
+	<div class="match_vs">
+		<span class="home_team">'.$row['home_team'].'</span><!--home_team-->
+		<span class="vs_team">VS</span>
+		<span class="away_team">'.$row['away_team'].'</span><!--away_team-->
+	</div>
+	<div class="match_on">
+		<div class="match_handicap">
+			<div class="handicap_no">非让球</div>
+			<div class="handicap_yes">让球</div>
 		</div>
-		<div class="match_vs">
-			<div class="match_vs_or">
-				<div class="home_team"><p><b>'.$row['home_team'].'</b></p></div><!--home_team-->
-				<div class="vs_team"><p><b>VS</b></p></div>
-				<div class="away_team"><p><b>'.$row['away_team'].'</b></p></div><!--away_team-->
+
+		<div class="changci_header">
+			<div class="row">
+				<div class="handicap_li">
+					<label>
+						<input type="checkbox" class="hidden-input">
+						<div class="cell">
+							<p>胜</p>
+							<p>'.$row['current3'].'</p>
+						</div>
+					</label>
+				</div>
+				<div class="handicap_li">
+					<label>
+						<input type="checkbox" class="hidden-input">
+						<div class="cell">
+							<p>平</p>
+							<p>'.$row['current1'].'</p>
+						</div>
+					</label>
+				</div>
+				<div class="handicap_li">
+					<label>
+						<input type="checkbox" class="hidden-input">
+						<div class="cell">
+							<p>负</p>
+							<p>'.$row['current0'].'</p>
+						</div>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="handicap_li">
+					<label>
+						<input type="checkbox" class="hidden-input">
+						<div class="cell">
+							<p>让胜</p>
+							<p>'.$row['current_rqspf3'].'</p>
+						</div>
+					</label>
+				</div>
+				<div class="handicap_li">
+					<label>
+						<input type="checkbox" class="hidden-input">
+						<div class="cell">
+							<p>让平</p>
+							<p>'.$row['current_rqspf1'].'</p>
+						</div>
+					</label>
+				</div>
+				<div class="handicap_li">
+					<label>
+						<input type="checkbox" class="hidden-input">
+						<div class="cell">
+							<p>让负</p>
+							<p>'.$row['current_rqspf0'].'</p>
+						</div>
+					</label>
+				</div>
 			</div>
 		</div>
-		<div class="match_on">
-			<div class="match_handicap">
-				<div class="handicap_no">
-					<p>非让球</p>
-				</div>
-				<div class="handicap_yes">
-					<p>让球</p>
-				</div>
-			</div>
-			<form action="" method="post">
-				<div class="changci_header">
-					<ul>
-						<li class="handicap_li">
-							<div class="upload_checkbox">
-								<label>
-									<input type="checkbox" class="hidden-input" />
-									<span class="your style about checkbox">
-										<ul>
-											<li><p>胜</p></li>
-											<li><p>'.$row['current3'].'</p></li><!--current3-->
-										</ul>
-									</span>
-								</label>
-							</div>
-						</li>
-						<li class="handicap_li">
-							<div class="upload_checkbox">
-								<label>
-									<input type="checkbox" class="hidden-input" />
-									<span class="your style about checkbox">
-										<ul>
-											<li><p>平</p></li>
-											<li><p>'.$row['current1'].'</p></li><!--current1-->
-										</ul>
-									</span>
-								</label>
-							</div>
-						</li>
-						<li class="handicap_li">
-							<div class="upload_checkbox">
-								<label>
-									<input type="checkbox" class="hidden-input" />
-									<span class="your style about checkbox">
-										<ul>
-											<li><p>负</p></li>
-											<li><p>'.$row['current1'].'</p></li><!--current0-->
-										</ul>
-									</span>
-								</label>
-							</div>
-						</li>
-
-						<!--让球 Star-->
-						<li class="handicap_li">
-							<div class="upload_checkbox">
-								<label>
-									<input type="checkbox" class="hidden-input" />
-									<span class="your style about checkbox">
-										<ul>
-											<li><p>让胜</p></li>
-											<li><p>'.$row['current_rqspf3'].'</p></li><!--current_rqspf 数组-->
-									</span>
-								</label>
-							</div>
-						</li>
-						<li class="handicap_li">
-							<div class="upload_checkbox">
-								<label>
-									<input type="checkbox" class="hidden-input" />
-									<span class="your style about checkbox">
-										<ul>
-											<li><p>让胜</p></li>
-											<li><p>'.$row['current_rqspf1'].'</p></li><!--current_rqspf 数组-->
-									</span>
-								</label>
-							</div>
-						</li>
-						<li class="handicap_li">
-							<div class="upload_checkbox">
-								<label>
-									<input type="checkbox" class="hidden-input" />
-									<span class="your style about checkbox">
-										<ul>
-											<li><p>让负</p></li>
-											<li><p>'.$row['current_rqspf0'].'</p></li><!--current_rqspf 数组-->
-									</span>
-								</label>
-							</div>
-						</li>
-
-					</ul>
-					
-				</div>
-
-
-			</form>
-			<div class="match_odds">
+		<div class="match_odds">
 				<a href="#openModal">更多</a>
 				<div id="openModal" class="match_modalDialog">
-				<div>
-					<a href="#close" title="Close" class="match_close">X</a>
-					<h2>Modal Box</h2>
-					<p>This is a sample modal box created purely in HTML and CSS.</p>
-					<p>There are many use cases for this modal box.</p>
+					<div>
+						<a href="#close" title="Close" class="match_close">X</a>
+						<h2>Modal Box</h2>
+						<p>This is a sample modal box created purely in HTML and CSS.</p>
+						<p>There are many use cases for this modal box.</p>
+					</div>
 				</div>
-				</div>
-			</div>
 		</div>
-	</div>';
+	</div>
+</div>';
 	}
 
 	?>
