@@ -2,7 +2,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
+	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
 	<title>彩票</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="holder.js"></script>
@@ -104,14 +109,18 @@
 					首页
 				</div>
 			</div>
+			
 			<div class="nav-bottom-item">
+				<a href="hunhe_spf.php">
 				<div class="icon">
 					<img src="images/iconfont-clock-04.png">
 				</div>
 				<div class="icon-label">
 					tab
 				</div>
+				</a>
 			</div>
+			
 			<div class="nav-bottom-item">
 				<div class="icon">
 					<img src="images/iconfont-clock-07.png">
@@ -128,16 +137,18 @@
 					tab
 				</div>
 			</div>
-			<a href="user.php">
+			
 			<div class="nav-bottom-item">
+				<a href="user.php">
 				<div class="icon">
 					<img src="images/iconfont-clock-05.png">
 				</div>
 				<div class="icon-label">
 					tab
 				</div>
+				</a>
 			</div>
-			</a>
+			
 		</div>
 
 		<div class="fab">
