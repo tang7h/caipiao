@@ -55,7 +55,30 @@ a:active {
 	max-width: 540px;
 	flex: 1 0;
 	height: 150px;
+	font-size: 0;
 }
+.carousel-inner {
+	width: 100%;
+	height: 100%;
+}
+.carousel-inner .carousel-item {
+	height: 100%;
+	overflow: hidden;
+}
+.carousel-inner .carousel-item p {
+	font-size: 1rem;
+	line-height: 2;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding-left: 8px;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	margin-bottom: 0;
+}
+
+
 .section-scroll-news {/*滚动新闻的容器*/
 	padding: 4px 8px;
 	color: rgba(0,0,0,.54);
@@ -99,17 +122,21 @@ ul.scroll-news-list {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
 }
 .nav-item-icon {
 	width: 48px;
 	height: 48px;
-	background: #eee;
 	border-radius: 50%;
 
 }
+.nav-item-icon img {
+	width: 100%;
+}
 .nav-item-label {
-	color: rgba(0,0,0,.38);
-	display: none;
+	color: rgba(0,0,0,.54);
+	font-size: 12px;
 }
 .article-item {
 	display: flex;

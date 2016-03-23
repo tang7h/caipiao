@@ -27,15 +27,15 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
-	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
 	<title>彩票</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="holder.js"></script>
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/caipiao.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
 </head>
 <body>
 	<!-- 顶部轮播 -->
@@ -43,19 +43,19 @@
 		<div id="carousel-top" class="carousel slide" data-ride="carousel" data-interval="3000">
 			<!-- Carousel items -->
 			<div class="carousel-inner">
-				<div class="active item">
+				<div class="active carousel-item">
 					<a href="">
 						<img src="<?php echo ''.$arr[1]['pic'].'';?>">
 						<p><?php echo ''.$arr[1]['title'].'';?></p>
 					</a>
 				</div>
-				<div class="item">
+				<div class="carousel-item">
 					<a href="">
 						<img src="<?php echo ''.$arr[2]['pic'].'';?>">
 						<p><?php echo ''.$arr[2]['title'].'';?></p>
 					</a>
 				</div>
-				<div class="item">
+				<div class="carousel-item">
 					<a href="">
 						<img src="<?php echo ''.$arr[3]['pic'].'';?>">
 						<p><?php echo ''.$arr[3]['title'].'';?></p>
