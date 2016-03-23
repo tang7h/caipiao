@@ -52,7 +52,7 @@ a:active {
 }
 
 #carousel-top {/*顶部轮播*/
-	max-width: 540px;
+	max-width: 500px;
 	flex: 1 0;
 	height: 150px;
 	font-size: 0;
@@ -139,12 +139,23 @@ ul.scroll-news-list {
 	font-size: 12px;
 }
 .article-item {
-	display: flex;
 	padding: 8px 8px;
 }
 .article-item img {
-	margin-right: 8px;
+	margin-right: 16px;
 	flex: 0 0 auto;
+	float: left;
+	width: 100px;
+	height: 70px;
+}
+.article-item h2 {
+	font-size: 1.5em;
+	font-weight: 700;
+}
+.article-item p {
+	max-height: 3em;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 .section-bottom {
 	position: fixed;
