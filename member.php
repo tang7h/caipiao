@@ -12,13 +12,8 @@ if(empty($_SESSION['member'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<title>会员主页面</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link href="style.css" rel="stylesheet" type="text/css" />
-	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/caipiao.css">
-	<!-- Bootstrap v4 -->
 	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
 	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
@@ -38,7 +33,6 @@ if(empty($_SESSION['member'])){
 				echo "<script>alert('修改成功');location='member.php';</script>";
 			} ?>
 			<?php
-//显示用户
 			$sql="select * from member where member_user='".$_SESSION['member']."'";
 			$rs=mysql_fetch_array(mysql_query($sql));
 			?>
@@ -52,12 +46,20 @@ if(empty($_SESSION['member'])){
 					</div>
 					<div class="form-group">
 						<label class="" for="member_sex">性别</label>
-						<? echo $rs['member_sex'];?><!-- 服务器返回 -->
 						<div class="radio-group">
-							<input name="member_sex" type="radio" id="0">
-							<label for="0" class="btn btn-sm btn-primary-outline first">男</label>
-							<input name="member_sex" type="radio" id="1">
-							<label for="1" class="btn btn-sm btn-primary-outline last">女</label>
+							<label class="btn btn-sm btn-primary-outline first">
+								<input name="member_sex" type="radio" value="0" id="member_sex_0">
+							男</label>
+							<label class="btn btn-sm btn-primary-outline last">
+								<input name="member_sex" type="radio" value="1" id="member_sex_1">
+							女</label>
+							<script>
+								if (<? echo $rs['member_sex'];?>) {
+									document.getElementById('member_sex_1').checked=true;
+								}else {
+									document.getElementById('member_sex_0').checked=true;
+								}
+							</script>
 						</div>
 					</div>
 					<div class="form-group">
@@ -113,7 +115,7 @@ if(empty($_SESSION['member'])){
 						</div>
 						<div class="form-group">
 							<label class="" for="member_sex">性别</label>
-							<p class="form-control-static"><? echo $rs['member_sex'];?></p>
+							<p class="form-control-static"><? echo $rs['member_sex']?'女':'男';?></p>
 						</div>
 						<div class="form-group">
 							<label class="" for="member_qq">QQ</label>

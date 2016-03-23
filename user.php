@@ -7,11 +7,12 @@ require_once ('config.php');
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>会员注册</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/caipiao.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 <script language="javascript">
 function chk(theForm){
 	if (theForm.member_user.value.replace(/(^\s*)|(\s*$)/g, "") == ""){
@@ -90,8 +91,21 @@ else
 	</div>
 	<div class="form-group">
 		<label class="" for="member_sex">性别</label>
-		<input name="member_sex" type="radio" id="0"/><label for="0">男</label>
-		<input name="member_sex" type="radio" id="1"/><label for="1">女</label>
+		<div class="radio-group">
+			<label class="btn btn-sm btn-primary-outline first">
+				<input name="member_sex" type="radio" value="0" id="member_sex_0">
+			男</label>
+			<label class="btn btn-sm btn-primary-outline last">
+				<input name="member_sex" type="radio" value="1" id="member_sex_1">
+			女</label>
+			<script>
+				if (<? echo $rs['member_sex'];?>) {
+					document.getElementById('member_sex_1').checked=true;
+				}else {
+					document.getElementById('member_sex_0').checked=true;
+				}
+			</script>
+		</div>
 	</div>
 	<div class="form-group">
 		<label class="sr-only" for="member_qq">QQ</label>
@@ -106,7 +120,7 @@ else
 		<input class="form-control" name="member_email" type="text" id="member_email" maxlength="20" placeholder="电子邮箱"/>
 	</div>
 	<div class="form-group">
-		<input class="btn btn-default btn-lg btn-block" type="submit" name="submit" id="submit" value="注册" maxlength="20"/>
+		<input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" id="submit" value="注册" maxlength="20"/>
 	</div>
 	<a href='user.php'>已有账号，直接登陆</a>
 </form>
@@ -151,7 +165,7 @@ while($rs=mysql_fetch_object($result))
 	<input type="password" class="form-control input-lg" id="password" name="password" placeholder="密码">
   </div>
   <div class="form-group">
-	<input  type="submit" name="submit2" value="登录" class="btn btn-default btn-lg btn-block"/>
+	<input  type="submit" name="submit2" value="登录" class="btn btn-primary btn-lg btn-block"/>
   </div>
   <a href='user.php?tj=register'>没有账号？立即注册</a>
 	</form>
