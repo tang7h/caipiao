@@ -22,16 +22,16 @@ a {
 }
 
 .card,
-section {
+.section {
 	background: #fff;
 	border-top: .5px solid rgba(0,0,0,.1);
 	border-bottom: .5px solid rgba(0,0,0,.1);
 	margin-top: -1px;
 }
-section.with-padding {
+.section.with-padding {
 	padding: 16px;
 }
-section.with-margin {
+.section.with-margin {
 	margin: 16px 0;
 }
 
