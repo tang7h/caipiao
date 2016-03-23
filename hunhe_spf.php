@@ -14,7 +14,6 @@ include ('config.php');
 	<meta name="format-detection" content="telephone=no">
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
 	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
-
 </head>
 <body>
 	<form action="" method="post">

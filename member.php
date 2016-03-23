@@ -39,7 +39,7 @@ if(empty($_SESSION['member'])){
 
 			<form method="post" action="" class="user-info-form">
 				<small>修改信息</small>
-				<section class="with-padding with-margin">
+				<section class="section with-padding with-margin">
 					<div class="form-group">
 						<label class="sr-only" for="member_name">真实姓名</label>
 						<input class="form-control" name="member_name" type="text" id="member_name" maxlength="20" placeholder="真实姓名" value="<? echo $rs['member_name'];?>"/>
@@ -74,8 +74,8 @@ if(empty($_SESSION['member'])){
 						<label class="sr-only" for="member_email">电子邮箱</label>
 						<input class="form-control" name="member_email" type="text" id="member_email" maxlength="20" placeholder="电子邮箱" value="<? echo $rs['member_email'];?>"/>
 					</div>
-					<input class="btn btn-secondary" type="reset" name="button" id="button" value="重置"/> 
 					<input class="btn btn-primary" type="submit" name="submit" id="submit" value="提交"/>
+					<input class="btn btn-secondary" type="reset" name="button" id="button" value="重置"/> 
 					
 				</section>
 			</form>
@@ -88,7 +88,7 @@ if(empty($_SESSION['member'])){
 				?>
 				<form method="post" action="" class="form-with-label user-info-form">
 					<small>个人信息</small>
-					<section class="with-padding with-margin">
+					<section class="section with-padding with-margin">
 						<div class="section-user">
 							<div class="user-profile">
 							</div>
@@ -108,7 +108,7 @@ if(empty($_SESSION['member'])){
 							</div>
 						</div>
 					</section>
-					<section class="with-padding with-margin">
+					<section class="section with-padding with-margin">
 						<div class="form-group">
 							<label class="" for="member_name">真实姓名</label>
 							<p class="form-control-static"><? echo $rs['member_name'];?></p>
@@ -129,8 +129,8 @@ if(empty($_SESSION['member'])){
 							<label class="" for="member_email">电子邮箱</label>
 							<p class="form-control-static"><? echo $rs['member_email'];?></p>
 						</div>
-						<a href='?tj=destroy' class="btn btn-danger btn-block">退出登陆</a>
 					</section>
+						<a href='?tj=destroy' class="btn btn-danger btn-block">退出登陆</a>
 				</form>
 				<?php } 
 			}
