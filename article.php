@@ -55,69 +55,9 @@
       }
   ?>
   </div>
-
-
-
-
-
-
-  <!-- 底部导航和 floating action button -->
-  <div class="section-bottom">
-    <div class="nav-bottom">
-      <div class="nav-bottom-item">
-        <div class="icon">
-          <img src="images/iconfont-clock-07.png">
-        </div>
-        <div class="icon-label">
-          首页
-        </div>
-      </div>
-
-      <div class="nav-bottom-item">
-        <a href="hunhe_spf.php">
-        <div class="icon">
-          <img src="images/iconfont-clock-11.png">
-        </div>
-        <div class="icon-label">
-          走势
-        </div>
-        </a>
-      </div>
-
-      <div class="nav-bottom-item">
-        <div class="icon">
-          <img src="images/iconfont-clock-09.png">
-        </div>
-        <div class="icon-label">
-          说说
-        </div>
-      </div>
-      <div class="nav-bottom-item">
-        <div class="icon">
-          <img src="images/iconfont-clock-10.png">
-        </div>
-        <div class="icon-label">
-          米米
-        </div>
-      </div>
-
-      <div class="nav-bottom-item">
-        <a href="user.php">
-        <div class="icon">
-          <img src="images/iconfont-clock-08.png">
-        </div>
-        <div class="icon-label">
-          我的
-        </div>
-        </a>
-      </div>
-
-    </div>
-
-    <div class="fab">
-      <i class="fab-add"></i>
-    </div>
-  </div>
+<?php
+  include('page_header.php');
+?>
 
 </body>
 </html>
