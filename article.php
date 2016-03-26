@@ -1,13 +1,13 @@
 <?php
   header("Content-Type:text/html;charset=utf-8");//定义读取文本为utf-8；
   require("config.php");//因为属于长时间链接数据库~所以使用require而不是include；
-  //$sql_1 = "SELECT title,text,pic,id from news_info  ORDER BY id desc "; 
+  //$sql_1 = "SELECT title,text,pic,id from news_info  ORDER BY id desc ";
 
   $sql="SELECT title,text,pic,id,time from news_info  ORDER BY id desc";
   $rs = mysql_query($sql);
-  ?>    
+  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
@@ -24,19 +24,23 @@
 </head>
 <body>
   <header class="section-top">
-    <a href="#">返回</a>
-    <a href="#">分享</a>
+    <a href="#">
+      <i class="material-icons">arrow_back</i>
+    </a>
+    <a href="#">
+      <i class="material-icons">share</i>
+    </a>
   </header>
     <!-- 文章列表 -->
-  <div class="article-list card card-with-margin">
+  <div class="article-list section section-with-margin">
   <?php
   if ($rs) {
     while ($row =mysql_fetch_assoc($rs)) {
       $row_arr[] = $row;}
     }
-   foreach ($row_arr as $value) { 
+   foreach ($row_arr as $value) {
     ?>
-   
+
     <a href="article_class.php?id=<?php echo ''.$value['id'].'';?>" >
     <div class="article-item"style="margin: 8px 0px;border-bottom: 1px solid #eee;">
       <img src="<?php echo ''.$value['pic'].'';?>" alt="">
@@ -68,7 +72,7 @@
           首页
         </div>
       </div>
-      
+
       <div class="nav-bottom-item">
         <a href="hunhe_spf.php">
         <div class="icon">
@@ -79,7 +83,7 @@
         </div>
         </a>
       </div>
-      
+
       <div class="nav-bottom-item">
         <div class="icon">
           <img src="images/iconfont-clock-09.png">
@@ -96,7 +100,7 @@
           米米
         </div>
       </div>
-      
+
       <div class="nav-bottom-item">
         <a href="user.php">
         <div class="icon">
@@ -107,7 +111,7 @@
         </div>
         </a>
       </div>
-      
+
     </div>
 
     <div class="fab">

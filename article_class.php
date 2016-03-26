@@ -1,7 +1,7 @@
 <?php
   // header("Content-Type:text/html;charset=utf-8");
   // include_once("config.php");
-  // $sql = "SELECT title,text,pic,id from news_info  ORDER BY id desc "; 
+  // $sql = "SELECT title,text,pic,id from news_info  ORDER BY id desc ";
   // $query = mysql_query($sql);
   // print_r($query);
   // die;
@@ -23,8 +23,18 @@
 </head>
 <body class="article">
   <header class="section-top">
-    <a href="#">返回</a>
-    <a href="#">分享</a>
+    <a href="#">
+      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+      </svg>
+    </a>
+    <a href="#">
+      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          <path d="M0 0h24v24H0z" fill="none"/>
+      </svg>
+    </a>
   </header>
   <article class="article">
     <h1>带着手机去郊游：App Store 春日摄影合集</h1>
