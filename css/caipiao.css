@@ -189,10 +189,14 @@ ul.scroll-news-list {
 	color: rgba(0,0,0,.54);
 	font-size: 12px;
 }
+.article-list {
+	background: #fff;
+}
 .article-item {
-	padding: 8px 8px;
+	padding: 16px;
 	overflow: hidden;
 	color: rgba(0, 0, 0, 0.84);
+	border-bottom: .5px solid rgba(0, 0, 0, 0.05);
 }
 .article-item img {
 	margin-right: 16px;
@@ -209,6 +213,7 @@ ul.scroll-news-list {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	color: rgba(0, 0, 0, 0.54);
+	margin: 0;
 }
 .section-bottom {
 	position: fixed;
@@ -705,6 +710,7 @@ body.article {
 }
 header.section-top {
 	display: flex;
+	flex: 1 0 100%;
 	justify-content: space-between;
 	align-items: center;
 	height: 56px;

@@ -32,7 +32,7 @@
     </a>
   </header>
     <!-- 文章列表 -->
-  <div class="article-list section section-with-margin">
+  <div class="article-list">
   <?php
   if ($rs) {
     while ($row =mysql_fetch_assoc($rs)) {
@@ -42,7 +42,7 @@
     ?>
 
     <a href="article_class.php?id=<?php echo ''.$value['id'].'';?>" >
-    <div class="article-item"style="margin: 8px 0px;border-bottom: 1px solid #eee;">
+    <div class="article-item">
       <img src="<?php echo ''.$value['pic'].'';?>" alt="">
       <h2><?php echo ''.$value['title'].'';?></h2>
       <p><?php echo ''.$value['text'].'';?></p>
