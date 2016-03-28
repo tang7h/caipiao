@@ -19,6 +19,7 @@
   font-weight: normal;
   font-style: normal;
   font-size: 24px;  /* Preferred icon size */
+	width: 24px;/*safari无法正确计算宽度*/
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -132,6 +133,7 @@ a:hover {
 .section-scroll-news {/*滚动新闻的容器*/
 	padding: 4px 8px;
 	color: rgba(0,0,0,.54);
+	border-top: none;
 }
 .scroll-news {
 	height: 1.5em;
@@ -155,6 +157,8 @@ ul.scroll-news-list {
 .scroll-news a {
 	display: flex;
 	align-items: center;
+	color: #1B5E20;
+	/*green900*/
 }
 
 .scroll-news img {
@@ -684,9 +688,11 @@ header.section-top {
 	flex: 1 0 100%;
 	justify-content: space-between;
 	align-items: center;
-	height: 56px;
 	padding: 16px;
 	background: #fff;
+}
+.article .section-top {
+	padding-bottom: 0;
 }
 article.article {
 	padding: 16px;
@@ -717,9 +723,9 @@ article.article {
 	padding: 16px 0;
 }
 .comment-avatar {
-	flex: 0 0 24px;
-	width: 24px;
-	height: 24px;
+	flex: 0 0 auto;
+	width: 32px;
+	height: 32px;
 	margin-right: 16px;
 	border-radius: 50%;
 	border: .5px solid #81C784;
@@ -758,7 +764,7 @@ section.share {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	padding: 16px 0 4px 16px;
+	padding: 8px 0 4px 16px;
 	border-bottom: 1px solid rgb(245,245,245);
 	position: relative;
 }
@@ -1074,7 +1080,7 @@ section.share {
   position: absolute;
   display: none;
 }
-.material-icons {
+.nav-bottom .material-icons {
 	/*safari无法正确计算宽度*/
 	width: 24px;
 	overflow: hidden;

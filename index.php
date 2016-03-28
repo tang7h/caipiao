@@ -1,13 +1,13 @@
 <?php
 	header("Content-Type:text/html;charset=utf-8");//定义读取文本为utf-8；
 	require("config.php");//因为属于长时间链接数据库~所以使用require而不是include；
-	$sql = "SELECT title,pic from banner_img  ORDER BY id desc limit 4";	
-	$sql_1 = "SELECT title,text,pic,id from news_info  ORDER BY id desc limit 6"; 
+	$sql = "SELECT title,pic from banner_img  ORDER BY id desc limit 4";
+	$sql_1 = "SELECT title,text,pic,id from news_info  ORDER BY id desc limit 6";
 
 	$result = mysql_query($sql); //执行查询语句	//输出查询结果
 	$rs = mysql_query($sql_1);
 	while ($row = mysql_fetch_array($result)) {
-	//echo $row['title'] ,"<br />", $row['pic'],"<br />"; 
+	//echo $row['title'] ,"<br />", $row['pic'],"<br />";
 		// foreach ($result as $val) {
 		// 	print_r($val);
 		// }
@@ -72,7 +72,7 @@
 	</div>
 
 	<!-- 快捷入口图标 -->
-	<div class="section-nav-icons card">
+	<div class="section-nav-icons section">
 		<a href="#" class="nav-item">
 			<div class="nav-item-icon"><img src="images/iconfont-clock-12.png"></div>
 			<div class="nav-item-label">比分直播</div><!--视频直播跳转-->
@@ -96,7 +96,7 @@
 	</div>
 
 	<!-- 滚动新闻 -->
-	<div class="section-scroll-news card">
+	<div class="section-scroll-news section">
 		<div class="scroll-news">
 			<ul class="scroll-news-list">
 				<li class="scroll-news-item">
@@ -124,7 +124,7 @@
 	</div>
 
 	<!-- 文章列表 -->
-	<div class="article-list card card-with-margin">
+	<div class="article-list section with-margin">
 		<a href="article_class.php?id=<?php echo ''.$arr_1[4]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[4]['pic'].'';?>" alt="">
