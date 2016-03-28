@@ -76,7 +76,6 @@ a:hover {
 }
 .btn-block {
 	width: auto;
-	margin: 8px
 }
 
 .card,
@@ -1089,19 +1088,19 @@ section.share {
   transform: translateY(-10px);
   transition: opacity .1s;
 }
-.nav-toggle:checked + .nav-bottom-item {
+.nav-bottom-item.active {
   min-width: 96px;
   max-width: 168px;
   flex: 3 0;
 }
-.nav-toggle:checked + .nav-bottom-item::after {
+.nav-bottom-item.active::after {
   transform: scale(1);
   transition: transform .5s;
   z-index: -1;
 }
-.nav-toggle:checked + .nav-bottom-item .material-icons {
+.nav-bottom-item.active .material-icons {
   transform: translateY(-10px);
 }
-.nav-toggle:checked + .nav-bottom-item .nav-bottom-text {
+.nav-bottom-item.active  .nav-bottom-text {
   opacity: 1;
 }
