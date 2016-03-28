@@ -20,6 +20,7 @@
   font-style: normal;
   font-size: 24px;  /* Preferred icon size */
 	width: 24px;/*safari无法正确计算宽度*/
+	overflow: hidden;
   display: inline-block;
   line-height: 1;
   text-transform: none;
