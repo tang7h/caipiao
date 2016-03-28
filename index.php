@@ -1,9 +1,11 @@
 <?php
 	header("Content-Type:text/html;charset=utf-8");//定义读取文本为utf-8；
 	require("config.php");//因为属于长时间链接数据库~所以使用require而不是include；
-	$sql = "SELECT title,pic from banner_img ORDER BY id limit 4";
-	//$sql_1 = "SELECT title,pic from news_info ORDER BY id limit 4"; 
+	$sql = "SELECT title,pic from banner_img  ORDER BY id desc limit 4";	
+	$sql_1 = "SELECT title,text,pic,id from news_info  ORDER BY id desc limit 6"; 
+
 	$result = mysql_query($sql); //执行查询语句	//输出查询结果
+	$rs = mysql_query($sql_1);
 	while ($row = mysql_fetch_array($result)) {
 	//echo $row['title'] ,"<br />", $row['pic'],"<br />"; 
 		// foreach ($result as $val) {
@@ -12,12 +14,17 @@
 		$arr[$i] = $row;
 		$i++;
 		}
-		
-		//  echo "<pre>";
-		//  print_r($arr);
+		// echo "<pre>";
+		// print_r($arr);
+		// die;
+	while ($row_1 = mysql_fetch_array($rs)) {
+		$arr_1[$i] = $row_1;
+		$i++;
+	}
+		// echo "<pre>";
+		// print_r($arr_1);
 		// die;
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -94,22 +101,22 @@
 			<ul class="scroll-news-list">
 				<li class="scroll-news-item">
 					<a href="#">
-						<img src="holder.js/14x14" alt="">2秒切换
+						<img src="images/iconfont-clock-18.png" alt="">欧冠8强抽签——干爹队抽狼堡！
 					</a>
 				</li>
 				<li class="scroll-news-item">
 					<a href="#">
-						<img src="holder.js/14x14" alt="">第二个
+						<img src="images/iconfont-clock-18.png" alt="">巴萨对阵马竞，躺赢？
 					</a>
 				</li>
 				<li class="scroll-news-item">
 					<a href="#">
-						<img src="holder.js/14x14" alt="">第三个
+						<img src="images/iconfont-clock-18.png" alt="">欧冠8强抽签——干爹队抽狼堡！
 					</a>
 				</li>
 				<li class="scroll-news-item">
 					<a href="#">
-						<img src="holder.js/14x14" alt="">最后一个
+						<img src="images/iconfont-clock-18.png" alt="">巴萨对阵马竞，躺赢？
 					</a>
 				</li>
 			</ul>
@@ -118,79 +125,52 @@
 
 	<!-- 文章列表 -->
 	<div class="article-list card card-with-margin">
+		<a href="article_class.php?id=<?php echo ''.$arr_1[4]['id'].'';?>">
 		<div class="article-item">
-			<img src="holder.js/120x80" alt="">
-			<h2>标题</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum omnis blanditiis esse, hic mollitia perferendis sapiente inventore exercitationem asperiores velit tenetur nobis quibusdam commodi labore corporis debitis quisquam quia eum.</p>
+			<img src="<?php echo ''.$arr_1[4]['pic'].'';?>" alt="">
+			<h2><?php echo ''.$arr_1[4]['title'].'';?></h2>
+			<p><?php echo ''.$arr_1[4]['text'].'';?></p>
 		</div>
+		</a>
+		<a href="article_class.php?id=<?php echo ''.$arr_1[5]['id'].'';?>">
 		<div class="article-item">
-			<img src="holder.js/120x80" alt="">
-			<h2>标题</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias quasi sit, cumque</p>
+			<img src="<?php echo ''.$arr_1[5]['pic'].'';?>" alt="">
+			<h2><?php echo ''.$arr_1[5]['title'].'';?></h2>
+			<p><?php echo ''.$arr_1[5]['text'].'';?></p>
 		</div>
+		</a>
+		<a href="article_class.php?id=<?php echo ''.$arr_1[6]['id'].'';?>">
 		<div class="article-item">
-			<img src="holder.js/120x80" alt="">
-			<h2>标题</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias quasi sit, cumque</p>
+			<img src="<?php echo ''.$arr_1[6]['pic'].'';?>" alt="">
+			<h2><?php echo ''.$arr_1[6]['title'].'';?></h2>
+			<p><?php echo ''.$arr_1[6]['text'].'';?></p>
 		</div>
+		</a>
+		<a href="article_class.php?id=<?php echo ''.$arr_1[7]['id'].'';?>">
+		<div class="article-item">
+			<img src="<?php echo ''.$arr_1[7]['pic'].'';?>" alt="">
+			<h2><?php echo ''.$arr_1[7]['title'].'';?></h2>
+			<p><?php echo ''.$arr_1[7]['text'].'';?></p>
+		</div>
+		</a>
+		<a href="article_class.php?id=<?php echo ''.$arr_1[8]['id'].'';?>">
+		<div class="article-item">
+			<img src="<?php echo ''.$arr_1[8]['pic'].'';?>" alt="">
+			<h2><?php echo ''.$arr_1[8]['title'].'';?></h2>
+			<p><?php echo ''.$arr_1[8]['text'].'';?></p>
+		</div>
+		</a>
+		<a href="article_class.php?id=<?php echo ''.$arr_1[9]['id'].'';?>">
+		<div class="article-item">
+			<img src="<?php echo ''.$arr_1[9]['pic'].'';?>" alt="">
+			<h2><?php echo ''.$arr_1[9]['title'].'';?></h2>
+			<p><?php echo ''.$arr_1[9]['text'].'';?></p>
+		</div>
+		</a>
 	</div>
 
-	<!-- 底部导航和 floating action button -->
-	<div class="section-bottom">
-		<div class="nav-bottom">
-			<div class="nav-bottom-item">
-				<div class="icon">
-					<img src="images/iconfont-clock-07.png">
-				</div>
-				<div class="icon-label">
-					首页
-				</div>
-			</div>
-			
-			<div class="nav-bottom-item">
-				<a href="hunhe_spf.php">
-				<div class="icon">
-					<img src="images/iconfont-clock-11.png">
-				</div>
-				<div class="icon-label">
-					走势
-				</div>
-				</a>
-			</div>
-			
-			<div class="nav-bottom-item">
-				<div class="icon">
-					<img src="images/iconfont-clock-09.png">
-				</div>
-				<div class="icon-label">
-					说说
-				</div>
-			</div>
-			<div class="nav-bottom-item">
-				<div class="icon">
-					<img src="images/iconfont-clock-10.png">
-				</div>
-				<div class="icon-label">
-					米米
-				</div>
-			</div>
-			
-			<div class="nav-bottom-item">
-				<a href="user.php">
-				<div class="icon">
-					<img src="images/iconfont-clock-08.png">
-				</div>
-				<div class="icon-label">
-					我的
-				</div>
-				</a>
-			</div>
-			
-		</div>
-
-		<div class="fab">
-			<i class="fab-add"></i>
-		</div>
-	</div>
+	<?php
+		include('page_header.php');
+	?>
 </body>
 </html>
