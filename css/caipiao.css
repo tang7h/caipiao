@@ -134,7 +134,7 @@ a:hover {
 
 
 .section-scroll-news {/*滚动新闻的容器*/
-	padding: 4px 8px;
+	padding: 0 16px 8px;
 	color: rgba(0,0,0,.54);
 	border-top: none;
 }
@@ -155,6 +155,7 @@ ul.scroll-news-list {
 }
 
 .scroll-news li {
+	justify-content: flex-start;
 	align-items: center;
 }
 .scroll-news a {
@@ -183,10 +184,16 @@ ul.scroll-news-list {
     align-items: center;
 }
 .nav-item-icon {
-	width: 48px;
-	height: 48px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
-
+	margin-bottom: 4px;
+	color: #4CAF50;
+}
+.nav-item-icon .material-icons {
+	width: 100%;
+	color: inherit;
+	text-shadow: 1px 2px #E8F5E9;
 }
 .nav-item-icon img {
 	width: 100%;

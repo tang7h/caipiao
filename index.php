@@ -74,23 +74,33 @@
 	<!-- 快捷入口图标 -->
 	<div class="section-nav-icons section">
 		<a href="#" class="nav-item">
-			<div class="nav-item-icon"><img src="images/iconfont-clock-12.png"></div>
+			<div class="nav-item-icon">
+				<i class="material-icons md-36">date_range</i>
+			</div>
 			<div class="nav-item-label">比分直播</div><!--视频直播跳转-->
 		</a>
 		<a href="#" class="nav-item">
-			<div class="nav-item-icon"><img src="images/iconfont-clock-13.png"></div>
+			<div class="nav-item-icon">
+				<i class="material-icons md-36">live_tv</i>
+			</div>
 			<div class="nav-item-label">视频直播</div>
 		</a>
 		<a href="#" class="nav-item">
-			<div class="nav-item-icon"><img src="images/iconfont-clock-14.png"></div>
+			<div class="nav-item-icon">
+				<i class="material-icons md-36">access_alarm</i>
+			</div>
 			<div class="nav-item-label">开场哨</div>
 		</a>
 		<a href="#" class="nav-item">
-			<div class="nav-item-icon"><img src="images/iconfont-clock-15.png"></div>
+			<div class="nav-item-icon">
+				<i class="material-icons md-36">toc</i>
+			</div>
 			<div class="nav-item-label">球市新闻</div>
 		</a>
 		<a href="#" class="nav-item">
-			<div class="nav-item-icon"><img src="images/iconfont-clock-16.png"></div>
+			<div class="nav-item-icon">
+				<i class="material-icons md-36">help_outline</i>
+			</div>
 			<div class="nav-item-label">帮助说明</div>
 		</a>
 	</div>
