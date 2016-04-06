@@ -61,6 +61,7 @@ html {
 body {
 	background: rgba(0,0,0,.05);
 	padding-bottom: 56px;
+	-webkit-tap-highlight-color: transparent;
 }
 
 ul {
@@ -939,7 +940,6 @@ section.share {
   flex-direction: column-reverse;
   align-items: center;
   width: 72px;
-  -webkit-tap-highlight-color: transparent;
 }
 .fabs {
   display: flex;

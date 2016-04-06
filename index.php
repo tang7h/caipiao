@@ -85,13 +85,13 @@
 			</div>
 			<div class="nav-item-label">视频直播</div>
 		</a>
-		<a href="#" class="nav-item">
+		<a href="./bbs" class="nav-item">
 			<div class="nav-item-icon">
 				<i class="material-icons md-36">access_alarm</i>
 			</div>
 			<div class="nav-item-label">开场哨</div>
 		</a>
-		<a href="#" class="nav-item">
+		<a href="http://positemall.cn/article/article.php" class="nav-item">
 			<div class="nav-item-icon">
 				<i class="material-icons md-36">toc</i>
 			</div>
@@ -135,42 +135,42 @@
 
 	<!-- 文章列表 -->
 	<div class="article-list section with-margin">
-		<a href="article_class.php?id=<?php echo ''.$arr_1[4]['id'].'';?>">
+		<a href="./article/article_class.php?id=<?php echo ''.$arr_1[4]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[4]['pic'].'';?>" alt="">
 			<h2><?php echo ''.$arr_1[4]['title'].'';?></h2>
 			<p><?php echo ''.$arr_1[4]['text'].'';?></p>
 		</div>
 		</a>
-		<a href="article_class.php?id=<?php echo ''.$arr_1[5]['id'].'';?>">
+		<a href="./article/article_class.php?id=<?php echo ''.$arr_1[5]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[5]['pic'].'';?>" alt="">
 			<h2><?php echo ''.$arr_1[5]['title'].'';?></h2>
 			<p><?php echo ''.$arr_1[5]['text'].'';?></p>
 		</div>
 		</a>
-		<a href="article_class.php?id=<?php echo ''.$arr_1[6]['id'].'';?>">
+		<a href="./article/article_class.php?id=<?php echo ''.$arr_1[6]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[6]['pic'].'';?>" alt="">
 			<h2><?php echo ''.$arr_1[6]['title'].'';?></h2>
 			<p><?php echo ''.$arr_1[6]['text'].'';?></p>
 		</div>
 		</a>
-		<a href="article_class.php?id=<?php echo ''.$arr_1[7]['id'].'';?>">
+		<a href="./article/article_class.php?id=<?php echo ''.$arr_1[7]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[7]['pic'].'';?>" alt="">
 			<h2><?php echo ''.$arr_1[7]['title'].'';?></h2>
 			<p><?php echo ''.$arr_1[7]['text'].'';?></p>
 		</div>
 		</a>
-		<a href="article_class.php?id=<?php echo ''.$arr_1[8]['id'].'';?>">
+		<a href="./article/article_class.php?id=<?php echo ''.$arr_1[8]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[8]['pic'].'';?>" alt="">
 			<h2><?php echo ''.$arr_1[8]['title'].'';?></h2>
 			<p><?php echo ''.$arr_1[8]['text'].'';?></p>
 		</div>
 		</a>
-		<a href="article_class.php?id=<?php echo ''.$arr_1[9]['id'].'';?>">
+		<a href="./article/article_class.php?id=<?php echo ''.$arr_1[9]['id'].'';?>">
 		<div class="article-item">
 			<img src="<?php echo ''.$arr_1[9]['pic'].'';?>" alt="">
 			<h2><?php echo ''.$arr_1[9]['title'].'';?></h2>

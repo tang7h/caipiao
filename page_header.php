@@ -2,7 +2,7 @@
   <div class="section-bottom">
     <div class="nav-bottom" id="nav-item-1">
 
-      <label class="nav-bottom-item active" for="item-1" data-url="http://positemall.cn/index.php">
+      <label class="nav-bottom-item" for="item-1" data-url="http://positemall.cn/">
         <i class="material-icons">free_breakfast</i>
         <span class="nav-bottom-text">首页</span>
       </label>
@@ -12,7 +12,7 @@
         <span class="nav-bottom-text">走势</span>
       </label>
 
-      <label class="nav-bottom-item" for="item-3" data-url="http://positemall.cn/bbs/index.php">
+      <label class="nav-bottom-item" for="item-3" data-url="http://positemall.cn/bbs/">
         <i class="material-icons">message</i>
         <span class="nav-bottom-text">说说</span>
       </label>
@@ -36,11 +36,11 @@
       })
 
       switch (window.location.pathname) {
-        case '/index.php': $('.nav-bottom-item:nth-of-type(1)').addClass('active');
+        case '/': $('.nav-bottom-item:nth-of-type(1)').addClass('active');
           break;
         case '/hunhe_spf.php': $('.nav-bottom-item:nth-of-type(2)').addClass('active');
           break;
-        case '/bbs/index.php': $('.nav-bottom-item:nth-of-type(3)').addClass('active');
+        case '/bbs/': $('.nav-bottom-item:nth-of-type(3)').addClass('active');
           break;
         case 'index-4.php': $('.nav-bottom-item:nth-of-type(4)').addClass('active');
           break;
