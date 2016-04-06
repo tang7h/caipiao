@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1">
+  <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
   <meta name="format-detection" content="telephone=no" />
   <title>瀑布流-Derek</title>
   <link rel="stylesheet" href="../css/caipiao.css" media="screen">
@@ -52,6 +52,8 @@
   </div>
 
 </div>
-
+<?php
+  include('../page_header.php');
+?>
 </body>
 </html>

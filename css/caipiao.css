@@ -1027,9 +1027,9 @@ section.share {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  transition: all .3s;
-  min-width: 64px;
-  max-width: 96px;
+  transition: width .3s;
+  /*min-width: 64px;
+  max-width: 96px;*/
   flex: 2 0;
   height: 56px;
   position: relative;
@@ -1104,8 +1104,8 @@ section.share {
   transition: opacity .1s;
 }
 .nav-bottom-item.active {
-  min-width: 96px;
-  max-width: 168px;
+  /*min-width: 96px;
+  max-width: 168px;*/
   flex: 3 0;
 }
 .nav-bottom-item.active::after {
