@@ -13,7 +13,7 @@ $(window).scroll(function(){
   $doc_height = $(document).height();        //������document�������߶�
   $s_top = $(this).scrollTop();            //��ǰ����������϶��ٸ߶�
   $now_height = $(this).height();            //������this Ҳ�Ǿ���window����
-  if(($doc_height - $s_top - $now_height) < 100) jsonajax();
+  if(($doc_height - $s_top - $now_height) < 20) jsonajax();
 });
 
 
@@ -41,11 +41,10 @@ function jsonajax(){
               $row = $(this); //��ʱ$row��li������
             }
           });
-          $item = $($('#item-template').html()).hide();
+          $item = $($('#item-template').html());
           $item.find('.content-img').attr('src','../'+$content.img);
           $item.find('.content-title').html($content.title);
           $row.append($item);
-          $item.fadeIn();
         }
       }
     }

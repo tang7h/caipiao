@@ -1134,7 +1134,20 @@ section.share {
 	min-height: 100px;
 	margin-bottom: 16px;
 	line-height: 1;
+	animation: fade-in .5s;
+	animation-fill-mode: both;
 }
+@keyframes fade-in {
+	from{
+		opacity: 0;
+		transform: translateY(32px);
+	}
+	to{opacity: 1;}
+}
+
+#stage .item:nth-of-type(3) { animation-delay: .2s; }
+#stage .item:nth-of-type(4) { animation-delay: .4s; }
+#stage .item:nth-of-type(5) { animation-delay: .6s; }
 #stage .item .user-profile {
 	width: 40px;
 	height: 40px;
@@ -1164,7 +1177,7 @@ section.share {
 	max-width: 50vw;
 }
 #stage section.content p {
-	margin: 8px 0;
+	margin: 12px 0;
 }
 #stage section.action {
 	display: flex;
@@ -1177,10 +1190,17 @@ section.share {
 #stage .action-item {
 	display: flex;
 	line-height: 1;
+	align-items: center;
 	margin-right: 16px;
 	padding: 8px 0;
+	cursor: pointer;
+}
+#stage .action-item:active {
+	transform: scale(1.1);
+	color: rgba(0,0,0,.54);
 }
 
+#stage section.action .action-item.like.liked,
 #stage section.action .action-item.like:hover {
 	color: #F44336;
 }

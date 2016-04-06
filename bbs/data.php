@@ -6,7 +6,7 @@
  mysql_query($sql,$link);
  $num = $_POST['num'] *10;
  if($_POST['num'] != 0) $num +1;
- $sql = "select img,title from bbs_info limit ".$num.",20";
+ $sql = "select img,title from bbs_info limit ".$num.",10";
  $result = mysql_query($sql,$link);
  $temp_arr = array();
  while($row = mysql_fetch_assoc($result)){
