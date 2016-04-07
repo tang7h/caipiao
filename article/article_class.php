@@ -1,14 +1,7 @@
 <?php
-header("Content-Type:text/html;charset=utf-8");
+//header("Content-Type:text/html;charset=utf-8");
 require_once ('../config.php');
-//检查登陆状态
-session_start();
-if (!isset ($_SESSION['member']))
-{
-echo "<script language=javascript>alert ('要访问的页面需要先登录。');</script>";
-$_SESSION['userurl'] = $_SERVER['REQUEST_URI'];
-echo '<script language=javascript>window.location.href="../user.php"</script>';
-}
+
 $uid=$_SESSION['member'];//用uid来取代session取得用户名
 
   $id=$_GET['id'];
@@ -23,7 +16,12 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
   // print_r($sql);
   //print_r($data[0]);
   // die;
-//啥情况？?>
+//啥情况？
+$id = $data[0][id];//因为下方又一次用到变量$data.所以在此设置变量id；
+  // print_r($id);
+  // die;
+  ?>
+
 
 
 
@@ -59,8 +57,7 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
     <p><?php echo ''.$data[0]['text'].'';?></p>
   </article>
   <footer>
-<h1>无刷新显示回帖</h1>
-<div id="thread">
+<div id="thread" class="comments">
 <?php
 include_once("../config.php");
  //$sql = "select * from `bbs_post` where `threadid` ='1' order by id asc";
@@ -70,34 +67,32 @@ $sql = "select * from `bbs_post` where `threadid` ='1' AND pid=$pid order by id 
  while($row = mysql_fetch_array($query)){
 ?>
    <div class="post" id="post<?php echo $row['id'];?>">
-                <div class="pid"><?php echo $row['title'];?> [<?php echo $row['username'];?>]</div>
-                <div class="post_content"><pre><?php echo $row['content'];?></pre></div>
+                <div class="post_pid"><?php echo $row['username'];?>:</div>
+                <div class="post_content"><?php echo $row['content'];?></div>
          </div>
 <?php
  }
 ?>
 </div>
+<?php
+//根据用户名取得头像
+$sql = "SELECT `member_img` FROM `member` WHERE `member_user`='$uid'";
+$result = mysql_query($sql);
+$data = mysql_fetch_assoc($result);
+// print_r($data['member_img']);
+// die;
+?>
+<div class="add-comment">
+  <div class="comment-avatar" style="background-image:url(../<?php echo ''.$data['member_img'].'';?>)"></div>
+  <input sype="text" name="post_content" id="post_content" class="comment-textarea"></input>
+  <input type="button" onclick="submitPost()" value="提交" class="comment-send">
+  <input type="text" name="username" id="username" value="<?php echo ''.$uid.'';?>" class="hide">
+  <input type="text" name="post_pid" id="post_pid" value="<?php echo ''.$id.'';?>" class="hide">
+  <input type="text" name="post_pid" id="threadid" value="1" class="hide">
+</div>
 
-<table class="reply">
-<tr>
-    <td colspan="2" class="title">回帖<input type="hidden" name="threadid" id="threadid" value="1"></td>
-</tr>
-<tr>
-    <td><?php echo ''.$uid.'';?></td>
-    <td style="display:none;"><input type="text" name="username" id="username" value="<?php echo ''.$uid.'';?>"></td>
-</tr>
-<tr style="display:none;">
-    <td>文章id：</td>
-    <td><input type="text" name="pid" id="pid" value="<?php echo ''.$data[0]['id'].'';?>"></td>
-</tr>
-<tr>
-    <td>内容：</td>
-    <td><textarea name="post_content" id="post_content"></textarea></td>
-</tr>
-<tr>
-    <td colspan="2"><input type="button" onclick="submitPost()" value="提交"></td>
-</tr>
-</table>
+    <!-- <?php echo ''.$uid.'';?> -->
+
 
   </footer>
 

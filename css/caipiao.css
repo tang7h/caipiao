@@ -77,6 +77,9 @@ a:active {
 a:hover {
 	text-decoration: none;
 }
+.hide {
+	display: none;
+}
 .btn-block {
 	width: auto;
 }
@@ -437,6 +440,7 @@ body.user {
 	width: 100%;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 }
 .user-profile {
 	width: 56px;
@@ -448,6 +452,27 @@ body.user {
 	border: .5px solid #eee;
 	margin-right: 8px;
 	background: #D9EDF7;
+}
+.user-profile img {
+	width: 100%;
+	min-width: 100%;
+	min-height: 100%;
+}
+#user-profile-upload {
+	position: absolute;
+	bottom: -40px;
+  left: -8px;
+}
+#form-profile label[for="input-file"] {
+	display: block;
+	background: rgba(0,0,0,.8);
+	color: #fff;
+	border-radius: 2px;
+	padding: 4px 8px;
+	font-size: .85em;
+}
+#form-profile input {
+	display: none;
 }
 .user-info {
 	flex: 1 0 auto;
@@ -728,9 +753,10 @@ article.article {
 	padding: 8px 16px;
 	background: rgb(245,245,245);
 }
+.post,
 .comment {
 	display: flex;
-	padding: 16px 0;
+	padding: 8px 0;
 }
 .comment-avatar {
 	flex: 0 0 auto;
@@ -740,12 +766,17 @@ article.article {
 	border-radius: 50%;
 	border: .5px solid #81C784;
 	background: #333;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .comment-avatar img {
-	width: 100%;
+	min-width: 100%;
+	min-height: 100%;
+
 	margin: 0;
 }
-
+.poat_content,
 .comment-content {
 	flex: 1 0;
 }
@@ -754,9 +785,10 @@ article.article {
 	justify-content: space-between;
 	margin-bottom: 8px;
 }
+.post_pid,
 .comment-user-name {
-	font-size: 16px;
 	font-weight: bold;
+	margin-right: .5em;
 }
 .comment-info {
 	color: rgba(0,0,0,.38)
@@ -1173,8 +1205,8 @@ section.share {
 	color: rgba(0,0,0,.54);
 }
 #stage .item .content-img {
-	max-height: 50vw;
-	max-width: 50vw;
+	max-height: 60vw;
+	max-width: 60vw;
 }
 #stage section.content p {
 	margin: 12px 0;

@@ -1,5 +1,5 @@
-<?php 
-require_once ('config.php'); 
+<?php
+require_once ('config.php');
 //判断用户权限
 if(empty($_SESSION['member'])){
 	echo "<script>alert('请进行登陆或注册');location='user.php';</script>";
@@ -11,12 +11,13 @@ if(empty($_SESSION['member'])){
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<title>会员主页面</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
 	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
 	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+	<!-- 文件上传 -->
+	<script src="js/jquery.form.min.js"></script>
 </head>
 <body class="user">
 	<?php
@@ -29,12 +30,14 @@ if(empty($_SESSION['member'])){
 //用户修改
 		if(@$_GET["tj"]=="modify") {
 			if(@$_POST["submit"]){
-				mysql_query($sql="update member set member_name='".$_POST['member_name']."',member_qq='".$_POST['member_qq']."',member_phone='".$_POST['member_phone']."',member_email='".$_POST['member_email']."' where member_user='".$_SESSION['member']."'");
-				echo "<script>alert('修改成功');location='member.php';</script>";
+				mysql_query($sql="update member set member_name='".$_POST['member_name']."',member_cid='".$_POST['member_cid']."',member_qq='".$_POST['member_qq']."',member_phone='".$_POST['member_phone']."',member_email='".$_POST['member_email']."' where member_user='".$_SESSION['member']."'");
+				echo "<script>location='member.php';</script>";
 			} ?>
 			<?php
 			$sql="select * from member where member_user='".$_SESSION['member']."'";
 			$rs=mysql_fetch_array(mysql_query($sql));
+			// print_r($_SESSION);
+			// die();
 			?>
 
 			<form method="post" action="" class="user-info-form">
@@ -43,6 +46,10 @@ if(empty($_SESSION['member'])){
 					<div class="form-group">
 						<label class="sr-only" for="member_name">真实姓名</label>
 						<input class="form-control" name="member_name" type="text" id="member_name" maxlength="20" placeholder="真实姓名" value="<? echo $rs['member_name'];?>"/>
+					</div>
+					<div class="form-group">
+						<label class="sr-only" for="member_cid">身份证号码</label>
+						<input class="form-control" name="member_cid" type="text" id="member_cid" maxlength="20" placeholder="身份证号码" value="<? echo $rs['member_cid'];?>"/>
 					</div>
 					<div class="form-group">
 						<label class="" for="member_sex">性别</label>
@@ -74,23 +81,36 @@ if(empty($_SESSION['member'])){
 						<label class="sr-only" for="member_email">电子邮箱</label>
 						<input class="form-control" name="member_email" type="text" id="member_email" maxlength="20" placeholder="电子邮箱" value="<? echo $rs['member_email'];?>"/>
 					</div>
+					<input class="btn btn-secondary" type="reset" name="button" id="button" value="重置"/>
 					<input class="btn btn-primary" type="submit" name="submit" id="submit" value="提交"/>
-					<input class="btn btn-secondary" type="reset" name="button" id="button" value="重置"/> 
-					
+
 				</section>
 			</form>
 			<?php } ?>
 
 
 			<?php
-			$result=mysql_query("select * from member where member_user='".$_SESSION['member']."'"); 
+			$result=mysql_query("select * from member where member_user='".$_SESSION['member']."'");
 			while($rs=mysql_fetch_array($result)){
 				?>
 				<form method="post" action="" class="form-with-label user-info-form">
-					<small>个人信息</small>
 					<section class="section with-padding with-margin">
 						<div class="section-user">
 							<div class="user-profile">
+<?php
+$uid=$_SESSION['member'];//用uid来取代session取得用户名
+//根据用户名取得头像
+	$sql = "SELECT `member_img` FROM `member` WHERE `member_user`='$uid'";
+	$result = mysql_query($sql);
+	$data = mysql_fetch_assoc($result);
+     // print_r($data['member_img']);
+     // die;
+?>
+								<img src="<?php echo ''.$data['member_img'].'';?>">
+
+								<div id="user-profile-upload">
+									<!-- 头像上传 -->
+								</div>
 							</div>
 							<div class="user-info">
 								<div class="user-name"><? echo $rs['member_user'];?></div>
@@ -99,7 +119,7 @@ if(empty($_SESSION['member'])){
 							<div class="user-tools">
 							<?php if($_SESSION['member'])
 								{?>
-								
+
 								<?php echo "<a href='?tj=modify'>修改信息</a>";?>
 								<?php if($_SESSION['member']=="admin"){?>
 								<a href="user_index.php">管理</a>
@@ -112,6 +132,10 @@ if(empty($_SESSION['member'])){
 						<div class="form-group">
 							<label class="" for="member_name">真实姓名</label>
 							<p class="form-control-static"><? echo $rs['member_name'];?></p>
+						</div>
+						<div class="form-group">
+							<label class="" for="member_cid">身份证号码</label>
+							<p class="form-control-static"><? echo $rs['member_cid'];?></p>
 						</div>
 						<div class="form-group">
 							<label class="" for="member_sex">性别</label>
@@ -132,8 +156,17 @@ if(empty($_SESSION['member'])){
 					</section>
 						<a href='?tj=destroy' class="btn btn-danger btn-block">退出登陆</a>
 				</form>
-				<?php } 
+				<script>
+					$('.user-profile').on('click',function(){
+						$('#user-profile-upload').load('user_img.php');
+						$('#form-profile').ajaxForm();
+					})
+				</script>
+				<?php }
 			}
+			?>
+			<?php
+				include('page_header.php');
 			?>
 		</body>
 		</html>

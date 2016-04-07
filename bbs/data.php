@@ -16,7 +16,7 @@
  foreach($temp_arr as $k=>$v){
      $json_arr[]  = (object)$v;
  }
- //print_r($json_arr);
+ print_r($json_arr);exit;
  echo json_encode( $json_arr );
 
  ?>
