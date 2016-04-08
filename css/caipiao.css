@@ -1157,6 +1157,12 @@ section.share {
 }
 
 
+/*fabs*/
+.section-fab {
+	bottom: 72px;
+	z-index: 106;
+}
+
 
 /*Waterfall*/
 #item-template {
