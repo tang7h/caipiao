@@ -1,7 +1,9 @@
 <?php
-require('../config.php');
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  require('../config.php');
+  $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
+  // print_r($pidname);
+  ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,11 +13,12 @@ require('../config.php');
   <link rel="stylesheet" href="../css/caipiao.css" media="screen">
   <script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
   <script type="text/javascript" src="../js/waterfall.js"></script>
+  <script type="text/javascript" src="../js/bbs.js"></script>
   <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
-</style>
+
 </head>
 <body>
-  <div id="stage">
+  <div id="stage" data-username="<?php echo "$pidname";?>">
     <div id="item-template">
       <div class="item">
         <div class="user-profile">
@@ -38,10 +41,11 @@ require('../config.php');
               <i class="material-icons md-18">favorite</i>
               <span class="label-like">5</span>
             </div>
-            <div class="action-item">
+            <div class="action-item action-comment" onclick="addComment(event)">
               <i class="material-icons md-18">comment</i>
               <span class="label-comment">7</span>
             </div>
+
           </section>
           <section class="comments">
             <div class="comment-item">
@@ -49,6 +53,13 @@ require('../config.php');
               <span class="comment-content">评论的内容</span>
             </div>
           </section>
+          <!-- 发表评论 -->
+          <div class="section-add-comment" data-pid data-pidname>
+            <div class="inner-add-comment">
+              <textarea name="name" rows="8" cols="40" class="input-comment"></textarea>
+              <button type="button" name="button" class="btn-comment-send" onclick="sendComment(event)">发送</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -56,6 +67,34 @@ require('../config.php');
   </div>
 
 </div>
+
+
+<script  type="text/javascript">
+function addComment(e) {
+  console.log('clicked');
+  console.log(e.target);
+  itemComment = $(e.target).parent().parent().parent().find('.section-add-comment');
+  itemComment.addClass('show');
+};
+
+function sendComment(e){
+  section = $(e.target).parent().parent();
+  console.log(section);
+  $.post('bbs_liuyan.php',
+  {
+    pid: section.data('pid'),
+    content: section.find('.input-comment').val(),
+    pidname: $('#stage').data('username')
+  },
+  function(data,status){
+    alert(data+': '+status);
+  }
+  );
+  section.removeClass('show').val('');
+}
+
+</script>
+
 <?php
   include('../page_header.php');
 ?>

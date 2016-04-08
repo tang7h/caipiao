@@ -1227,6 +1227,7 @@ section.share {
 	padding: 8px 0;
 	cursor: pointer;
 }
+
 #stage .action-item:active {
 	transform: scale(1.1);
 	color: rgba(0,0,0,.54);
@@ -1240,4 +1241,15 @@ section.share {
 #stage .comments {
 	padding: 8px;
 	flex: 1 0;
+}
+
+.section-add-comment {
+	/*position: fixed;*/
+	bottom: 56px;
+	left: 0;
+	width: 100%;
+	display: none;
+}
+.section-add-comment.show {
+	display: flex;
 }
