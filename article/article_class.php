@@ -84,8 +84,8 @@ $data = mysql_fetch_assoc($result);
 ?>
 <div class="add-comment">
   <div class="comment-avatar" style="background-image:url(../<?php echo ''.$data['member_img'].'';?>)"></div>
-  <input sype="text" name="post_content" id="post_content" class="comment-textarea"></input>
-  <input type="button" onclick="submitPost()" value="提交" class="comment-send">
+  <input sype="text" name="post_content" id="post_content" class="comment-textarea" placeholder="发表评论"></input>
+  <input type="button" onclick="submitPost()" value="发布" class="comment-send">
   <input type="text" name="username" id="username" value="<?php echo ''.$uid.'';?>" class="hide">
   <input type="text" name="post_pid" id="post_pid" value="<?php echo ''.$id.'';?>" class="hide">
   <input type="text" name="post_pid" id="threadid" value="1" class="hide">
