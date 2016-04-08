@@ -42,13 +42,17 @@ function jsonajax(){
             }
           });
           $item = $($('#item-template').html());
-          // $item.find('.user-profile img').attr('src','../'+$content[0]);
+          $item.attr('id','item-'+$content.pid);
+          $item.find('.section-add-comment').attr('data-pid',$content.pid);
+          $item.find('.section-add-comment').attr('data-pidname',$content.pidname);
           $item.find('.user-profile img').attr('src','../'+$content.member_img);
           $item.find('.content-img').attr('src','../'+$content.img);
           $item.find('.head .user-name').html($content.username);
           moment.locale('zh-cn');
           $item.find('.time').html(moment($content.time,'YYYY-MM-DD hh:mm:ss').fromNow());
           $item.find('.content-title').html($content.title);
+          $item.find('.user-name').html($content.pidname+": ");
+          $item.find('.comment-content').html($content.content);
           $row.append($item);
         }
       }
