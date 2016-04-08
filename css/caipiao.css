@@ -1068,7 +1068,7 @@ section.share {
 }
 /*ripple*/
 .nav-bottom-item::after {
-  content: '';
+  /*content: '';*/
   position: absolute;
   bottom: 50%;
   left: 50%;
@@ -1098,7 +1098,7 @@ section.share {
   background: #2196F3;
 }
 .nav-bottom-item::before {
-  content: '';
+  /*content: '';*/
   position: absolute;
   left: 50%;
   bottom: 50%;
@@ -1172,7 +1172,7 @@ section.share {
 @keyframes fade-in {
 	from{
 		opacity: 0;
-		transform: translateY(32px);
+		/*transform: translateY(32px);*/
 	}
 	to{opacity: 1;}
 }
