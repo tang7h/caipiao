@@ -10,6 +10,7 @@
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
   <meta name="format-detection" content="telephone=no" />
   <title>瀑布流-Derek</title>
+  <link rel="stylesheet" href="../css/evernote-fab.css" media="screen">
   <link rel="stylesheet" href="../css/caipiao.css" media="screen">
   <script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
   <script type="text/javascript" src="../js/waterfall.js"></script>
@@ -65,6 +66,14 @@
     </div>
 
   </div>
+<!-- fabs -->
+  <input type="checkbox" name="" id="fab-toggle">
+  <label for="fab-toggle" class="section-fab">
+    <div class="fab fab-primary"><i class="icon"></i></div>
+    <div class="mask">
+      <div class="mask-ripple"></div>
+    </div>
+  </label>
 
 </div>
 

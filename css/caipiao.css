@@ -1065,6 +1065,7 @@ section.share {
   flex: 2 0;
   height: 56px;
   position: relative;
+	opacity: .38;
 }
 /*ripple*/
 .nav-bottom-item::after {
@@ -1126,19 +1127,22 @@ section.share {
 	width: 24px;
 	overflow: hidden;
   margin-top: 16px;
+	margin-top: 8px;
   transition: all .2s;
 }
 .nav-bottom-text {
   font-size: 12px;
   white-space: nowrap;
-  opacity: 0;
-  transform: translateY(-10px);
+  /*opacity: 0;*/
+  line-height: 1;
+	margin-bottom: 10px;
   transition: opacity .1s;
 }
 .nav-bottom-item.active {
   /*min-width: 96px;
   max-width: 168px;*/
-  flex: 3 0;
+  /*flex: 3 0;*/
+	opacity: 1;
 }
 .nav-bottom-item.active::after {
   transform: scale(1);
@@ -1146,10 +1150,10 @@ section.share {
   z-index: -1;
 }
 .nav-bottom-item.active .material-icons {
-  transform: translateY(-10px);
+  /*transform: translateY(-10px);*/
 }
 .nav-bottom-item.active  .nav-bottom-text {
-  opacity: 1;
+  /*opacity: 1;*/
 }
 
 
