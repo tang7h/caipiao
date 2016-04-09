@@ -21,7 +21,7 @@
 <body>
   <div id="stage" data-username="<?php echo "$pidname";?>">
     <div id="item-template">
-      <div class="item">
+      <div class="item" onclick="closeComment(event)">
         <div class="user-profile">
            <img src="" alt="头像" />
         </div>
@@ -57,7 +57,8 @@
           <!-- 发表评论 -->
           <div class="section-add-comment" data-pid data-pidname>
             <div class="inner-add-comment">
-              <textarea name="name" rows="8" cols="40" class="input-comment"></textarea>
+              <!-- <div class="input-comment" contenteditable="true"></div> -->
+              <input type="text" name="name" value="" placeholder="评论" class="input-comment" autocomplete="off">
               <button type="button" name="button" class="btn-comment-send" onclick="sendComment(event)">发送</button>
             </div>
           </div>
@@ -67,13 +68,27 @@
 
   </div>
 <!-- fabs -->
-  <input type="checkbox" name="" id="fab-toggle">
-  <label for="fab-toggle" class="section-fab">
-    <div class="fab fab-primary"><i class="icon"></i></div>
-    <div class="mask">
-      <div class="mask-ripple"></div>
+  <div class="fab fab-primary"><i class="icon"></i></div>
+  <section class="publish">
+
+    <header class="section-top">
+      <a href="javascript:history.back();">
+        <i class="material-icons">arrow_back</i>
+      </a>
+      <a href="#">
+        <i class="material-icons">send</i>
+      </a>
+    </header>
+
+    <div class="publish-input" contenteditable="true">
+      有什么要分享吗？
     </div>
-  </label>
+    <div class="publish-tools">
+      <i class="material-icons">photo_camera</i>
+    </div>
+
+
+  </section>
 
 </div>
 
@@ -81,10 +96,14 @@
 <script  type="text/javascript">
 function addComment(e) {
   console.log('clicked');
-  console.log(e.target);
   itemComment = $(e.target).parent().parent().parent().find('.section-add-comment');
   itemComment.addClass('show');
+  itemComment.find('.input-comment').focus();
 };
+function closeComment(e) {
+  console.log(e.target);
+  $(e.target).find('.section-add-comment').removeClass('show');
+}
 
 function sendComment(e){
   section = $(e.target).parent().parent();

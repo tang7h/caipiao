@@ -1177,7 +1177,6 @@ section.share {
 	margin-bottom: 16px;
 	line-height: 1;
 	animation: fade-in .5s;
-	animation-fill-mode: both;
 }
 @keyframes fade-in {
 	from{
@@ -1255,11 +1254,60 @@ section.share {
 
 .section-add-comment {
 	/*position: fixed;*/
-	bottom: 56px;
+	bottom: 0;
 	left: 0;
 	width: 100%;
 	display: none;
+	z-index: 112;
 }
 .section-add-comment.show {
 	display: flex;
+}
+
+.inner-add-comment {
+	display: flex;
+	align-items: center;
+	flex: 1 0 100%;
+	max-width: 100%;
+	padding: 8px 8px;
+	background: #fff;
+	box-shadow: 0 -1px 5px rgba(0,0,0,.12);
+}
+.input-comment {
+	flex: 1 0;
+	padding: 8px;
+	outline: none;
+	font-size: 1em;
+	line-height: 1.5;
+	max-width: 80%;
+	border: none;
+}
+.btn-comment-send {
+	flex: 0 0 auto;
+	background: #2DBE60;
+	border: none;
+	padding: 4px 8px;
+	margin: 8px;
+	color: #fff;
+	border-radius: 2px;
+	font-weight: 700;
+	font-size: 1.14em;
+}
+
+/*publish*/
+section.publish {
+	background: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,.12);
+}
+section.publish a {
+	color: #2DBE60;
+}
+.publish-input {
+	margin: 0 16px;
+	color: rgba(0,0,0,.54);
+	line-height: 1.5;
+	outline: none;
+}
+.publish-tools {
+	margin: 16px;
 }
