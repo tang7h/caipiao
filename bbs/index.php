@@ -13,28 +13,25 @@
   <link rel="stylesheet" href="../css/evernote-fab.css" media="screen">
   <link rel="stylesheet" href="../css/caipiao.css" media="screen">
   <script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
-  <script type="text/javascript" src="../js/waterfall.js"></script>
-  <script type="text/javascript" src="../js/bbs.js"></script>
+  <script src="../js/angular.min.js"></script  <script type="text/javascript" src="../js/bbs.js"></script>
   <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
 
 </head>
-<body>
-  <div id="stage" data-username="<?php echo "$pidname";?>">
-    <div id="item-template">
-      <div class="item" onclick="closeComment(event)">
-        <div class="user-profile">
-           <img src="" alt="头像" />
-        </div>
+<body id="page-flow">
+  <div id="stage" ng-app="flowApp" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
+    <div id="item-template" ng-repeat="i in flowData">
+      <div class="item" data-id="{{i.id}}" onclick="closeComment(event)">
+        <div class="user-profile" style="background-image:url(../{{i.member_img}})"> </div>
         <div class="right">
           <section class="head">
-            <div class="user-name">用户昵称</div>
-            <div class="time">发布时间</div>
+            <div class="user-name" ng-bind="i.bbs_name">用户名</div>
+            <div class="time" ng-bind="i.bbs_time|time">发布时间</div>
           </section>
           <section class="content">
             <p class="content-title">
             </p>
             <div class="content-img-wrapper">
-              <img src="" alt="" class="content-img">
+              <img src="../{{i.bbs_img}}" alt="" class="content-img">
             </div>
           </section>
           <section class="action">
@@ -50,8 +47,8 @@
           </section>
           <section class="comments">
             <div class="comment-item">
-              <span class="user-name">用户昵称</span>
-              <span class="comment-content">评论的内容</span>
+              <span class="user-name" ng-bind="i.pid_name">用户昵称</span>
+              <span class="comment-content" ng-bind="i.pid_content">评论的内容</span>
             </div>
           </section>
           <!-- 发表评论 -->
@@ -68,21 +65,21 @@
 
   </div>
 <!-- fabs -->
-  <div class="fab fab-primary"><i class="icon"></i></div>
+  <div class="fab fab-primary" id="btn-section-publish">
+    <i class="material-icons md-light">add</i>
+  </div>
   <section class="publish">
 
     <header class="section-top">
-      <a href="javascript:history.back();">
+      <a href="#" id="btn-back">
         <i class="material-icons">arrow_back</i>
       </a>
-      <a href="#">
+      <a href="#" id="btn-publish">
         <i class="material-icons">send</i>
       </a>
     </header>
 
-    <div class="publish-input" contenteditable="true">
-      有什么要分享吗？
-    </div>
+    <textarea  class="publish-input" placeholder="有什么要分享吗？" autofocus></textarea>
     <div class="publish-tools">
       <i class="material-icons">photo_camera</i>
     </div>
@@ -93,7 +90,46 @@
 </div>
 
 
-<script  type="text/javascript">
+<script>
+// 初始化地区
+moment.locale('zh-cn');
+// 初始化ag
+var flow = angular.module('flowApp',[]);
+flow.controller('flowCtrl',function($scope,$http){
+  $http.get('http://positemall.cn/bbs/data.php').success(function(response){
+    $scope.flowData = response;
+    console.log(response);
+  })
+})
+flow.filter('time',function(){
+  var filter = function(input){
+    return moment(input,'YYYY-MM-DD hh:mm:ss').fromNow();
+  }
+  return filter;
+})
+
+function prettify(data) {
+  var comments = [];
+  console.log('data: '+data);
+  console.log(data.pid_name);
+  // for(i=0; i<data.pid_name.length; i++){
+  //   comments[i].commentUsername=data.pid_name[i];
+  //   comments[i].commentContent=data.pid_content[i];
+  // }
+  return comments;
+}
+
+$('#btn-section-publish').on('click',function(){
+  $('section.publish').addClass('show').init();
+  $('.publish-input').val('').focus();
+});
+$('section.publish #btn-back').on('click',function(){
+  $('section.publish').removeClass('show');
+});
+$('.publish-input').on('click',function(){
+  $('.publish-input').html('');
+})
+
 function addComment(e) {
   console.log('clicked');
   itemComment = $(e.target).parent().parent().parent().find('.section-add-comment');
@@ -106,13 +142,13 @@ function closeComment(e) {
 }
 
 function sendComment(e){
-  section = $(e.target).parent().parent();
-  console.log(section);
+  section = $(e.target).parent().parent().parent().parent();
+  console.log(section.data('id'));
   $.post('bbs_liuyan.php',
   {
-    pid: section.data('pid'),
-    content: section.find('.input-comment').val(),
-    pidname: $('#stage').data('username')
+    id: section.data('id'),
+    pid_name: $('#stage').data('username'),
+    pid_content: section.find('.input-comment').val()
   },
   function(data,status){
     alert(data+': '+status);
