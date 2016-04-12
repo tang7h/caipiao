@@ -1,7 +1,6 @@
 <?php
 header("Content-Type:text/html;charset=utf-8");
-include ('config.php');
-
+include ('../config.php');
 ?>
 <!DOCTYPE html>
 <head>
@@ -13,7 +12,7 @@ include ('config.php');
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
-	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
+	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 </head>
 <body>
 	<form action="" method="post">
@@ -27,16 +26,18 @@ include ('config.php');
 		}
 		//$row['current_rqspf'] = explode('|', $row['current_rqspf']);
 		//print_r($current_rqspf); die;
-		echo '<div class="range_match">
+		?>
+		<div class="range_match">
 	<div class="match_id">
-		<span class="match_num">'.$row['official_num'].'</span><!--official_date-->
-		<span class="match_name">'.$row['match_name'].'</span><!--match_name-->
-		<span class="match_date">截期时间：'.$row['official_date'].'</span><!--match_date-->
+		<span class="id" style="display:none;"><?php echo $row['id'];?></span><!--id-->
+		<span class="match_num"><?php echo $row['official_num'];?></span><!--official_date-->
+		<span class="match_name"><?php echo $row['match_name']?></span><!--match_name-->
+		<span class="match_date">截期时间：<?php  echo $row['official_date']?></span><!--match_date-->
 	</div>
 	<div class="match_vs">
-		<span class="home_team">'.$row['home_team'].'</span><!--home_team-->
+		<span class="home_team"><?php echo  $row['home_team']?></span><!--home_team-->
 		<span class="vs_team">VS</span>
-		<span class="away_team">'.$row['away_team'].'</span><!--away_team-->
+		<span class="away_team"><?php echo  $row['away_team']?></span><!--away_team-->
 	</div>
 	<div class="match_on">
 		<div class="match_handicap">
@@ -51,7 +52,7 @@ include ('config.php');
 						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>胜</p>
-							<p>'.$row['current3'].'</p>
+							<p><?php echo  $row['current3']?></p>
 						</div>
 					</label>
 				</div>
@@ -60,7 +61,7 @@ include ('config.php');
 						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>平</p>
-							<p>'.$row['current1'].'</p>
+							<p><?php echo  $row['current1']?></p>
 						</div>
 					</label>
 				</div>
@@ -69,7 +70,7 @@ include ('config.php');
 						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>负</p>
-							<p>'.$row['current0'].'</p>
+							<p><?php echo  $row['current0']?></p>
 						</div>
 					</label>
 				</div>
@@ -80,7 +81,7 @@ include ('config.php');
 						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>让胜</p>
-							<p>'.$current_rqspf['2'].'<span>('.$row['handicap'].')</span></p>
+							<p><?php echo  $current_rqspf['2']?><span>(<?php echo  $row['handicap']?>)</span></p>
 						</div>
 					</label>
 				</div>
@@ -89,7 +90,7 @@ include ('config.php');
 						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>让平</p>
-							<p>'.$current_rqspf['1'].'<span>('.$row['handicap'].')</span></p>
+							<p><?php echo  $current_rqspf['1']?><span>(<?php echo  $row['handicap']?>)</span></p>
 						</div>
 					</label>
 				</div>
@@ -98,7 +99,7 @@ include ('config.php');
 						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>让负</p>
-							<p>'.$current_rqspf['0'].'<span>('.$row['handicap'].')</span></p>
+							<p><?php echo  $current_rqspf['0']?><span>(<?php echo  $row['handicap']?>)</span></p>
 						</div>
 					</label>
 				</div>
@@ -116,7 +117,8 @@ include ('config.php');
 				</div>
 		</div>
 	</div>
-</div>';
+</div>
+<?php 
 	}
 
 	?>
