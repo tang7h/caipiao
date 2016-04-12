@@ -532,8 +532,8 @@ input[type=checkbox]+span {
 
 /* active style goes here */
 input[type="checkbox"]:checked+.cell {
-	background-color: #FFD600;
-	box-shadow: 0 0 10px #FFEB3B;
+	background-color: #D60000;
+	box-shadow: 0 0 10px #ef0000;
 	color: #fff;
 	z-index: 1;
 	border-radius: 2px
@@ -613,7 +613,7 @@ input[type="checkbox"]:checked+.cell>p {
 	justify-content: flex-end;
 }
 .match_on .cell span {
-	color: #FF5252;
+	color: #FB8904;
 	opacity: .84;
 }
 
