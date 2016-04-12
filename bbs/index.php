@@ -37,7 +37,7 @@
           <section class="action">
             <div class="action-item like">
               <i class="material-icons md-18">favorite</i>
-              <span class="label-like">5</span>
+              <span class="label-like" ng-nobind="i.pid_zambia">5</span>
             </div>
             <div class="action-item action-comment" onclick="addComment(event)">
               <i class="material-icons md-18">comment</i>
@@ -46,9 +46,9 @@
 
           </section>
           <section class="comments">
-            <div class="comment-item">
-              <span class="user-name" ng-bind="i.pid_name">用户昵称</span>
-              <span class="comment-content" ng-bind="i.pid_content">评论的内容</span>
+            <div class="comment-item" ng-repeat="c in i.comment">
+              <span class="user-name" ng-bind="c.pid_name">用户昵称</span>
+              <span class="comment-content" ng-bind="c.pid_content">评论的内容</span>
             </div>
           </section>
           <!-- 发表评论 -->
@@ -97,27 +97,32 @@ moment.locale('zh-cn');
 var flow = angular.module('flowApp',[]);
 flow.controller('flowCtrl',function($scope,$http){
   $http.get('http://positemall.cn/bbs/data.php').success(function(response){
-    $scope.flowData = response;
-    console.log(response);
-  })
-})
+    $scope.flowData = prettify(response);
+    console.log($scope.flowData);
+  });
+  function prettify(data) {
+    var t = new Object();
+    for(var i=0; i<data.length; i++){
+      data[i].comment = [];
+      for(var j=0; j<data[i].pid_name.length; j++){
+        var commentIndex=data[i].pid_name[j];
+        var commentConntent=data[i].pid_content[j];
+        data[i].comment[j]= {
+          'pid_name' : commentIndex,
+          'pid_content' : commentConntent
+        }
+      }
+    }
+    return data;
+  }
+});
+
 flow.filter('time',function(){
   var filter = function(input){
     return moment(input,'YYYY-MM-DD hh:mm:ss').fromNow();
   }
   return filter;
 })
-
-function prettify(data) {
-  var comments = [];
-  console.log('data: '+data);
-  console.log(data.pid_name);
-  // for(i=0; i<data.pid_name.length; i++){
-  //   comments[i].commentUsername=data.pid_name[i];
-  //   comments[i].commentContent=data.pid_content[i];
-  // }
-  return comments;
-}
 
 $('#btn-section-publish').on('click',function(){
   $('section.publish').addClass('show').init();
@@ -144,7 +149,7 @@ function closeComment(e) {
 function sendComment(e){
   section = $(e.target).parent().parent().parent().parent();
   console.log(section.data('id'));
-  $.post('bbs_liuyan.php',
+  $.post('http://positemall.cn/bbs/bbs_liuyan.php',
   {
     id: section.data('id'),
     pid_name: $('#stage').data('username'),
@@ -155,6 +160,7 @@ function sendComment(e){
   }
   );
   section.removeClass('show').val('');
+  location.reload();
 }
 
 </script>
