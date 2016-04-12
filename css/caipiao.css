@@ -598,7 +598,7 @@ input[type="checkbox"]:checked+.cell>p {
 	background: #fff;
 	align-items: center;
 	position: relative;
-	transition: box-shadow 0.3s ease-out;
+	/*transition: box-shadow 0.3s ease-out;*/
 }
 .match_on .cell p {
 	display: flex;
@@ -1247,7 +1247,7 @@ section.share {
 
 #stage section.action .action-item.like.liked,
 #stage section.action .action-item.like:hover {
-	color: #F44336;
+	color: #FF5252;
 }
 
 #stage .comments {

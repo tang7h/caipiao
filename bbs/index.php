@@ -85,7 +85,7 @@
 
           <textarea name="bbs_content" class="publish-input" placeholder="有什么要分享吗？" autocomplate="off"></textarea>
 
-          <input type="file" name="file" id="input-file" class="hide">
+          <input type="file" name="file" accept="image/*" id="input-file" class="hide" required>
           <label for="input-file" class="publish-tools" id="btn-publish">
             <i class="material-icons">photo_camera</i>
           </label for="input-file">
@@ -146,11 +146,21 @@ $('section.publish #btn-back').on('click',function(){
 });
 $('.publish-input').on('click',function(){
   $('.publish-input').html('');
-})
+});
 $('#btn-publish').on('click',function(){
-  $('#form-publish').submit();
-  $('section.publish').removeClass('show');
-})
+  console.log($('#form-publish input[name="bbs_name"]').val());
+  console.log($('#form-publish textarea[name="bbs_content"]').val());
+  console.log($('#form-publish input[name="file"]').val());
+  function publishCheck(){
+    if(!$('#form-publish input[name="bbs_name"]').val()){alert('没登陆');return 0;}
+    if(!$('#form-publish textarea[name="bbs_content"]').val()){alert('没内容');return 0;}
+    if(!$('#form-publish input[name="file"]').val()){alert('没图片');return 0;}
+  };
+  if(publishCheck()){
+    $('#form-publish').submit();
+    $('section.publish').removeClass('show');
+  }
+});
 
 function addComment(e) {
   console.log('clicked');
@@ -178,12 +188,12 @@ function sendComment(e){
     return;
   }
   console.log(data);
-  // $.post('http://positemall.cn/bbs/bbs_liuyan.php',data,function(data,status){
-  //   alert(data+': '+status);
-  // }
-  // );
+  $.post('http://positemall.cn/bbs/bbs_liuyan.php',data,function(data,status){
+    alert(data+': '+status);
+  }
+  );
   section.removeClass('show').val('');
-  // location.reload();
+  location.reload();
 }
 
 </script>
