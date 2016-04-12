@@ -753,7 +753,7 @@ article.article {
 }
 
 .comments {
-	padding: 8px 16px;
+	padding: 4px 8px;
 	background: rgb(245,245,245);
 }
 .post,
@@ -1251,11 +1251,12 @@ section.share {
 }
 
 #stage .comments {
-	padding: 8px;
 	flex: 1 0;
 	line-height: 1.5;
 }
-
+#stage .comment-item {
+	margin: 8px;
+}
 .section-add-comment {
 	/*position: fixed;*/
 	bottom: 0;
@@ -1278,12 +1279,11 @@ section.share {
 	box-shadow: 0 -1px 5px rgba(0,0,0,.12);
 }
 .input-comment {
-	flex: 1 0;
+	flex: 1 1 100%;
 	padding: 8px;
 	outline: none;
 	font-size: 1em;
 	line-height: 1.5;
-	max-width: 80%;
 	border: none;
 }
 .btn-comment-send {

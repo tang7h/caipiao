@@ -17,8 +17,8 @@
   <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
 
 </head>
-<body id="page-flow">
-  <div id="stage" ng-app="flowApp" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
+<body id="page-flow" ng-app="flowApp" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
+  <div id="stage">
     <div id="item-template" ng-repeat="i in flowData">
       <div class="item" data-id="{{i.id}}" onclick="closeComment(event)">
         <div class="user-profile" style="background-image:url(../{{i.member_img}})"> </div>
@@ -28,7 +28,7 @@
             <div class="time" ng-bind="i.bbs_time|time">发布时间</div>
           </section>
           <section class="content">
-            <p class="content-title">
+            <p class="content-title" ng-bind="i.bbs_content">内容
             </p>
             <div class="content-img-wrapper">
               <img src="../{{i.bbs_img}}" alt="" class="content-img">
@@ -55,7 +55,7 @@
           <div class="section-add-comment" data-pid data-pidname>
             <div class="inner-add-comment">
               <!-- <div class="input-comment" contenteditable="true"></div> -->
-              <input type="text" name="name" value="" placeholder="评论" class="input-comment" autocomplete="off">
+              <input type="text" name="name" value="" placeholder="评论" class="input-comment" autocomplete="off" required>
               <button type="button" name="button" class="btn-comment-send" onclick="sendComment(event)">发送</button>
             </div>
           </div>
@@ -69,20 +69,28 @@
     <i class="material-icons md-light">add</i>
   </div>
   <section class="publish">
+    <form action="http://positemall.cn/upload_bbs.php/?action=save" enctype="multipart/form-data" method="post" id="form-publish">
 
-    <header class="section-top">
-      <a href="#" id="btn-back">
-        <i class="material-icons">arrow_back</i>
-      </a>
-      <a href="#" id="btn-publish">
-        <i class="material-icons">send</i>
-      </a>
-    </header>
+          <header class="section-top">
+            <a href="#" id="btn-back">
+              <i class="material-icons">arrow_back</i>
+            </a>
+            <a href="#" id="btn-publish">
+              <i class="material-icons">send</i>
+            </a>
+          </header>
 
-    <textarea  class="publish-input" placeholder="有什么要分享吗？" autofocus></textarea>
-    <div class="publish-tools">
-      <i class="material-icons">photo_camera</i>
-    </div>
+          <input type="text" name="bbs_name" value="{{username}}" class="hide">
+          <input type="text" name="bbs_time" value="{{currentTime()}}" class="hide">
+
+          <textarea name="bbs_content" class="publish-input" placeholder="有什么要分享吗？" autocomplate="off"></textarea>
+
+          <input type="file" name="file" id="input-file" class="hide">
+          <label for="input-file" class="publish-tools" id="btn-publish">
+            <i class="material-icons">photo_camera</i>
+          </label for="input-file">
+
+    </form>
 
 
   </section>
@@ -96,10 +104,14 @@ moment.locale('zh-cn');
 // 初始化ag
 var flow = angular.module('flowApp',[]);
 flow.controller('flowCtrl',function($scope,$http){
+  $scope.username=$('body').data('username');
+  $scope.currentTime = function(){
+    return moment().format('YYYY-MM-DD HH:mm:ss');
+}
   $http.get('http://positemall.cn/bbs/data.php').success(function(response){
     $scope.flowData = prettify(response);
-    console.log($scope.flowData);
   });
+
   function prettify(data) {
     var t = new Object();
     for(var i=0; i<data.length; i++){
@@ -114,7 +126,8 @@ flow.controller('flowCtrl',function($scope,$http){
       }
     }
     return data;
-  }
+  };
+  // prettify end
 });
 
 flow.filter('time',function(){
@@ -134,6 +147,10 @@ $('section.publish #btn-back').on('click',function(){
 $('.publish-input').on('click',function(){
   $('.publish-input').html('');
 })
+$('#btn-publish').on('click',function(){
+  $('#form-publish').submit();
+  $('section.publish').removeClass('show');
+})
 
 function addComment(e) {
   console.log('clicked');
@@ -149,18 +166,24 @@ function closeComment(e) {
 function sendComment(e){
   section = $(e.target).parent().parent().parent().parent();
   console.log(section.data('id'));
-  $.post('http://positemall.cn/bbs/bbs_liuyan.php',
-  {
+  var data = {
     id: section.data('id'),
-    pid_name: $('#stage').data('username'),
+    pid_name: $('body').data('username'),
     pid_content: section.find('.input-comment').val()
-  },
-  function(data,status){
-    alert(data+': '+status);
+  };
+  if(!data.pid_name){
+    console.log('未登录');
+    location='http://positemall.cn/user.php';
+  }else if(!data.pid_content){
+    return;
   }
-  );
+  console.log(data);
+  // $.post('http://positemall.cn/bbs/bbs_liuyan.php',data,function(data,status){
+  //   alert(data+': '+status);
+  // }
+  // );
   section.removeClass('show').val('');
-  location.reload();
+  // location.reload();
 }
 
 </script>
