@@ -175,25 +175,28 @@ function closeComment(e) {
 }
 
 function sendComment(e){
-  section = $(e.target).parent().parent().parent().parent();
-  console.log(section.data('id'));
+  section = $(e.target).parent().parent();
   var data = {
-    id: section.data('id'),
+    id: section.parent().parent().data('id'),
     pid_name: $('body').data('username'),
     pid_content: section.find('.input-comment').val()
   };
   if(!data.pid_name){
     console.log('未登录');
     location='http://positemall.cn/user.php';
-  }else if(!data.pid_content){
     return;
   }
-  console.log(data);
+  if(data.pid_content==""){
+    console.log('没内容')
+    $(section).removeClass('show').val('');
+    return;
+  }
+  alert(JSON.stringify(data));
   $.post('http://positemall.cn/bbs/bbs_liuyan.php',data,function(data,status){
     alert(data+': '+status);
-  }
-  );
-  section.removeClass('show').val('');
+  });
+
+  $(section).removeClass('show').val('');
   location.reload();
 }
 

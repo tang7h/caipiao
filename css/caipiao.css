@@ -1307,7 +1307,7 @@ section.publish {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 112;
+	z-index: 2;
 	width: 100vw;
 	height: 100vh;
 	transform: translateY(110vh);
