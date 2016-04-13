@@ -18,7 +18,7 @@ include ('../config.php');
 	<script src="../js/angular.min.js"></script>
 
 </head>
-<body ng-app="buyApp" ng-controller="buyCtrl">
+<body>
 	<form action="" method="post">
 		<?php
 		$sql="SELECT * FROM `jczq` ORDER BY official_date,id ASC";
@@ -31,8 +31,8 @@ include ('../config.php');
 			//$row['current_rqspf'] = explode('|', $row['current_rqspf']);
 			//print_r($current_rqspf); die;
 			?>
-			<div class="range_match">
-				<div class="match_id" data-game-id="<?php echo $row['id'];?>">
+			<div class="range_match" data-game-id="<?php echo $row['id'];?>">
+				<div class="match_id">
 					<span class="match_num"><?php echo $row['official_num'];?></span><!--official_date-->
 					<span class="match_name"><?php echo $row['match_name']?></span><!--match_name-->
 					<span class="match_date">截期时间：<?php  echo $row['official_date']?></span><!--match_date-->
@@ -105,6 +105,5 @@ include ('../config.php');
 		</div>
 		<button type="button" name="button" class="md-btn md-btn-primary">选好了</button>
 	</section>
-	<div class="container" ng-include="'../page_header.php'"></div>
 </body>
 </html>
