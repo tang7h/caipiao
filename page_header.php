@@ -2,17 +2,17 @@
   <div class="section-bottom">
     <div class="nav-bottom" id="nav-item-1">
 
-      <label class="nav-bottom-item" for="item-1" data-url="http://positemall.cn/">
+      <label class="nav-bottom-item" for="item-1" data-stage="home" data-url="http://positemall.cn/">
         <i class="material-icons">free_breakfast</i>
         <span class="nav-bottom-text">首页</span>
       </label>
 
-      <label class="nav-bottom-item" for="item-2" data-url="http://positemall.cn/hunhe_spf.php">
+      <label class="nav-bottom-item" for="item-2" data-stage="buy" data-url="http://positemall.cn/football/hunhe_spf.php">
         <i class="material-icons">trending_up</i>
         <span class="nav-bottom-text">走势</span>
       </label>
 
-      <label class="nav-bottom-item" for="item-3" data-url="http://positemall.cn/bbs/">
+      <label class="nav-bottom-item" for="item-3" data-stage="bbs" data-url="http://positemall.cn/bbs/">
         <i class="material-icons">message</i>
         <span class="nav-bottom-text">说说</span>
       </label>
@@ -22,7 +22,7 @@
         <span class="nav-bottom-text">米米</span>
       </label>
 
-      <label class="nav-bottom-item" for="item-5" data-url="http://positemall.cn/member.php">
+      <label class="nav-bottom-item" for="item-5" data-stage="me" data-url="http://positemall.cn/member.php">
         <i class="material-icons">account_circle</i>
         <span class="nav-bottom-text">我的</span>
       </label>
@@ -32,7 +32,9 @@
       $('.nav-bottom-item').on('click',function(){
         $('.nav-bottom-item').removeClass('active');
         $(this).addClass('active');
-        if($(this).data('url')){window.location=$(this).data('url');}
+        $('.frame').removeClass('show');
+        $('#stage-'+$(this).data('stage')).addClass('show');
+        // if($(this).data('url')){window.location=$(this).data('url');}
       })
 
       switch (window.location.pathname) {

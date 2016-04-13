@@ -18,8 +18,8 @@
   <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
 
 </head>
-<body id="page-flow" ng-app="flowApp" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
-  <div id="stage">
+<body id="page-flow">
+  <div id="stage" ng-app="flowApp" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
     <div id="item-template" ng-repeat="i in flowData">
       <div class="item" data-id="{{i.id}}" onclick="closeComment(event)">
         <div class="user-profile" style="background-image:url(../{{i.member_img}})"> </div>
@@ -105,7 +105,7 @@ moment.locale('zh-cn');
 // 初始化ag
 var flow = angular.module('flowApp',[]);
 flow.controller('flowCtrl',function($scope,$http){
-  $scope.username=$('body').data('username');
+  $scope.username=$('#stage').data('username');
   $scope.currentTime = function(){
     return moment().format('YYYY-MM-DD HH:mm:ss');
 }

@@ -84,6 +84,15 @@ a:hover {
 	width: auto;
 }
 
+/*stage*/
+.frame{
+	overflow-y: auto;
+	display: none;
+}
+.frame.show {
+	display: block;
+}
+
 /*material buttons*/
 .md-btn {
 	font-size: 1em;
@@ -672,6 +681,9 @@ input[type=checkbox]+span {
 .match_odds {
 	flex: 1 0;
 	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .row {
 	display: flex;
@@ -1365,7 +1377,7 @@ section.publish a {
 	margin: 16px;
 }
 
-#page-flow .fab-primary {
+#stage-bbs .fab-primary {
 	position: fixed;
 	bottom: 56px;
 	right: 0;
