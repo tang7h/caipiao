@@ -13,14 +13,25 @@ include ('../config.php');
 	<meta name="format-detection" content="telephone=no">
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
 	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
+	<script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
+	<!-- <script src="../js/angular.min.js"></script> -->
+	<script src="../js/buy.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.cell').click(function(){
+			$(this).toggleClass('selected');
+		})
+	})
+
+	</script>
 </head>
-<body>
+<body ng-app="buyApp">
 	<form action="" method="post">
-	<?php  
+	<?php
 	$sql="SELECT * FROM `jczq` ORDER BY official_date,id ASC";
 			  //执行查询 得到查询结果数据集
 	$result = mysql_query($sql,$conn);
-	while($row = mysql_fetch_array($result)){ 
+	while($row = mysql_fetch_array($result)){
 		$current_rqspf = explode("|", $row['current_rqspf']);
 		foreach ($current_rqspf as $value) {
 		}
@@ -47,62 +58,32 @@ include ('../config.php');
 
 		<div class="changci_header">
 			<div class="row">
-				<div class="handicap_li">
-					<label>
-						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>胜</p>
 							<p><?php echo  $row['current3']?></p>
 						</div>
-					</label>
-				</div>
-				<div class="handicap_li">
-					<label>
-						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>平</p>
 							<p><?php echo  $row['current1']?></p>
 						</div>
-					</label>
-				</div>
-				<div class="handicap_li">
-					<label>
-						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>负</p>
 							<p><?php echo  $row['current0']?></p>
 						</div>
-					</label>
-				</div>
 			</div>
 			<div class="row">
-				<div class="handicap_li">
-					<label>
-						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>让胜</p>
 							<p><?php echo  $current_rqspf['2']?><span>(<?php echo  $row['handicap']?>)</span></p>
 						</div>
-					</label>
-				</div>
-				<div class="handicap_li">
-					<label>
-						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>让平</p>
 							<p><?php echo  $current_rqspf['1']?><span>(<?php echo  $row['handicap']?>)</span></p>
 						</div>
-					</label>
-				</div>
-				<div class="handicap_li">
-					<label>
-						<input type="checkbox" class="hidden-input">
 						<div class="cell">
 							<p>让负</p>
 							<p><?php echo  $current_rqspf['0']?><span>(<?php echo  $row['handicap']?>)</span></p>
 						</div>
-					</label>
-				</div>
 			</div>
 		</div>
 		<div class="match_odds">
@@ -118,12 +99,12 @@ include ('../config.php');
 		</div>
 	</div>
 </div>
-<?php 
+<?php
 	}
 
 	?>
 	</form>
-	
-	
+
+
 </body>
 </html>
