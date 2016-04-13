@@ -1,22 +1,5 @@
 $(document).ready(function(){
-  $('.cell').click(function(){
-    $(this).toggleClass('mark');
-    oLottery.update();
-    if(oLottery.nGames>8){
-      console.log('已经超过8场')
-      $(this).removeClass('mark');
-    }
-    $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
-    oLottery.update();
-  });
-
-  $('#btn-trolly-clean').click(function(){
-    $('.cell.mark').removeClass('mark');
-    oLottery.update();
-    $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
-  })
-
-  var oLottery = new Object({
+    var oLottery = new Object({
     id : 123456,
     time : new Date(),
     nLottery : 0,
@@ -45,7 +28,7 @@ $(document).ready(function(){
         }
       }
       this.fCount();
-      localStorage.oLottery = JSON.stringify(this);
+      localStorage.oLottery = JSON.stringify(this.data);
       // console.log(JSON.stringify(this));
       // console.log(this.nLottery+'注');
 
@@ -65,10 +48,42 @@ $(document).ready(function(){
         }
       }
       this.nLottery = lottery;
+    },
+    render : function(stage){
+      var data = this.data;
+      for(var i=0; i<data.length; i++){
+        var cells = $('div.range_match[data-game-id="'+data[i].gameId+'"]').find('.cell');
+        for(var j=0; j<6; j++){
+          if(data[i].selection[j]==1){
+            $(cells[j]).addClass('mark');
+          }
+        }
+      }
     }
 
   });
 
+  if(localStorage.oLottery){//如果有本地存储
+    oLottery.data = JSON.parse(localStorage.oLottery);//取值
+    oLottery.render();//渲染
+  }
+
+  $('.cell').click(function(){
+    $(this).toggleClass('mark');
+    oLottery.update();
+    if(oLottery.nGames>8){
+      console.log('已经超过8场')
+      $(this).removeClass('mark');
+    }
+    $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
+    oLottery.update();
+  });
+
+  $('#btn-trolly-clean').click(function(){
+    $('.cell.mark').removeClass('mark');
+    oLottery.update();
+    $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
+  })
 
   // angular
   var buyApp = angular.module('buyApp',[]);
