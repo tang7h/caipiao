@@ -14,18 +14,11 @@ include ('../config.php');
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
 	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 	<script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
-	<!-- <script src="../js/angular.min.js"></script> -->
 	<script src="../js/buy.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$('.cell').click(function(){
-			$(this).toggleClass('selected');
-		})
-	})
+	<script src="../js/angular.min.js"></script>
 
-	</script>
 </head>
-<body ng-app="buyApp">
+<body ng-app="buyApp" ng-controller="buyCtrl">
 	<form action="" method="post">
 	<?php
 	$sql="SELECT * FROM `jczq` ORDER BY official_date,id ASC";
@@ -105,6 +98,14 @@ include ('../config.php');
 	?>
 	</form>
 
-
+<section id="toolbar-buy">
+	<i class="material-icons" id="btn-trolly-clean">delete</i>
+	<input type="button" name="name" value="串">
+	<div class="desc">
+		<span id="lotteries-count"></span>
+	</div>
+	<button type="button" name="button" class="md-btn md-btn-primary">选好了</button>
+</section>
+<div class="container" ng-include="'../page_header.php'"></div>
 </body>
 </html>
