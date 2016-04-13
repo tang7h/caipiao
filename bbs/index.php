@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="../css/evernote-fab.css" media="screen">
   <link rel="stylesheet" href="../css/caipiao.css" media="screen">
   <script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
-  <script src="../js/angular.min.js"></script  <script type="text/javascript" src="../js/bbs.js"></script>
+  <script src="../js/angular.min.js"></script>
+  <script type="text/javascript" src="../js/bbs.js"></script>
   <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
 
 </head>
