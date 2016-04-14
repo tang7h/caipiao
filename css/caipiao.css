@@ -712,17 +712,17 @@ input[type=checkbox]+span {
 /*底部snackbar*/
 .snackbar {
 	position: fixed;
-	bottom: -48px;
+	bottom: 56px;
 	width: 100%;
 	height: 48px;
 	padding: 14px 24px;
 	font-size: 14px;
 	color: #fff;
-	background: #222;
+	background: #444;
 	transition: transform .5s;
 }
 .snackbar.show {
-	transform: translateY(-160px);
+	transform: translateY(-56px);
 }
 .sncakbar p {
 	opacity: 0;

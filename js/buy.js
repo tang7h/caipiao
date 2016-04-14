@@ -74,7 +74,10 @@ $(document).ready(function(){
     if(oLottery.nGames>8){
       console.log('已经超过8场');
       $('.snackbar').addClass('show');
-      setTimeout("$('.snackbar').removeClass('show');",2000);
+      if(window.snackbarTimer){
+        clearTimeout(snackbarTimer);
+      }
+      snackbarTimer = setTimeout("$('.snackbar').removeClass('show');",2000);
       $(this).removeClass('mark');
     }
     $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
