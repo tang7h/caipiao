@@ -2,7 +2,7 @@
   <div class="section-bottom">
     <div class="nav-bottom" id="nav-item-1">
 
-      <label class="nav-bottom-item" for="item-1" data-stage="home" data-url="http://positemall.cn/">
+      <label class="nav-bottom-item active" for="item-1" data-stage="home" data-url="http://positemall.cn/">
         <i class="material-icons">free_breakfast</i>
         <span class="nav-bottom-text">首页</span>
       </label>
