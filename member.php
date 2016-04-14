@@ -13,9 +13,9 @@ if(empty($_SESSION['member'])){
 	<title>会员主页面</title>
 	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+	<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
 	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script> -->
 	<!-- 文件上传 -->
 	<script src="js/jquery.form.min.js"></script>
 </head>
@@ -44,20 +44,20 @@ if(empty($_SESSION['member'])){
 				<small>修改信息</small>
 				<section class="section with-padding with-margin">
 					<div class="form-group">
-						<label class="sr-only" for="member_name">真实姓名</label>
+						<label class="hide" for="member_name">真实姓名</label>
 						<input class="form-control" name="member_name" type="text" id="member_name" maxlength="20" placeholder="真实姓名" value="<? echo $rs['member_name'];?>"/>
 					</div>
 					<div class="form-group">
-						<label class="sr-only" for="member_cid">身份证号码</label>
+						<label class="hide" for="member_cid">身份证号码</label>
 						<input class="form-control" name="member_cid" type="text" id="member_cid" maxlength="20" placeholder="身份证号码" value="<? echo $rs['member_cid'];?>"/>
 					</div>
-					<div class="form-group">
+					<div class="form-group sex">
 						<label class="" for="member_sex">性别</label>
-						<div class="radio-group">
-							<label class="btn btn-sm btn-primary-outline first">
+						<div class="radio-group sex">
+							<label class="radio-item">
 								<input name="member_sex" type="radio" value="0" id="member_sex_0">
 							男</label>
-							<label class="btn btn-sm btn-primary-outline last">
+							<label class="radio-item">
 								<input name="member_sex" type="radio" value="1" id="member_sex_1">
 							女</label>
 							<script>
@@ -70,19 +70,19 @@ if(empty($_SESSION['member'])){
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="sr-only" for="member_qq">QQ</label>
+						<label class="hide" for="member_qq">QQ</label>
 						<input class="form-control" name="member_qq" type="text" id="member_qq" maxlength="20" placeholder="QQ" value="<? echo $rs['member_qq'];?>" />
 					</div>
 					<div class="form-group">
-						<label class="sr-only" for="member_phone">电话</label>
+						<label class="hide" for="member_phone">电话</label>
 						<input class="form-control" name="member_phone" type="text" id="member_phone" maxlength="20" placeholder="电话" value="<? echo $rs['member_phone'];?>"/>
 					</div>
 					<div class="form-group">
-						<label class="sr-only" for="member_email">电子邮箱</label>
+						<label class="hide" for="member_email">电子邮箱</label>
 						<input class="form-control" name="member_email" type="text" id="member_email" maxlength="20" placeholder="电子邮箱" value="<? echo $rs['member_email'];?>"/>
 					</div>
-					<input class="btn btn-secondary" type="reset" name="button" id="button" value="重置"/>
-					<input class="btn btn-primary" type="submit" name="submit" id="submit" value="提交"/>
+					<input class="md-btn btn-secondary" type="reset" name="button" id="button" value="重置"/>
+					<input class="md-btn md-btn-primary" type="submit" name="submit" id="submit" value="提交"/>
 
 				</section>
 			</form>
@@ -120,7 +120,7 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 							<?php if($_SESSION['member'])
 								{?>
 
-								<?php echo "<a href='?tj=modify'>修改信息</a>";?>
+								<?php echo "<a href='?tj=modify' class='md-btn'>修改信息</a>";?>
 								<?php if($_SESSION['member']=="admin"){?>
 								<a href="user_index.php">管理</a>
 								<?php }
@@ -154,7 +154,7 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 							<p class="form-control-static"><? echo $rs['member_email'];?></p>
 						</div>
 					</section>
-						<a href='?tj=destroy' class="btn btn-danger btn-block">退出登陆</a>
+						<a href='?tj=destroy' class="md-btn md-btn-danger btn-block">退出登陆</a>
 				</form>
 				<script>
 					$('.user-profile').on('click',function(){
