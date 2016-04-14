@@ -206,7 +206,7 @@ input {
 
 
 .section-scroll-news {/*滚动新闻的容器*/
-	padding: 0 16px 8px;
+	padding: 0 8px 8px;
 	color: rgba(0,0,0,.54);
 	border-top: none;
 }

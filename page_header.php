@@ -8,7 +8,7 @@
       </label>
 
       <label class="nav-bottom-item" for="item-2" data-stage="buy" data-url="http://positemall.cn/football/hunhe_spf.php">
-        <i class="material-icons">trending_up</i>
+        <i class="material-icons">timeline</i>
         <span class="nav-bottom-text">走势</span>
       </label>
 
