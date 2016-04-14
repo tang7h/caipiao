@@ -68,16 +68,24 @@ $(document).ready(function(){
     oLottery.render();//渲染
   }
 
+  var oSnackbar = new Object(
+    {
+      dom: $('.snackbar'),
+      show: function(){
+        this.dom.addClass('show');
+        if(window.snackbarTimer){
+          clearTimeout(snackbarTimer);
+        }
+        snackbarTimer = setTimeout("$('.snackbar').removeClass('show');",2000);
+      }
+    }
+  );
   $('.cell').click(function(){
     $(this).toggleClass('mark');
     oLottery.update();
     if(oLottery.nGames>8){
       console.log('已经超过8场');
-      $('.snackbar').addClass('show');
-      if(window.snackbarTimer){
-        clearTimeout(snackbarTimer);
-      }
-      snackbarTimer = setTimeout("$('.snackbar').removeClass('show');",2000);
+      oSnackbar.show();
       $(this).removeClass('mark');
     }
     $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
