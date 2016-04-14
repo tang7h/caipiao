@@ -105,5 +105,9 @@ include ('../config.php');
 		</div>
 		<button type="button" name="button" class="md-btn md-btn-primary">选好了</button>
 	</section>
+
+	<div class="snackbar">
+		<p>最多选择8场比赛</p>
+	</div>
 </body>
 </html>
