@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" ng-app>
+<html lang="zh" ng-app="caipiaoApp">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
@@ -15,14 +15,13 @@
   <script src="../js/moment.js"></script>
 </head>
 <body>
-  <script>
-  $(function() {
-    FastClick.attach(document.body);
-  });
-  </script>
   <div id="stage-home" class="frame show" ng-include="'index.php'"></div>
   <div id="stage-buy" class="frame" ng-include="'football/hunhe_spf.php'"></div>
   <div id="stage-bbs" class="frame" ng-include="'bbs/index.php'"></div>
+  <div id="stage-me" class="frame" ng-include="'member.php'"></div>
   <div class="bottom" ng-include="'page_header.php'"></div>
+  <script type="text/javascript">
+    var caipiaoApp = angular.module('caipiaoApp', []);
+  </script>
 </body>
 </html>

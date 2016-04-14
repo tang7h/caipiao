@@ -15,7 +15,6 @@ include ('../config.php');
 	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 	<script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
 	<script src="../js/buy.js"></script>
-	<script src="../js/angular.min.js"></script>
 
 </head>
 <body>
