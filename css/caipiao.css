@@ -170,12 +170,24 @@ input {
 	font-size: 0;
 }
 .carousel-inner {
-	width: 100%;
+	width: 300%;
 	height: 100%;
+	display: flex;
+	animation: carousel 12s steps(3) infinite;
+}
+@keyframes carousel {
+	0%{transform: translateX(0)}
+	100%{transform: translateX(-100%)}
 }
 .carousel-inner .carousel-item {
-	height: 100%;
+	display: block;
+	flex: 1 0;
 	overflow: hidden;
+	position: relative;
+}
+
+.carousel-item img {
+	width: 100%;
 }
 .carousel-inner .carousel-item p {
 	font-size: 1rem;

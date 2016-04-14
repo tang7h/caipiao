@@ -48,24 +48,18 @@
 		<div id="carousel-top" class="carousel slide" data-ride="carousel" data-interval="3000">
 			<!-- Carousel items -->
 			<div class="carousel-inner">
-				<div class="active carousel-item">
-					<a href="">
+				<a href="#" class="carousel-item">
 						<img src="<?php echo ''.$arr[1]['pic'].'';?>">
 						<p><?php echo ''.$arr[1]['title'].'';?></p>
-					</a>
-				</div>
-				<div class="carousel-item">
-					<a href="">
+				</a>
+				<a href="#" class="carousel-item">
 						<img src="<?php echo ''.$arr[2]['pic'].'';?>">
 						<p><?php echo ''.$arr[2]['title'].'';?></p>
-					</a>
-				</div>
-				<div class="carousel-item">
-					<a href="">
+				</a>
+				<a href="#" class="carousel-item">
 						<img src="<?php echo ''.$arr[3]['pic'].'';?>">
 						<p><?php echo ''.$arr[3]['title'].'';?></p>
-					</a>
-				</div>
+				</a>
 
 			</div>
 		</div>
