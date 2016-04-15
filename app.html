@@ -21,7 +21,10 @@
   <div id="stage-me" class="frame" ng-include="'member.php'"></div>
   <div class="bottom" ng-include="'page_header.php'"></div>
   <script type="text/javascript">
-    var caipiaoApp = angular.module('caipiaoApp', []);
+  var caipiaoApp = angular.module('caipiaoApp', []);
+  $(function() {
+    FastClick.attach(document.body);
+  });
   </script>
 </body>
 </html>
