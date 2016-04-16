@@ -1296,7 +1296,7 @@ section.share {
 	min-height: 100px;
 	margin-bottom: 16px;
 	line-height: 1;
-	animation: fade-in .5s;
+	/*animation: fade-in .5s;*/
 }
 @keyframes fade-in {
 	from{

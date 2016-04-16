@@ -12,10 +12,7 @@ include ('../config.php');
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
-	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
-	<script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
 	<script src="../js/buy.js"></script>
-
 </head>
 <body>
 	<form action="" method="post">

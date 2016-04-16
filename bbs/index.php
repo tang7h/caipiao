@@ -10,15 +10,10 @@
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
   <meta name="format-detection" content="telephone=no" />
   <title>瀑布流-Derek</title>
-  <link rel="stylesheet" href="../css/caipiao.css" media="screen">
-  <script type="text/javascript" src="../js/jquery-2.2.2.min.js"></script>
-  <!-- <script src="../js/angular.min.js"></script> -->
   <script type="text/javascript" src="../js/bbs.js"></script>
-  <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
-
 </head>
 <body id="page-flow">
-  <div id="stage" ng-app="flowApp" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
+  <div id="stage" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
     <div id="item-template" ng-repeat="i in flowData">
       <div class="item" data-id="{{i.id}}" onclick="closeComment(event)">
         <div class="user-profile" style="background-image:url(../{{i.member_img}})"> </div>
@@ -97,112 +92,5 @@
 
 </div>
 
-
-<script>
-// 初始化地区
-moment.locale('zh-cn');
-// 初始化ag
-var flow = angular.module('flowApp',[]);
-flow.controller('flowCtrl',function($scope,$http){
-  $scope.username=$('#stage').data('username');
-  $scope.currentTime = function(){
-    return moment().format('YYYY-MM-DD HH:mm:ss');
-}
-  $http.get('http://positemall.cn/bbs/data.php').success(function(response){
-    $scope.flowData = prettify(response);
-  });
-
-  function prettify(data) {
-    var t = new Object();
-    for(var i=0; i<data.length; i++){
-      data[i].comment = [];
-      for(var j=0; j<data[i].pid_name.length; j++){
-        var commentIndex=data[i].pid_name[j];
-        var commentConntent=data[i].pid_content[j];
-        data[i].comment[j]= {
-          'pid_name' : commentIndex,
-          'pid_content' : commentConntent
-        }
-      }
-    }
-    return data;
-  };
-  // prettify end
-});
-
-flow.filter('time',function(){
-  var filter = function(input){
-    return moment(input,'YYYY-MM-DD hh:mm:ss').fromNow();
-  }
-  return filter;
-})
-
-$('#btn-section-publish').on('click',function(){
-  $('section.publish').addClass('show').init();
-  $('.publish-input').val('').focus();
-});
-$('section.publish #btn-back').on('click',function(){
-  $('section.publish').removeClass('show');
-});
-$('.publish-input').on('click',function(){
-  $('.publish-input').html('');
-});
-$('#btn-publish').on('click',function(){
-  console.log($('#form-publish input[name="bbs_name"]').val());
-  console.log($('#form-publish textarea[name="bbs_content"]').val());
-  console.log($('#form-publish input[name="file"]').val());
-  function publishCheck(){
-    if(!$('#form-publish input[name="bbs_name"]').val()){alert('没登陆');return 0;}
-    if(!$('#form-publish textarea[name="bbs_content"]').val()){alert('没内容');return 0;}
-    if(!$('#form-publish input[name="file"]').val()){alert('没图片');return 0;}
-  };
-  if(publishCheck()){
-    $('#form-publish').submit();
-    $('section.publish').removeClass('show');
-  }
-});
-
-function addComment(e) {
-  console.log('clicked');
-  itemComment = $(e.target).parent().parent().parent().find('.section-add-comment');
-  itemComment.addClass('show');
-  itemComment.find('.input-comment').focus();
-};
-function closeComment(e) {
-  console.log(e.target);
-  $(e.target).find('.section-add-comment').removeClass('show');
-}
-
-function sendComment(e){
-  section = $(e.target).parent().parent();
-  var data = {
-    id: section.parent().parent().data('id'),
-    pid_name: $('body').data('username'),
-    pid_content: section.find('.input-comment').val()
-  };
-  if(!data.pid_name){
-    console.log('未登录');
-    location='http://positemall.cn/user.php';
-    return;
-  }
-  if(data.pid_content==""){
-    console.log('没内容')
-    $(section).removeClass('show').val('');
-    return;
-  }
-  alert(JSON.stringify(data));
-  $.post('http://positemall.cn/bbs/bbs_liuyan.php',data,function(data,status){
-    alert(data+': '+status);
-  });
-
-  $(section).removeClass('show').val('');
-  location.reload();
-}
-
-</script>
-
-<?php
-  include('../page_header.php');
-?>
 </body>
 </html>

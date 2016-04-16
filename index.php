@@ -173,8 +173,5 @@
 		</a>
 	</div>
 
-	<?php
-		include('page_header.php');
-	?>
 </body>
 </html>
