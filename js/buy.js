@@ -80,7 +80,7 @@ $(document).ready(function(){
       }
     }
   );
-  $('.cell').click(function(){
+  $('.cell').on(touchEv,function(){
     $(this).toggleClass('mark');
     oLottery.update();
     if(oLottery.nGames>8){
@@ -92,7 +92,7 @@ $(document).ready(function(){
     oLottery.update();
   });
 
-  $('#btn-trolly-clean').click(function(){
+  $('#btn-trolly-clean').on(touchEv,function(){
     $('.cell.mark').removeClass('mark');
     oLottery.update();
     $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');

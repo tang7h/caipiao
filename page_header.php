@@ -29,7 +29,7 @@
     </div>
     <script>
 
-      $('.nav-bottom-item').on('click',function(){
+      $('.nav-bottom-item').on(touchEv,function(){
         $('.nav-bottom-item').removeClass('active');
         $(this).addClass('active');
         $('.frame').removeClass('show');

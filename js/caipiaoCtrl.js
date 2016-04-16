@@ -1,8 +1,7 @@
   var universe = angular.module('universe', []);
-  window.addEventListener('load', function() {
-    FastClick.attach(document.body);
-  }, false);
 
+  var isSupportTouch = "ontouchend" in document? true:false,
+  touchEv = isSupportTouch?'touchstart':'click';
   // 初始化地区
   moment.locale('zh-cn');
   // 初始化ag
@@ -42,17 +41,17 @@
   })
 
   $(document).ready(function(){
-    $('#btn-section-publish').on('click',function(){
+    $('#btn-section-publish').on(touchEv,function(){
       $('section.publish').addClass('show').init();
       $('.publish-input').val('').focus();
     });
-    $('section.publish #btn-back').on('click',function(){
+    $('section.publish #btn-back').on(touchEv,function(){
       $('section.publish').removeClass('show');
     });
-    $('.publish-input').on('click',function(){
+    $('.publish-input').on(touchEv,function(){
       $('.publish-input').html('');
     });
-    $('#btn-publish').on('click',function(){
+    $('#btn-publish').on(touchEv,function(){
       console.log($('#form-publish input[name="bbs_name"]').val());
       console.log($('#form-publish textarea[name="bbs_content"]').val());
       console.log($('#form-publish input[name="file"]').val());
