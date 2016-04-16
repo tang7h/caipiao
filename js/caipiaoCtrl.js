@@ -40,32 +40,6 @@
     return filter;
   })
 
-  $(document).ready(function(){
-    $('#btn-section-publish').on(touchEv,function(){
-      $('section.publish').addClass('show').init();
-      $('.publish-input').val('').focus();
-    });
-    $('section.publish #btn-back').on(touchEv,function(){
-      $('section.publish').removeClass('show');
-    });
-    $('.publish-input').on(touchEv,function(){
-      $('.publish-input').html('');
-    });
-    $('#btn-publish').on(touchEv,function(){
-      console.log($('#form-publish input[name="bbs_name"]').val());
-      console.log($('#form-publish textarea[name="bbs_content"]').val());
-      console.log($('#form-publish input[name="file"]').val());
-      function publishCheck(){
-        if(!$('#form-publish input[name="bbs_name"]').val()){alert('没登陆');return 0;}
-        if(!$('#form-publish textarea[name="bbs_content"]').val()){alert('没内容');return 0;}
-        if(!$('#form-publish input[name="file"]').val()){alert('没图片');return 0;}
-      };
-      if(publishCheck()){
-        $('#form-publish').submit();
-        $('section.publish').removeClass('show');
-      }
-    });
-  })
 
   function addComment(e) {
     console.log('clicked');

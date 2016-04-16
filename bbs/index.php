@@ -1,8 +1,8 @@
 <?php
-  require('../config.php');
-  $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
-  // print_r($pidname);
-  ?>
+require('../config.php');
+$pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
+// print_r($pidname);
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -59,31 +59,34 @@
     </div>
 
   </div>
-<!-- fabs -->
+  <!-- fabs -->
   <div class="fab fab-primary" id="btn-section-publish">
     <i class="material-icons md-light">add</i>
   </div>
+  <!-- publish -->
   <section class="publish">
-    <form action="http://positemall.cn/upload_bbs.php/?action=save" enctype="multipart/form-data" method="post" id="form-publish">
+    <form name="publish" action="http://positemall.cn/upload_bbs.php/?action=save" enctype="multipart/form-data" method="post" id="form-publish">
+<!-- 顶部导航 -->
+      <header class="section-top">
+        <a href="#" id="btn-back">
+          <i class="material-icons">arrow_back</i>
+        </a>
+        <label class="btn-label" id="btn-publish">
+          <i class="material-icons">send</i>
+          <input type="submit" name="submit">
+        </label>
+      </header>
 
-          <header class="section-top">
-            <a href="#" id="btn-back">
-              <i class="material-icons">arrow_back</i>
-            </a>
-            <a href="#" id="btn-publish">
-              <i class="material-icons">send</i>
-            </a>
-          </header>
-
-          <input type="text" name="bbs_name" value="{{username}}" class="hide">
-          <input type="text" name="bbs_time" value="{{currentTime()}}" class="hide">
-
-          <textarea name="bbs_content" class="publish-input" placeholder="有什么要分享吗？" autocomplate="off"></textarea>
-
-          <input type="file" name="file" accept="image/*" id="input-file" class="hide" required>
-          <label for="input-file" class="publish-tools" id="btn-publish">
-            <i class="material-icons">photo_camera</i>
-          </label for="input-file">
+<!-- 隐藏的用户名和时间数据 -->
+      <input type="text" name="bbs_name" value="{{username}}" class="hide" required>
+      <input type="text" name="bbs_time" value="{{currentTime()}}" class="hide" required>
+<!-- 内容 -->
+      <textarea ng-model="bbs_content" name="bbs_content" class="publish-input" placeholder="有什么要分享吗？" required autocomplate="off"></textarea>
+<!-- 图片 -->
+      <input type="file" ng-model="image" name="image" accept="image/*" id="input-file" class="hide1" required>
+      <label for="input-file" class="publish-tools" id="btn-publish">
+        <i class="material-icons">photo_camera</i>
+      </label for="input-file">
 
     </form>
 
@@ -91,6 +94,33 @@
   </section>
 
 </div>
+<script>
+$('#btn-section-publish').on(touchEv,function(){
+  $('section.publish').addClass('show').init();
+  $('.publish-input').val('');
+});
+$('section.publish #btn-back').on(touchEv,function(){
+  $('section.publish').removeClass('show');
+});
+$('.publish-input').on(touchEv,function(){
+  $('.publish-input').html('');
+});
+$('#btn-publish').on(touchEv,function(){
+  console.log($('#form-publish input[name="bbs_name"]').val());
+  console.log($('#form-publish textarea[name="bbs_content"]').val());
+  console.log($('#form-publish input[name="file"]').val());
+  function publishCheck(){
+    if(!$('#form-publish input[name="bbs_name"]').val()){alert('没登陆');return 0;}
+    if(!$('#form-publish textarea[name="bbs_content"]').val()){alert('没内容');return 0;}
+    if(!$('#form-publish input[name="file"]').val()){alert('没图片');return 0;}
+  };
+  if(publishCheck()){
+    $('#form-publish').submit();
+    $('section.publish').removeClass('show');
+  }
+  var formData = new FormData($('#form-publish'));
+});
 
+</script>
 </body>
 </html>

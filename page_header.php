@@ -28,6 +28,24 @@
       </label>
     </div>
     <script>
+    oBottom = new Object({
+      scrollBefore: 0,
+      scrollAfter: 0,
+      sSelector: '.section-bottom',
+      init: function(scrollBefore,scrollAfter,sSelector){
+        $(window).scroll(function(){
+          this.scrollAfter = $(window).scrollTop();
+          if(this.scrollBefore > this.scrollAfter){
+            $('.section-bottom').removeClass('hide');
+          }else{
+            $('.section-bottom').addClass('hide');
+          }
+          this.scrollBefore = this.scrollAfter;
+        })
+        return this;
+      }
+    });
+    // oBottom.init();
 
       $('.nav-bottom-item').on(touchEv,function(){
         $('.nav-bottom-item').removeClass('active');
