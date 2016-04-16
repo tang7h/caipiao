@@ -80,16 +80,37 @@ $(document).ready(function(){
       }
     }
   );
-  $('.cell').on(touchEv,function(){
-    $(this).toggleClass('mark');
-    oLottery.update();
-    if(oLottery.nGames>8){
-      console.log('已经超过8场');
-      oSnackbar.show();
-      $(this).removeClass('mark');
+  if(!isSupportTouch){
+    $('.cell').on('click',function(){
+        $(this).toggleClass('mark');
+        oLottery.update();
+        if(oLottery.nGames>8){
+          console.log('已经超过8场');
+          oSnackbar.show();
+          $(this).removeClass('mark');
+        }
+        $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
+        oLottery.update();
+    });
+  }
+  $('.cell').on('touchstart',function(){
+    touchFlag = 1;
+  });
+  $('.cell').on('touchmove',function(){
+    touchFlag = 0;
+  });
+  $('.cell').on('touchend',function(){
+    if(touchFlag){
+      $(this).toggleClass('mark');
+      oLottery.update();
+      if(oLottery.nGames>8){
+        console.log('已经超过8场');
+        oSnackbar.show();
+        $(this).removeClass('mark');
+      }
+      $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
+      oLottery.update();
     }
-    $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
-    oLottery.update();
   });
 
   $('#btn-trolly-clean').on(touchEv,function(){
