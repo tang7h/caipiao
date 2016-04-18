@@ -99,7 +99,7 @@ include ('../config.php');
 		<div class="desc">
 			<span id="lotteries-count"></span>
 		</div>
-		<button type="button" name="button" class="md-btn md-btn-primary">选好了</button>
+		<button type="button" name="button" class="md-btn md-btn-primary" id="btn-buy">选好了</button>
 	</section>
 
 	<div class="snackbar">

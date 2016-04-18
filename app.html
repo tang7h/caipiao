@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" ng-app="universe">
+<html lang="zh" ng-app="universe" ng-controller="universeCtrl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
@@ -16,10 +16,8 @@
   <script src="js/caipiaoCtrl.js"></script>
 </head>
 <body>
-  <div id="stage-home" class="frame show" ng-include="'index.php'"></div>
-  <div id="stage-buy" class="frame" ng-include="'football/hunhe_spf.php'"></div>
-  <div id="stage-bbs" class="frame" ng-include="'bbs/index.php'"></div>
-  <div id="stage-me" class="frame" ng-include="''"></div>
+  <div ng-repeat="i in pages" id="stage-{{i.name}}" class="frame {{i.show}}" ng-include="i.address"></div>
+  <div id="page-login" class="overlay {{show}}" ng-include="'user.php'"></div>
   <div class="bottom" ng-include="'page_header.php'"></div>
 
 </body>

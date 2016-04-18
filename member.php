@@ -12,11 +12,6 @@ if(empty($_SESSION['member'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<title>会员主页面</title>
 	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
-	<!-- Bootstrap -->
-	<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script> -->
-	<!-- 文件上传 -->
 	<script src="js/jquery.form.min.js"></script>
 </head>
 <body class="user">

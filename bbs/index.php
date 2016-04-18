@@ -14,7 +14,7 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
 </head>
 <body id="page-flow">
   <div id="stage" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
-    <div id="item-template" ng-repeat="i in flowData">
+    <div ng-repeat="i in flowData">
       <div class="item" data-id="{{i.id}}" onclick="closeComment(event)">
         <div class="user-profile" style="background-image:url(../{{i.member_img}})"> </div>
         <div class="right">
@@ -73,7 +73,7 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
         </a>
         <label class="btn-label" id="btn-publish">
           <i class="material-icons">send</i>
-          <input type="submit" name="submit">
+          <input type="submit" name="submit" ng-disabled="publish.bbs_content.$invalid">
         </label>
       </header>
 

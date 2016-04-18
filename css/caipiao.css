@@ -112,6 +112,7 @@ input {
 	justify-content: center;
 	align-items: center;
 	white-space: nowrap;
+	cursor: pointer;
 }
 .md-btn-large {
 	padding: 8px;
@@ -140,6 +141,21 @@ input {
 }
 .frame.show {
 	display: block;
+}
+.overlay {
+	position: fixed;
+	top: 110vh;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: #fff;
+	box-shadow: 0 0 6px rgba(0,0,0,.12);
+	-webkit-overflow-scrolling: touch;
+	transition: transform .3s;
+	z-index: 100;
+}
+.overlay.show {
+	transform: translateY(-110vh);
 }
 
 .card,
@@ -674,6 +690,8 @@ input[type=checkbox]+span {
 	flex: 1 0;
 	border: 0.5px solid transparent;
 	/*transition: box-shadow 0.3s ease-out;*/
+	-webkit-user-select: none;
+	cursor: pointer;
 }
 .cell p {
 	display: flex;

@@ -118,9 +118,17 @@ $(document).ready(function(){
     oLottery.update();
     $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
   })
+  $('#btn-buy').on(touchEv,function(){
+    var postData = {'ball':JSON.stringify(oLottery)};
+    console.log(postData);
+    $.post('http://positemall.cn/football/plan_data.php',postData).success(function(data){
+      alert(data);
+    })
+  })
 
   // angular
   var buyApp = angular.module('buyApp',[]);
   buyApp.controller('buyCtrl',function($scope){
+    $scope.username = 'tang7h';
   })
 })

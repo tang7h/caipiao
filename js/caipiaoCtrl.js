@@ -1,11 +1,20 @@
-  var universe = angular.module('universe', []);
 
   var isSupportTouch = "ontouchend" in document? true:false,
   touchEv = isSupportTouch?'touchstart':'click';
   // 初始化地区
   moment.locale('zh-cn');
   // 初始化ag
-  // var flow = angular.module('flowApp',[]);
+  var universe = angular.module('universe', []);
+  // 首页
+  universe.controller('universeCtrl',function($scope){
+    $scope.pages = [
+      {name:'home',address:'index.php',show:'show'},
+      {name:'buy',address:'football/hunhe_spf.php',show:''},
+      {name:'bbs',address:'bbs/index.php',show:''},
+      {name:'me',address:'member.php',show:''}
+    ];
+    $scope.sectionBottom = []
+  })
   universe.controller('flowCtrl',function($scope,$http){
     $scope.username=$('#stage').data('username');
     $scope.currentTime = function(){
@@ -77,3 +86,8 @@
     $(section).removeClass('show').val('');
     location.reload();
   }
+
+  universe.controller('loginCtrl',function($scope){
+    $scope.username = 'test';
+    $scope.show = 'show';
+  })

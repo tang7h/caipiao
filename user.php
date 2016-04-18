@@ -9,10 +9,6 @@ require_once ('config.php');
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script> -->
 <script language="javascript">
 function chk(theForm){
 	if (theForm.member_user.value.replace(/(^\s*)|(\s*$)/g, "") == ""){
@@ -62,7 +58,7 @@ if($result)
 echo "<script>alert('恭喜你注册成功,马上进入主页面');location='member.php';</script>";
 else
 {
-	echo "<script>alert('注册失败');location='user.php';</script>";
+	echo "<script>alert('注册失败')</script>";
 	mysql_close();
 }
 	}
@@ -72,7 +68,7 @@ else
 </head>
 <body class="user">
 <?php if(@$_GET['tj'] == 'register'){ ?>
-<form id="theForm" name="theForm" method="post" action="" onSubmit="return chk(this)" runat="server" class="register-form">
+<form id="theForm" name="theForm" method="post" action="" onSubmit="return chk(this)" runat="server" class="register-form" ng-controller="loginCtrl">
 	<h1>会员注册</h1>
 	<div class="form-group">
 		<label class="hide" for="member_user">用户名<small><span>*</span>由字母和数字组成</small></label>
@@ -141,14 +137,14 @@ $sql="select * from member where member_user='".$name."'";
 $result=mysql_query($sql) or die("账号不正确");
 $num=mysql_num_rows($result);
 if($num==0){
-	echo "<script>alert('帐号不存在');location='user.php';</script>";
+	echo "<script>alert('帐号不存在')</script>";
 	}
 while($rs=mysql_fetch_object($result))
 {
 	$id=$re->id;
 	if($rs->member_password!=$pw)
 	{
-		echo "<script>alert('密码不正确');location='user.php';</script>";
+		echo "<script>alert('密码不正确')</script>";
 		mysql_close();
 	}
 	else
@@ -163,7 +159,7 @@ while($rs=mysql_fetch_object($result))
 }
 ?>
 
-<form action="" method="post" name="regform" onSubmit="return Checklogin();" class="login-form">
+<form action="" method="post" name="regform" onSubmit="return Checklogin();" class="login-form" ng-controller="loginCtrl">
 	<h1>登陆</h1>
 	<div class="form-group">
 	<label class="hide" for="name">用户名</label>
@@ -180,11 +176,6 @@ while($rs=mysql_fetch_object($result))
 	</form>
 <?php } ?>
 
-<table width="100" border="0" align="center" cellpadding="0" cellspacing="0">
-	<tr>
-		<td height="5"></td>
-	</tr>
-</table>
 
 
 </body>
