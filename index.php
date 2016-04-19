@@ -36,10 +36,6 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
 	<title>彩票</title>
-	<!-- Bootstrap -->
-	<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-	<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
 </head>
 <body>

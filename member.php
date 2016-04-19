@@ -36,7 +36,6 @@ if(empty($_SESSION['member'])){
 			?>
 
 			<form method="post" action="" class="user-info-form">
-				<small>修改信息</small>
 				<section class="section with-padding with-margin">
 					<div class="form-group">
 						<label class="hide" for="member_name">真实姓名</label>
@@ -89,7 +88,7 @@ if(empty($_SESSION['member'])){
 			while($rs=mysql_fetch_array($result)){
 				?>
 				<form method="post" action="" class="form-with-label user-info-form">
-					<section class="section with-padding with-margin">
+					<section class="section with-padding">
 						<div class="section-user">
 							<div class="user-profile">
 <?php
@@ -115,12 +114,46 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 							<?php if($_SESSION['member'])
 								{?>
 
-								<?php echo "<a href='?tj=modify' class='md-btn'>修改信息</a>";?>
+								<?php echo "<a href='member.php?tj=modify' class=''><i class='material-icons md-18 md-dark'>settings</i></a>";?>
 								<?php if($_SESSION['member']=="admin"){?>
 								<a href="user_index.php">管理</a>
 								<?php }
 								?>
 							</div>
+						</div>
+					</section>
+					<section class="section sub">
+						<div class="section-nav-icons user">
+							<a href="#" class="nav-item">
+								<div class="nav-item-icon">
+									<i class="material-icons md-24">account_balance_wallet</i>
+								</div>
+								<div class="nav-item-label">待付款</div><!--视频直播跳转-->
+							</a>
+							<a href="#" class="nav-item">
+								<div class="nav-item-icon">
+									<i class="material-icons md-24">assignment</i>
+								</div>
+								<div class="nav-item-label">待发货</div>
+							</a>
+							<a href="#" class="nav-item">
+								<div class="nav-item-icon">
+									<i class="material-icons md-24">receipt</i>
+								</div>
+								<div class="nav-item-label">开奖</div>
+							</a>
+							<a href="#" class="nav-item">
+								<div class="nav-item-icon">
+									<i class="material-icons md-24">toc</i>
+								</div>
+								<div class="nav-item-label">xxx</div>
+							</a>
+							<a href="#" class="nav-item">
+								<div class="nav-item-icon">
+									<i class="material-icons md-24">message</i>
+								</div>
+								<div class="nav-item-label">售后</div>
+							</a>
 						</div>
 					</section>
 					<section class="section with-padding with-margin">
@@ -160,8 +193,6 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 				<?php }
 			}
 			?>
-			<?php
-				include('page_header.php');
-			?>
+
 		</body>
 		</html>

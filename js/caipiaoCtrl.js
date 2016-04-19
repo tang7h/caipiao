@@ -13,7 +13,16 @@
       {name:'bbs',address:'bbs/index.php',show:''},
       {name:'me',address:'member.php',show:''}
     ];
-    $scope.sectionBottom = []
+    $scope.overlays = {
+      login: {
+        url:'usr.php',
+        show: ''
+      }
+    }
+    $scope.user = {
+      username : 'tang7h'
+    }
+
   })
   universe.controller('flowCtrl',function($scope,$http){
     $scope.username=$('#stage').data('username');
@@ -23,7 +32,6 @@
     $http.get('http://positemall.cn/bbs/data.php').success(function(response){
       $scope.flowData = prettify(response);
     });
-
     function prettify(data) {
       var t = new Object();
       for(var i=0; i<data.length; i++){
@@ -40,6 +48,18 @@
       return data;
     };
     // prettify end
+    $scope.oPublish = {
+      onStage : ''
+    }
+    $scope.showPublish = function(){
+      $scope.oPublish.play = 'show';
+    }
+    $scope.closePublish = function(){
+      $scope.oPublish.play = '';
+    }
+    $scope.publishCheck = function(){
+      
+    }
   });
 
   universe.filter('time',function(){
@@ -87,7 +107,7 @@
     location.reload();
   }
 
-  universe.controller('loginCtrl',function($scope){
+universe.controller('loginCtrl',function($scope){
     $scope.username = 'test';
     $scope.show = 'show';
-  })
+})

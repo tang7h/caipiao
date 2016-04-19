@@ -127,8 +127,6 @@ $(document).ready(function(){
   })
 
   // angular
-  var buyApp = angular.module('buyApp',[]);
-  buyApp.controller('buyCtrl',function($scope){
-    $scope.username = 'tang7h';
+  universe.controller('buyCtrl',function($scope){
   })
 })

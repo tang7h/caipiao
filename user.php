@@ -55,10 +55,10 @@ $_SESSION['member']=$_POST['member_user'];
 $sql="insert into member(id,member_user,member_password,member_name,member_cid,member_sex,member_qq,member_phone,member_email,member_img) values('','".$_POST['member_user']."','".md5($_POST['member_password'])."','".$_POST['member_name']."','".$_POST['member_cid']."','".$_POST['member_sex']."','".$_POST['member_qq']."','".$_POST['member_phone']."','".$_POST['member_email']."','".$_POST['member_img']."')";
 $result=mysql_query($sql)or die(mysql_error());
 if($result)
-echo "<script>alert('恭喜你注册成功,马上进入主页面');location='member.php';</script>";
+echo "<script>alert('恭喜你注册成功,马上进入主页面');location='app.html';</script>";
 else
 {
-	echo "<script>alert('注册失败')</script>";
+	echo "<script>alert('注册失败');location='app.html</script>";
 	mysql_close();
 }
 	}
@@ -152,7 +152,7 @@ while($rs=mysql_fetch_object($result))
 		$_SESSION['member']=$_POST['name'];
 		$_SESSION['id']=$id;
 		$_SESSION['pwd']=$re->member_password;
-		header("Location:member.php");
+		header("Location:app.html");
 		mysql_close();
 		}
 	}
