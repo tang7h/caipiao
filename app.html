@@ -16,7 +16,7 @@
   <script src="js/caipiaoCtrl.js"></script>
 </head>
 <body>
-  <div ng-repeat="i in pages" id="stage-{{i.name}}" class="frame {{i.show}}" ng-include="i.address"></div>
+  <div ng-repeat="i in pages" id="stage-{{i.name}}" class="frame" ng-show="i.show" ng-include="i.address"></div>
   <div id="page-login" class="overlay {{overlays.login.show}}" ng-include="'user.php'"></div>
   <div class="bottom" ng-include="'page_header.php'"></div>
 

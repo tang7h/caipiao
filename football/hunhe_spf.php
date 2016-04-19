@@ -15,7 +15,7 @@ include ('../config.php');
 	<script src="../js/buy.js"></script>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="" method="post" class="stage-games">
 		<?php
 		$sql="SELECT * FROM `jczq` ORDER BY official_date,id ASC";
 		//执行查询 得到查询结果数据集
@@ -93,17 +93,5 @@ include ('../config.php');
 		?>
 	</form>
 
-	<section id="toolbar-buy">
-		<i class="material-icons" id="btn-trolly-clean">delete</i>
-		<input type="button" name="name" value="串">
-		<div class="desc">
-			<span id="lotteries-count"></span>
-		</div>
-		<button type="button" name="button" class="md-btn md-btn-primary" id="btn-buy">选好了</button>
-	</section>
-
-	<div class="snackbar">
-		<p>最多选择8场比赛</p>
-	</div>
 </body>
 </html>

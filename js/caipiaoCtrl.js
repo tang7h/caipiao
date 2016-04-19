@@ -8,17 +8,18 @@
   // 首页
   universe.controller('universeCtrl',function($scope){
     $scope.pages = [
-      {name:'home', tag:'首页', icon:'free_breakfast', address:'index.php', show:'show'},
-      {name:'buy', tag:'走势', icon:'timeline', address:'football/hunhe_spf.php', show:''},
-      {name:'bbs', tag:'说说', icon:'message', address:'bbs/index.php', show:''},
-      {name:'bbs', tag:'米米', icon:'account_balance_wallet', address:'', show:''},
-      {name:'me', tag:'我的', icon:'account_circle', address:'member.php', show:''}
-    ];
+      home = {tag:'首页', icon:'free_breakfast', address:'index.php', show:true},
+      buy = {tag:'走势', icon:'timeline', address:'football/hunhe_spf.php', show:false},
+      bbs = {tag:'说说', icon:'message', address:'bbs/index.php', show:false},
+      mimi = {tag:'米米', icon:'account_balance_wallet', address:'', show:false},
+      me = {tag:'我的', icon:'account_circle', address:'member.php', show:false}
+    ]
+    $scope.index = 1;
     $scope.turn = function(n){
       for(var i=0; i<$scope.pages.length; i++){
-        $scope.pages[i].show = '';
+        $scope.pages[i].show = false;
       }
-      $scope.pages[n].show='show';
+      $scope.pages[n].show=true;
     }
     $scope.overlays = {
       login: {
@@ -26,8 +27,17 @@
         show: ''
       }
     }
+    $scope.tools = {
+      name: 'cart',
+      page: 'buy',
+      show: true
+    }
     $scope.user = {
       username : 'tang7h'
+    }
+    $scope.calcStyle = function(b){
+      if(b) return 'show';
+      else return;
     }
 
   })

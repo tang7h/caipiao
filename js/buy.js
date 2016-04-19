@@ -1,9 +1,31 @@
 $(document).ready(function(){
-    var oLottery = new Object({
+  var oSnackbar = new Object(
+    {
+      dom: $('.snackbar'),
+      show: function(message){
+        this.dom.html(message).addClass('show');
+        if(window.snackbarTimer){
+          clearTimeout(snackbarTimer);
+        }
+        snackbarTimer = setTimeout("$('.snackbar').removeClass('show');",2000);
+      }
+    }
+  );
+  var oCount = new Object(
+    {
+      dom: $('#lotteries-count'),
+      update: function(){
+        this.dom.html(oLottery.nLottery +'注 共'+oLottery.nLottery*oLottery.nMultiple*2+'元');
+      }
+    }
+  )
+
+  var oLottery = new Object({
     id : 123456,
     time : new Date(),
     nLottery : 0,
     nGames : 0,
+    nMultiple: 1,
     data : [],
     update : function(){
       var items = $('.range_match');
@@ -26,8 +48,10 @@ $(document).ready(function(){
           'gameId' : gameId,
           'selection' : selection
         }
+        this.nMultiple = $('#input-multiple').val();
       }
       this.fCount();
+      oCount.update();
       localStorage.oLottery = JSON.stringify(this.data);
       // console.log(JSON.stringify(this));
       // console.log(this.nLottery+'注');
@@ -59,6 +83,7 @@ $(document).ready(function(){
           }
         }
       }
+      oCount.update();
     }
 
   });
@@ -66,31 +91,20 @@ $(document).ready(function(){
   if(localStorage.oLottery){//如果有本地存储
     oLottery.data = JSON.parse(localStorage.oLottery);//取值
     oLottery.render();//渲染
+    oLottery.update();
   }
 
-  var oSnackbar = new Object(
-    {
-      dom: $('.snackbar'),
-      show: function(){
-        this.dom.addClass('show');
-        if(window.snackbarTimer){
-          clearTimeout(snackbarTimer);
-        }
-        snackbarTimer = setTimeout("$('.snackbar').removeClass('show');",2000);
-      }
-    }
-  );
+  // 选择
   if(!isSupportTouch){
     $('.cell').on('click',function(){
-        $(this).toggleClass('mark');
-        oLottery.update();
-        if(oLottery.nGames>8){
-          console.log('已经超过8场');
-          oSnackbar.show();
-          $(this).removeClass('mark');
-        }
-        $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
-        oLottery.update();
+      $(this).toggleClass('mark');
+      oLottery.update();
+      if(oLottery.nGames>8){
+        console.log('已经超过8场');
+        oSnackbar.show('最多选择8场比赛');
+        $(this).removeClass('mark');
+      }
+      oLottery.update();
     });
   }
   $('.cell').on('touchstart',function(){
@@ -105,25 +119,40 @@ $(document).ready(function(){
       oLottery.update();
       if(oLottery.nGames>8){
         console.log('已经超过8场');
-        oSnackbar.show();
+        oSnackbar.show('最多选择8场比赛');
         $(this).removeClass('mark');
       }
-      $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
       oLottery.update();
     }
   });
-
+  // 倍数
+  $('#input-multiple').on('change',function(){
+    oLottery.update();
+  });
+  // 清空
   $('#btn-trolly-clean').on(touchEv,function(){
     $('.cell.mark').removeClass('mark');
     oLottery.update();
     $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
   })
+  // 确认
+  var varifyCount = 0;
   $('#btn-buy').on(touchEv,function(){
-    var postData = {'ball':JSON.stringify(oLottery)};
-    console.log(postData);
-    $.post('http://positemall.cn/football/plan_data.php',postData).success(function(data){
-      alert(data);
-    })
+    if(varifyCount==0){
+      varifyCount++;
+      $('.stage-games').addClass('confirm');
+      $('#toolbar-buy').addClass('confirm');
+      oSnackbar.show('请确认订单信息');
+      $('#btn-buy').html('下单');
+      return;
+    }
+    else if(varifyCount==1) {
+      var postData = {'ball':JSON.stringify(oLottery)};
+      console.log(postData);
+      $.post('http://positemall.cn/football/plan_data.php',postData).success(function(data){
+        location='http://positemall.cn/football/see_plan.php'
+      })
+    }
   })
 
   // angular

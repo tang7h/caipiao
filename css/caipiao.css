@@ -137,7 +137,7 @@ input {
 /*stage*/
 .frame{
 	overflow-y: auto;
-	display: none;
+	/*display: none;*/
 }
 .frame.show {
 	display: block;
@@ -622,6 +622,14 @@ input[type=checkbox]+span {
 }
 
 /* active style goes here */
+.stage-games.confirm {
+	transform-origin: top;
+	transition: transform .3s;
+}
+.stage-games.confirm {
+	transform: scale(.9);
+}
+
 .cell.mark {
 	background-color: #D32F2F;
 	box-shadow: 0 0 10px #E53935;
@@ -768,23 +776,28 @@ input[type=checkbox]+span {
 /*底部工具栏*/
 #toolbar-buy {
 	display: flex;
-	position: fixed;
+	flex-wrap: wrap;
+	/*position: fixed;*/
 	bottom: 56px;
 	left: 0;
 	z-index: 8;
 	width: 100%;
-	height: 56px;
+	min-height: 56px;
 	padding: 8px;
 	color: #fff;
 	background: #333;
 	justify-content: space-between;
 	align-items: center;
 }
+#toolbar-buy.confirm {
+
+}
 
 /*底部snackbar*/
 .snackbar {
-	position: fixed;
-	bottom: 56px;
+	/*position: fixed;*/
+	flex: 1 0 100%;
+	/*bottom: 56px;*/
 	width: 100%;
 	height: 48px;
 	padding: 14px 24px;
@@ -792,16 +805,17 @@ input[type=checkbox]+span {
 	color: #fff;
 	background: #444;
 	transition: transform .4s;
-	z-index: 6;
+	z-index: -1;
+	transform: translateY(160px);
 }
 .snackbar.show {
-	transform: translateY(-56px);
+	transform: translateY(0);
 }
 .sncakbar p {
 	opacity: 0;
 	transition: opacity .3s;
 }
-.snackbar.show p {
+.snackbar.ng-show p {
 	opacity: 1;
 }
 
@@ -1194,7 +1208,7 @@ section.share {
 .nav-bottom {
   width: 100vw;
   height: 56px;
-  position: fixed;
+  /*position: fixed;*/
   right: 0;
   bottom: 0;
   display: flex;
@@ -1225,7 +1239,10 @@ section.share {
   position: relative;
 	opacity: .38;
 	cursor: pointer;
-	-webkit-user-select: nont;
+	-webkit-user-select: none;
+}
+.nav-bottom-item.true {
+	opacity: 1;
 }
 /*ripple*/
 .nav-bottom-item::after {
