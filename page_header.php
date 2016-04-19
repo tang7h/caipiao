@@ -1,74 +1,31 @@
 <!-- 底部导航和 floating action button -->
   <div class="section-bottom">
-    <div class="nav-bottom" id="nav-item-1">
-
-      <label class="nav-bottom-item active" for="item-1" data-stage="home" data-url="http://positemall.cn/">
-        <i class="material-icons">free_breakfast</i>
-        <span class="nav-bottom-text">首页</span>
-      </label>
-
-      <label class="nav-bottom-item" for="item-2" data-stage="buy" data-url="http://positemall.cn/football/hunhe_spf.php">
-        <i class="material-icons">timeline</i>
-        <span class="nav-bottom-text">走势</span>
-      </label>
-
-      <label class="nav-bottom-item" for="item-3" data-stage="bbs" data-url="http://positemall.cn/bbs/">
-        <i class="material-icons">message</i>
-        <span class="nav-bottom-text">说说</span>
-      </label>
-
-      <label class="nav-bottom-item" for="item-4">
-        <i class="material-icons">account_balance_wallet</i>
-        <span class="nav-bottom-text">米米</span>
-      </label>
-
-      <label class="nav-bottom-item" for="item-5" data-stage="me" data-url="http://positemall.cn/member.php">
-        <i class="material-icons">account_circle</i>
-        <span class="nav-bottom-text">我的</span>
-      </label>
+    <!-- 底部导航 -->
+    <div class="nav-bottom">
+      <div class="nav-bottom-item {{i.show}} " ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}">
+        <i class="material-icons">{{i.icon}}</i>
+        <span class="nav-bottom-text">{{i.tag}}</span>
+      </div>
     </div>
-    <script>
-    oBottom = new Object({
-      scrollBefore: 0,
-      scrollAfter: 0,
-      sSelector: '.section-bottom',
-      init: function(scrollBefore,scrollAfter,sSelector){
-        $(window).scroll(function(){
-          this.scrollAfter = $(window).scrollTop();
-          if(this.scrollBefore > this.scrollAfter){
-            $('.section-bottom').removeClass('hide');
-          }else{
-            $('.section-bottom').addClass('hide');
-          }
-          this.scrollBefore = this.scrollAfter;
-        })
-        return this;
-      }
-    });
-    // oBottom.init();
 
-      $('.nav-bottom-item').on(touchEv,function(){
-        $('.nav-bottom-item').removeClass('active');
-        $(this).addClass('active');
-        $('.frame').removeClass('show');
-        $('#stage-'+$(this).data('stage')).addClass('show');
-        // if($(this).data('url')){window.location=$(this).data('url');}
+  <script>
+  oBottom = new Object({
+    scrollBefore: 0,
+    scrollAfter: 0,
+    sSelector: '.section-bottom',
+    init: function(scrollBefore,scrollAfter,sSelector){
+      $(window).scroll(function(){
+        this.scrollAfter = $(window).scrollTop();
+        if(this.scrollBefore > this.scrollAfter){
+          $('.section-bottom').removeClass('hide');
+        }else{
+          $('.section-bottom').addClass('hide');
+        }
+        this.scrollBefore = this.scrollAfter;
       })
+      return this;
+    }
+  });
+  // oBottom.init();
 
-      switch (window.location.pathname) {
-        case '/': $('.nav-bottom-item:nth-of-type(1)').addClass('active');
-          break;
-        case '/hunhe_spf.php': $('.nav-bottom-item:nth-of-type(2)').addClass('active');
-          break;
-        case '/bbs/': $('.nav-bottom-item:nth-of-type(3)').addClass('active');
-          break;
-        case 'index-4.php': $('.nav-bottom-item:nth-of-type(4)').addClass('active');
-          break;
-        case '/member.php': $('.nav-bottom-item:nth-of-type(5)').addClass('active');
-          break;
-        default:
-        break;
-      }
-    </script>
-
-  </div>
+  </script>

@@ -1224,6 +1224,8 @@ section.share {
   height: 56px;
   position: relative;
 	opacity: .38;
+	cursor: pointer;
+	-webkit-user-select: nont;
 }
 /*ripple*/
 .nav-bottom-item::after {
@@ -1296,7 +1298,7 @@ section.share {
 	margin-bottom: 10px;
   transition: opacity .1s;
 }
-.nav-bottom-item.active {
+.nav-bottom-item.show {
   /*min-width: 96px;
   max-width: 168px;*/
   /*flex: 3 0;*/

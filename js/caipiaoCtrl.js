@@ -8,11 +8,18 @@
   // 首页
   universe.controller('universeCtrl',function($scope){
     $scope.pages = [
-      {name:'home',address:'index.php',show:'show'},
-      {name:'buy',address:'football/hunhe_spf.php',show:''},
-      {name:'bbs',address:'bbs/index.php',show:''},
-      {name:'me',address:'member.php',show:''}
+      {name:'home', tag:'首页', icon:'free_breakfast', address:'index.php', show:'show'},
+      {name:'buy', tag:'走势', icon:'timeline', address:'football/hunhe_spf.php', show:''},
+      {name:'bbs', tag:'说说', icon:'message', address:'bbs/index.php', show:''},
+      {name:'bbs', tag:'米米', icon:'account_balance_wallet', address:'', show:''},
+      {name:'me', tag:'我的', icon:'account_circle', address:'member.php', show:''}
     ];
+    $scope.turn = function(n){
+      for(var i=0; i<$scope.pages.length; i++){
+        $scope.pages[i].show = '';
+      }
+      $scope.pages[n].show='show';
+    }
     $scope.overlays = {
       login: {
         url:'usr.php',
@@ -58,7 +65,7 @@
       $scope.oPublish.play = '';
     }
     $scope.publishCheck = function(){
-      
+
     }
   });
 

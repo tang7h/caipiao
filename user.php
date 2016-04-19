@@ -6,7 +6,6 @@ require_once ('config.php');
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>会员注册</title>
-	<link href="style.css" rel="stylesheet" type="text/css" />
 	<link href="css/caipiao.css" rel="stylesheet" type="text/css" />
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script language="javascript">
