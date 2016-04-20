@@ -20,7 +20,7 @@ $(document).ready(function(){
         if(window.toastTimer){
           clearTimeout(toastTimer);
         }
-        toastTimer = setTimeout('this.end()',7000);
+        toastTimer = setTimeout("$('.toast').removeClass('show');",7000);
       },
       end: function(){
         $('.toast').removeClass('show');

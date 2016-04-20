@@ -37,6 +37,10 @@
     $scope.tools = {
       show: false
     }
+    $scope.rules = {
+      values: ['8串1'],
+      value: '8串1'
+    }
     $scope.user = {
       username : 'tang7h'
     }

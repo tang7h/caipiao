@@ -83,7 +83,7 @@ a:hover {
 }
 
 /*input*/
-input {
+input,select {
 	padding: 8px;
 	border: 1px solid rgba(0,0,0,.05);
 	border-radius: 2px;
@@ -790,6 +790,15 @@ input[type=checkbox]+span {
 }
 #toolbar-buy.confirm {
 
+}
+#select-rule,
+#input-multiple {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.12);
+	height: 36px;
+	padding: 8px;
+	margin: 4px;
+	border-radius: 2px;
 }
 
 /*底部snackbar*/

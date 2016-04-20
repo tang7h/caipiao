@@ -10,8 +10,11 @@
     <!-- 底部工具栏 -->
   	<section id="toolbar-buy" ng-show="tools.show">
   		<i class="material-icons" id="btn-trolly-clean">delete</i>
-  		<input type="button" name="name" value="8串1">
-  		<input type="number" id="input-multiple" name="" value="1" min="1" max="1000">倍
+      <select id="select-rule" ng-model="rules.value" ng-options="i for i in rules.values">
+      </select>
+      <div class="">
+        <input type="number" id="input-multiple" name="" value="1" min="1" max="1000" step="1">倍
+      </div>
   		<div class="desc">
   			<span id="lotteries-count"></span>
   		</div>
