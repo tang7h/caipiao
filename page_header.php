@@ -20,6 +20,10 @@
     <div class="snackbar">
       <p>最多选择8场比赛</p>
     </div>
+    <div class="toast">
+      <p class="toast-message"></p>
+      <span class="md-btn" id="toast-recall">恢复</span>
+    </div>
 
   </div>
 

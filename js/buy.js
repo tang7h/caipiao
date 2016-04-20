@@ -11,6 +11,23 @@ $(document).ready(function(){
       }
     }
   );
+  var oToast = new Object(
+    {
+      dom: $('.toast'),
+      show: function(message){
+        this.dom.find('.toast-message').html(message).addClass('show');
+        this.dom.addClass('show');
+        if(window.toastTimer){
+          clearTimeout(toastTimer);
+        }
+        toastTimer = setTimeout('this.end()',7000);
+      },
+      end: function(){
+        $('.toast').removeClass('show');
+      }
+    }
+  );
+
   var oCount = new Object(
     {
       dom: $('#lotteries-count'),
@@ -30,13 +47,16 @@ $(document).ready(function(){
     update : function(){
       var items = $('.range_match');
       var games = 0;
+      // 遍历dom
       for(i=0; i<items.length; i++){
         gameId = $(items[i]).data('game-id');
         selection = [];
+        // 遍历选中
         cells = $(items[i]).find('.cell');
         for(j=0; j<cells.length; j++){
           selection[j]=$(cells[j]).hasClass('mark')?1:0;
         }
+        // 统计选中场数
         for(j=0; j<cells.length; j++){
           if($(cells[j]).hasClass('mark')){
             games++;
@@ -50,12 +70,15 @@ $(document).ready(function(){
         }
         this.nMultiple = $('#input-multiple').val();
       }
+      // 清理空数据
       this.clean();
+      // 计算场次
       this.fCount();
-      oCount.update();
+      // 写入localstorage
       localStorage.oLottery = JSON.stringify(this.data);
       // console.log(JSON.stringify(this));
       // console.log(this.nLottery+'注');
+      oCount.update();
 
     },
     fCount : function(){
@@ -141,9 +164,15 @@ $(document).ready(function(){
   });
   // 清空
   $('#btn-trolly-clean').on(touchEv,function(){
+    dataT = JSON.stringify(oLottery.data);
     $('.cell.mark').removeClass('mark');
     oLottery.update();
-    $('#lotteries-count').html(oLottery.nLottery +'注 共'+oLottery.nLottery*2+'元');
+    oToast.show('已经清空');
+  })
+  $('#toast-recall').on(touchEv,function(){
+    oLottery.data = JSON.parse(dataT);
+    oLottery.render();
+    oToast.end();
   })
   // 确认
   var varifyCount = 0;

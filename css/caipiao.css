@@ -101,7 +101,7 @@ input {
 /*material buttons*/
 .md-btn {
 	font-size: 14px;
-	/*font-weight: bold;*/
+	font-weight: bold;
 	padding: 4px 8px;
 	margin: 4px;
 	border-radius: 2px;
@@ -794,9 +794,12 @@ input[type=checkbox]+span {
 }
 
 /*底部snackbar*/
-.snackbar {
+.snackbar,
+.toast {
 	/*position: fixed;*/
 	flex: 1 0 100%;
+	display: flex;
+	justify-content: space-between;
 	/*bottom: 56px;*/
 	width: 100%;
 	height: 48px;
@@ -808,7 +811,11 @@ input[type=checkbox]+span {
 	z-index: -1;
 	transform: translateY(160px);
 }
-.snackbar.show {
+.toast {
+	margin-bottom: -48px;
+}
+.snackbar.show,
+.toast.show {
 	transform: translateY(0);
 }
 .sncakbar p {
@@ -818,7 +825,6 @@ input[type=checkbox]+span {
 .snackbar.ng-show p {
 	opacity: 1;
 }
-
 
 /*********弹出层********/
 
