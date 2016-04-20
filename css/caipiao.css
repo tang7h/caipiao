@@ -772,6 +772,25 @@ input[type=checkbox]+span {
 	flex: 1 0;
 	border: 0.5px solid transparent;
 }
+
+/*ticketing*/
+.tickets {
+
+}
+.ticket {
+	display: flex;
+}
+.ticket-cell {
+	flex: 1 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 8px;
+}
+.row {
+	justify-content: space-between;
+}
+
 /*底部工具栏*/
 #toolbar-buy {
 	display: flex;

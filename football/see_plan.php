@@ -16,7 +16,7 @@ $plan = json_decode($data['football']);
 // echo $plan->time,"<br>";
 $plan_lottery = $plan->nLottery * 2;
 // echo $plan->nGames,"<br>";
- $data = $plan->data;
+$data = $plan->data;
 // print_r($data->gameId);
 
 
@@ -24,84 +24,87 @@ $plan_lottery = $plan->nLottery * 2;
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/caipiao.css" >
 </head>
 <body>
-<style type="text/css">
-	td{
-		border: 1px #000 solid;
-	}
-</style>
-<div>
+<div class="ticketing">
 	<?php
 	echo "订单号：","$plan->id","号，","一共","$plan->nGames","场比赛，","$plan->nLottery","注，共","$plan_lottery","元";
 	?>
-<table>
-	<?php
-	foreach ($data as $key => $value) {
-		//print_r($value->selection);
-	echo "<tr>";
-	//echo "<td>$value->gameId</td>";
-	echo "</tr>";
-	echo "<tr>";
-	//print_r($value->gameId);
-	$sql = "SELECT official_num,match_name,home_team,away_team,weekday,handicap FROM jczq WHERE id = $value->gameId";
-	$result = mysql_query($sql);
-	while ($r = mysql_fetch_array($result)) {
-		$row = $r;
-	}
-	//print_r($row);
-	?>
-	<td><?php echo $row['official_num'],$row['match_name'],$row['home_team'],$row['away_team'],$row['weekday']?>
-	</td>
-	<?php
-	print_r($row['official_num']);
-	?>
-	<td><?php echo "比分";?>
-	</td>
-	</td>
-	<td>
-	<?php
-	if ($value->selection['0']==0) {
-		echo "";
-	}else{
-		echo "胜";
-	}
-	if ($value->selection['1']==0) {
-		echo "";
-	}else{
-		echo "平";
-	}
-	if ($value->selection['2']==0) {
-		echo "";
-	}else{
-		echo "负";
-	}
-	if ($value->selection['3']==0) {
-		echo "";
-	}else{
-		echo "(",$row['handicap'],")让胜";
-	}
-	if ($value->selection['4']==0) {
-		echo "";
-	}else{
-		echo "(",$row['handicap'],")让平";
-	}
-	if ($value->selection['5']==0) {
-		echo "";
-	}else{
-		echo "(",$row['handicap'],")让负";
-	}
+	<div class="tickets">
+		<?php
+		foreach ($data as $key => $value) {
+			//print_r($value->selection);
+			//echo "<td>$value->gameId</td>";
+			//print_r($value->gameId);
+			$sql = "SELECT official_num,match_name,home_team,away_team,weekday,handicap FROM jczq WHERE id = $value->gameId";
+			$result = mysql_query($sql);
+			while ($r = mysql_fetch_array($result)) {
+				$row = $r;
+			}
+			//print_r($row);
+			?>
+			<div class="ticket">
+				<div class="ticket-cell">
+					<div class="row">
+						<div class="game-info">
+							<?php echo $row['official_num']?>
+							<?php echo $row['match_name']?>
+						</div>
+						<div class="game-time">
+							<?php echo $row['weekday']?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="team"><?php echo $row['home_team']?></div>
+						<div class="tem">VS</div>
+						<div class="team"><?php echo $row['away_team']?></div>
+					</div>
+				</div>
 
-	?>
-	</td>
+				<div class="ticket-cell"><?php echo "比分";?>
+				</div>
 
-	</tr>
-<?php
-
+				<div class="ticket-cell">
+					<?php
+					if ($value->selection['0']==0) {
+						echo "";
+					}else{
+						echo "胜 ";
+					}
+					if ($value->selection['1']==0) {
+						echo "";
+					}else{
+						echo "平 ";
+					}
+					if ($value->selection['2']==0) {
+						echo "";
+					}else{
+						echo "负 ";
+					}
+					if ($value->selection['3']==0) {
+						echo "";
+					}else{
+						echo "(",$row['handicap'],")让胜 ";
+					}
+					if ($value->selection['4']==0) {
+						echo "";
+					}else{
+						echo "(",$row['handicap'],")让平 ";
+					}
+					if ($value->selection['5']==0) {
+						echo "";
+					}else{
+						echo "(",$row['handicap'],")让负";
+					}
+					?>
+				</div>
+		</div>
+		<?php
 	}
 	?>
-</table>
+	</div>
 </div>
 
 </body>
