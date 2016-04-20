@@ -17,10 +17,10 @@
   		</div>
   		<button type="button" name="button" class="md-btn md-btn-primary" id="btn-buy">选好了</button>
   	</section>
-    <div class="snackbar">
+    <div class="snackbar" ng-show="tools.show">
       <p>最多选择8场比赛</p>
     </div>
-    <div class="toast">
+    <div class="toast" ng-show="tools.show">
       <p class="toast-message"></p>
       <span class="md-btn" id="toast-recall">恢复</span>
     </div>
