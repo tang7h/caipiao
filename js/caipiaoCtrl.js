@@ -16,10 +16,17 @@
     ]
     $scope.index = 1;
     $scope.turn = function(n){
+      // 页面显示
       for(var i=0; i<$scope.pages.length; i++){
         $scope.pages[i].show = false;
       }
       $scope.pages[n].show=true;
+      // 工具栏显示
+      if(n==1){
+        $scope.tools.show = true;
+      }else{
+        $scope.tools.show = false;
+      }
     }
     $scope.overlays = {
       login: {
@@ -28,9 +35,7 @@
       }
     }
     $scope.tools = {
-      name: 'cart',
-      page: 'buy',
-      show: true
+      show: false
     }
     $scope.user = {
       username : 'tang7h'

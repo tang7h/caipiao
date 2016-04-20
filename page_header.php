@@ -8,7 +8,7 @@
       </div>
     </div>
     <!-- 底部工具栏 -->
-  	<section id="toolbar-buy" ng-show="{{tools.show}}">
+  	<section id="toolbar-buy" ng-show="tools.show">
   		<i class="material-icons" id="btn-trolly-clean">delete</i>
   		<input type="button" name="name" value="8串1">
   		<input type="number" id="input-multiple" name="" value="1" min="1" max="1000">倍
