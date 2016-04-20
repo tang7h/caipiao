@@ -50,6 +50,7 @@ $(document).ready(function(){
         }
         this.nMultiple = $('#input-multiple').val();
       }
+      this.clean();
       this.fCount();
       oCount.update();
       localStorage.oLottery = JSON.stringify(this.data);
@@ -84,10 +85,19 @@ $(document).ready(function(){
         }
       }
       oCount.update();
+    },
+    clean : function(){
+      var data = this.data;
+      var dataC = [];
+      for(var i=0; i<data.length; i++){
+        if(data[i].selection.toString()!='0,0,0,0,0,0'){
+          dataC.push(data[i]);
+        }
+      }
+      this.data = dataC;
     }
 
   });
-
   if(localStorage.oLottery){//如果有本地存储
     oLottery.data = JSON.parse(localStorage.oLottery);//取值
     oLottery.render();//渲染
