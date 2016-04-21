@@ -175,23 +175,12 @@ $(document).ready(function(){
     oToast.end();
   })
   // 确认
-  var varifyCount = 0;
-  $('#btn-buy').on(touchEv,function(){
-    if(varifyCount==0){
-      varifyCount++;
-      $('.stage-games').addClass('confirm');
-      $('#toolbar-buy').addClass('confirm');
-      oSnackbar.show('请确认订单信息');
-      $('#btn-buy').html('下单');
-      return;
-    }
-    else if(varifyCount==1) {
+  $('#btn-buy').on('click',function(){
       var postData = {'ball':JSON.stringify(oLottery)};
       console.log(postData);
       $.post('http://positemall.cn/football/plan_data.php',postData).success(function(data){
-        location='http://positemall.cn/football/see_plan.php'
+      $('#stage-dialog').load('http://positemall.cn/football/see_plan.php').addClass('show');
       })
-    }
   })
 
   // angular

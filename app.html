@@ -9,8 +9,7 @@
   <title>知了彩</title>
   <link rel="stylesheet" type="text/css" href="../css/caipiao.css">
   <script src="js/jquery-2.2.2.min.js"></script>
-  <script src="js/buy.js"></script>
-  <script src="js/angular.js"></script>
+  <script src="js/angular.min.js"></script>
   <!-- <script src="js/moment.js"></script> -->
   <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
   <script src="js/caipiaoCtrl.js"></script>
@@ -19,6 +18,7 @@
   <div ng-repeat="i in pages" id="stage-{{i.name}}" class="frame" ng-show="i.show" ng-include="i.address"></div>
   <div id="page-login" class="overlay {{overlays.login.show}}" ng-include="'user.php'"></div>
   <div class="bottom" ng-include="'page_header.php'"></div>
+  <div id="stage-dialog"></div>
 
 </body>
 </html>

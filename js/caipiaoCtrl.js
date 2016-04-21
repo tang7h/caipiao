@@ -44,6 +44,7 @@
     $scope.user = {
       username : 'tang7h'
     }
+
     $scope.calcStyle = function(b){
       if(b) return 'show';
       else return;

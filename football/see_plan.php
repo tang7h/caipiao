@@ -25,13 +25,17 @@ $data = $plan->data;
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" href="/css/caipiao.css" >
 </head>
 <body>
 <div class="ticketing">
-	<?php
-	echo "订单号：","$plan->id","号，","一共","$plan->nGames","场比赛，","$plan->nLottery","注，共","$plan_lottery","元";
-	?>
+	<div class="ticketing-info">
+		<span class="ticketing-summary">
+			<?php
+			echo "一共","$plan->nGames","场比赛，","$plan->nLottery","注，共","$plan_lottery","元";
+			?>
+		</span>
+		<span class="ticketing-id">#<?php echo "$plan->id"; ?></span>
+	</div>
 	<div class="tickets">
 		<?php
 		foreach ($data as $key => $value) {
@@ -46,27 +50,27 @@ $data = $plan->data;
 			//print_r($row);
 			?>
 			<div class="ticket">
-				<div class="ticket-cell">
-					<div class="row">
+				<div class="ticket-cell game">
+					<div class="row game-head">
 						<div class="game-info">
-							<?php echo $row['official_num']?>
-							<?php echo $row['match_name']?>
+							<span class="game-num"> <?php echo $row['official_num']?> </span>
+							<span class="game-name"> <?php echo $row['match_name']?> </span>
 						</div>
 						<div class="game-time">
 							<?php echo $row['weekday']?>
 						</div>
 					</div>
-					<div class="row">
-						<div class="team"><?php echo $row['home_team']?></div>
-						<div class="tem">VS</div>
-						<div class="team"><?php echo $row['away_team']?></div>
+					<div class="row teams">
+						<div class="team-home"><?php echo $row['home_team']?></div>
+						<div class="team-vs">VS</div>
+						<div class="team-away"><?php echo $row['away_team']?></div>
 					</div>
 				</div>
 
-				<div class="ticket-cell"><?php echo "比分";?>
+				<div class="ticket-cell score"><?php echo "比分";?>
 				</div>
 
-				<div class="ticket-cell">
+				<div class="ticket-cell selection">
 					<?php
 					if ($value->selection['0']==0) {
 						echo "";
@@ -105,7 +109,20 @@ $data = $plan->data;
 	}
 	?>
 	</div>
+	<!-- tickets end -->
+	<div class="dialog-btns">
+		<button class="md-btn dialog-btn-cancel">取消</button>
+		<button class="md-btn">出票</button>
+	</div>
 </div>
+<div class="dialog-mask"></div>
 
+<script>
+	$('.dialog-mask').on(touchEv, closeDialogue)
+	$('.dialog-btn-cancel').on(touchEv, closeDialogue)
+	function closeDialogue() {
+		$('#stage-dialog').removeClass('show').html('');
+	}
+</script>
 </body>
 </html>

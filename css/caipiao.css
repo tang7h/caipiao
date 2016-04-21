@@ -157,6 +157,20 @@ input,select {
 .overlay.show {
 	transform: translateY(-110vh);
 }
+#stage-dialog {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 12;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+#stage-dialog.show {
+	display: flex;
+}
 
 .card,
 .section {
@@ -774,22 +788,140 @@ input[type=checkbox]+span {
 }
 
 /*ticketing*/
+.ticketing {
+	width: 95%;
+	min-width: 280px;
+	max-width: 400px;
+	margin: 56px 16px;
+	padding: 8px 0;
+	box-shadow: 0 8px 20px rgba(0,0,0,.12);
+	background: #fff;
+	border-radius: 2px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	animation: dialog .3s;
+	/*transition: all .3s;
+	opacity: 0;
+	transform: scale(.9);*/
+}
+#stage-dialog.show .ticketing {
+	/*opacity: 1;
+	transform: scale(1);*/
+}
+@keyframes dialog{
+	from{
+		opacity: 0;
+		transform: scale(.9);
+	}
+	to{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.ticketing-info {
+	padding: 16px 24px;
+	color: rgba(0, 0, 0, .7);
+	font-weight: 700;
+	display: flex;
+	justify-content: space-between;
+	flex: 1 0 100%;
+}
+.ticketing-summary {
+}
+.ticketing-id {
+	color: rgba(0, 0, 0, 0.12);
+}
 .tickets {
-
+	flex: 1 0 100%;
 }
 .ticket {
 	display: flex;
+	align-items: center;
+	min-height: 60px;
+	padding: 0 16px;
+	border-bottom: .5px dashed rgba(0,0,0,.1);
+}
+.ticket:last-child {
+	border: none;
 }
 .ticket-cell {
-	flex: 1 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 	padding: 8px;
+}
+.ticket-cell.game {
+	flex: 4 0;
+}
+.ticket-cell.score {
+	flex: 1 0;
+}
+.ticket-cell.selection{
+	flex: 1 0;
+	font-size: .86em;
 }
 .row {
 	justify-content: space-between;
 }
+.row.game-head {
+	font-size: .85em;
+	color: rgba(0, 0, 0, 0.38);
+}
+.game-info .game-num {
+}
+.game-info .game-name {
+	color: #4CAF50;
+	background: #E8F5E9;
+	border-radius: 2px;
+	padding: 1px;
+}
+.row.teams {
+}
+.team-home,
+.team-vs,
+.team-away {
+	white-space: nowrap;
+}
+.team-home,
+.team-away {
+	flex: 2 1;
+	color: #000;
+}
+.team-away {
+	text-align: right;
+}
+.team-vs {
+	flex: 1 1;
+}
+/*dialog mask*/
+.dialog-mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,.54);
+	animation: mask .3s;
+}
+@keyframes mask {
+	from{opacity: 0;}
+	to{}
+}
+
+@supports(-webkit-backdrop-filter: blur(16px)){
+	.dialog-mask {
+		-webkit-backdrop-filter: blur(16px);
+		background: rgba(0,0,0,.54);
+	}
+
+}
+.dialog-btns {
+	margin-top: 16px;
+}
+
 
 /*底部工具栏*/
 #toolbar-buy {
