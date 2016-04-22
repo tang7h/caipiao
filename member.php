@@ -1,9 +1,11 @@
 <?php
 require_once ('config.php');
 //判断用户权限
-if(empty($_SESSION['member'])){
-	echo "<script>alert('请进行登陆或注册');location='user.php';</script>";
+if(isset($_SESSION['openid'])){
+}else{
+	header('location:http://www.positemall.cn/oauth.php');
 }
+// print_r($_SESSION['openid']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,11 +27,11 @@ if(empty($_SESSION['member'])){
 //用户修改
 		if(@$_GET["tj"]=="modify") {
 			if(@$_POST["submit"]){
-				mysql_query($sql="update member set member_name='".$_POST['member_name']."',member_cid='".$_POST['member_cid']."',member_qq='".$_POST['member_qq']."',member_phone='".$_POST['member_phone']."',member_email='".$_POST['member_email']."' where member_user='".$_SESSION['member']."'");
+				mysql_query($sql="update member set member_name='".$_POST['member_name']."',member_cid='".$_POST['member_cid']."',member_qq='".$_POST['member_qq']."',member_phone='".$_POST['member_phone']."',member_email='".$_POST['member_email']."' where member_user='".$_SESSION['openid']."'");
 				echo "<script>location='member.php';</script>";
 			} ?>
 			<?php
-			$sql="select * from member where member_user='".$_SESSION['member']."'";
+			$sql="select * from member where member_user='".$_SESSION['openid']."'";
 			$rs=mysql_fetch_array(mysql_query($sql));
 			// print_r($_SESSION);
 			// die();
@@ -84,7 +86,7 @@ if(empty($_SESSION['member'])){
 
 
 			<?php
-			$result=mysql_query("select * from member where member_user='".$_SESSION['member']."'");
+			$result=mysql_query("select * from member where member_user='".$_SESSION['openid']."'");
 			while($rs=mysql_fetch_array($result)){
 				?>
 				<form method="post" action="" class="form-with-label user-info-form">
@@ -92,7 +94,7 @@ if(empty($_SESSION['member'])){
 						<div class="section-user">
 							<div class="user-profile">
 <?php
-$uid=$_SESSION['member'];//用uid来取代session取得用户名
+$uid=$_SESSION['openid'];//用uid来取代session取得用户名
 //根据用户名取得头像
 	$sql = "SELECT `member_img` FROM `member` WHERE `member_user`='$uid'";
 	$result = mysql_query($sql);
@@ -107,15 +109,15 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 								</div>
 							</div>
 							<div class="user-info">
-								<div class="user-name"><? echo $rs['member_user'];?></div>
+								<div class="user-name"><? echo $rs['member_name'];?></div>
 								<div class="user-desc">用户描述</div>
 							</div>
 							<div class="user-tools">
-							<?php if($_SESSION['member'])
+							<?php if($_SESSION['openid'])
 								{?>
 
 								<?php echo "<a href='member.php?tj=modify' class=''><i class='material-icons md-18 md-dark'>settings</i></a>";?>
-								<?php if($_SESSION['member']=="admin"){?>
+								<?php if($_SESSION['openid']=="admin"){?>
 								<a href="user_index.php">管理</a>
 								<?php }
 								?>
@@ -142,13 +144,13 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 								</div>
 								<div class="nav-item-label">开奖</div>
 							</a>
-							<a href="#" class="nav-item">
+							<a href="paycheck.php?showwxpaytitle=1" class="nav-item">
 								<div class="nav-item-icon">
 									<i class="material-icons md-24">toc</i>
 								</div>
-								<div class="nav-item-label">xxx</div>
+								<div class="nav-item-label">充值</div>
 							</a>
-							<a href="#" class="nav-item">
+							<a href="http://positemall.cn/weixinpay/example/jsapi.php" class="nav-item">
 								<div class="nav-item-icon">
 									<i class="material-icons md-24">message</i>
 								</div>
@@ -167,10 +169,10 @@ $uid=$_SESSION['member'];//用uid来取代session取得用户名
 						</div>
 						<div class="form-group">
 							<label class="" for="member_sex">性别</label>
-							<p class="form-control-static"><? echo $rs['member_sex']?'女':'男';?></p>
+							<p class="form-control-static"><? echo $rs['member_sex']?'男':'女';?></p>
 						</div>
 						<div class="form-group">
-							<label class="" for="member_qq">QQ</label>
+							<label class="" for="member_qq">地区</label>
 							<p class="form-control-static"><? echo $rs['member_qq'];?></p>
 						</div>
 						<div class="form-group">
