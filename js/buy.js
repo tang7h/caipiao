@@ -32,7 +32,20 @@ $(document).ready(function(){
     {
       dom: $('#lotteries-count'),
       update: function(){
-        this.dom.html(oLottery.nLottery +'注 共'+oLottery.nLottery*oLottery.nMultiple*2+'元');
+        this.dom.html('已选'+oLottery.nGames +'场');
+        // this.dom.html(oLottery.nLottery +'注 共'+oLottery.nLottery*oLottery.nMultiple*2+'元');
+      }
+    }
+  )
+  var oBtnBuy = new Object(
+    {
+      dom: $('#btn-buy'),
+      update: function(){
+        if(oLottery.nGames>=8){
+          this.dom.removeAttr('disabled');
+        }else{
+          this.dom.attr('disabled','');
+        }
       }
     }
   )
@@ -79,7 +92,7 @@ $(document).ready(function(){
       // console.log(JSON.stringify(this));
       // console.log(this.nLottery+'注');
       oCount.update();
-
+      oBtnBuy.update();
     },
     fCount : function(){
       var lottery = 0;//初始化只有一种情况
@@ -108,6 +121,7 @@ $(document).ready(function(){
         }
       }
       oCount.update();
+      oLottery.update();
     },
     clean : function(){
       var data = this.data;
@@ -163,13 +177,13 @@ $(document).ready(function(){
     oLottery.update();
   });
   // 清空
-  $('#btn-trolly-clean').on(touchEv,function(){
+  $('#btn-trolly-clean').on('click',function(){
     dataT = JSON.stringify(oLottery.data);
     $('.cell.mark').removeClass('mark');
     oLottery.update();
     oToast.show('已经清空');
   })
-  $('#toast-recall').on(touchEv,function(){
+  $('#toast-recall').on('click',function(){
     oLottery.data = JSON.parse(dataT);
     oLottery.render();
     oToast.end();
