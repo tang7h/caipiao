@@ -62,15 +62,15 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
     </div>
     <!-- publish -->
     <section class="publish {{oPublish.play}}">
-      <form name="publish" action="http://positemall.cn/upload_bbs.php/?action=save" enctype="multipart/form-data" method="post" id="form-publish">
+      <form name="publish" action="http://positemall.cn/upload_bbs_class.php" enctype="multipart/form-data" method="post" id="form-publish">
         <!-- 顶部导航 -->
         <header class="section-top">
           <a href="#" id="btn-back" ng-click="closePublish()">
             <i class="material-icons">arrow_back</i>
           </a>
-          <label class="btn-label" id="btn-publish">
+          <label class="btn-label" id="btn-publish2">
             <i class="material-icons">send</i>
-            <input type="submit" name="submit" class="hide" ng-disabled="publish.$invalid">
+            <input type="submit" name="submit" class="hide">
           </label>
         </header>
 
@@ -81,7 +81,7 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
         <textarea ng-model="bbs_content" name="bbs_content" class="publish-input" placeholder="有什么要分享吗？" required autocomplate="off"></textarea>
         <!-- 图片 -->
         <input type="file" ng-model="image" name="image" accept="image/*" id="input-file" class="hide" required>
-        <label for="input-file" class="publish-tools" id="btn-publish">
+        <label for="input-file" class="publish-tools">
           <i class="material-icons">photo_camera</i>
         </label for="input-file">
 
@@ -95,12 +95,12 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
 <script>
 
 $('#btn-publish').on(touchEv,function(){
-  var oForm = new FormData('#form-publish');
+  var oForm = new FormData(document.getElementById('form-publish'));
   oForm.append("CustomField", "This is some extra data");
-  console.log(oForm);
+  console.log(JSON.stringify(oForm));
   function publishCheck(){
     if(!$('#form-publish input[name="bbs_name"]').val()){alert('没登陆');return 0;}
-    if(!$('#form-publish textarea[name="bbs_content"]').val()){alert('没内容');return 0;}
+    if(!$('#form-publish textarea[name="bbs_content"]').val()){alert('没有内容');return 0;}
     if(!$('#input-file').val()){alert('没图片');return 0;}
     return 1;
   };
