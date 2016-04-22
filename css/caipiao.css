@@ -792,6 +792,8 @@ input[type=checkbox]+span {
 	width: 95%;
 	min-width: 280px;
 	max-width: 400px;
+	max-height: 90vh;
+	overflow: auto;
 	margin: 56px 16px;
 	padding: 8px 0;
 	box-shadow: 0 8px 20px rgba(0,0,0,.12);

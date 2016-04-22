@@ -118,8 +118,8 @@ $data = $plan->data;
 <div class="dialog-mask"></div>
 
 <script>
-	$('.dialog-mask').on(touchEv, closeDialogue)
-	$('.dialog-btn-cancel').on(touchEv, closeDialogue)
+	$('.dialog-mask').on('click', closeDialogue)
+	$('.dialog-btn-cancel').on('click', closeDialogue)
 	function closeDialogue() {
 		$('#stage-dialog').removeClass('show').html('');
 	}
