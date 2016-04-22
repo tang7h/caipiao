@@ -41,10 +41,6 @@
       values: ['8串1'],
       value: '8串1'
     }
-    $scope.user = {
-      username : 'tang7h'
-    }
-
     $scope.calcStyle = function(b){
       if(b) return 'show';
       else return;
@@ -56,7 +52,7 @@
     $scope.currentTime = function(){
       return moment().format('YYYY-MM-DD HH:mm:ss');
   }
-    $http.get('http://positemall.cn/bbs/data.php').success(function(response){
+    $http.get('http://www.positemall.cn/bbs/data.php').success(function(response){
       $scope.flowData = prettify(response);
     });
     function prettify(data) {
