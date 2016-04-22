@@ -1,6 +1,11 @@
 <?php
 	header("Content-Type:text/html;charset=utf-8");//定义读取文本为utf-8；
 	require("config.php");//因为属于长时间链接数据库~所以使用require而不是include；
+		//判断用户权限
+	if(isset($_SESSION['openid'])){
+	}else{
+		header('location:http://www.positemall.cn/oauth.php');
+	}
 	$sql = "SELECT title,pic from banner_img  ORDER BY id desc limit 4";
 	$sql_1 = "SELECT title,text,pic,id from news_info  ORDER BY id desc limit 6";
 
@@ -174,15 +179,7 @@
 		</a>
 	</div>
 
-	<div class="section-bottom">
-    <!-- 底部导航 -->
-    <div class="nav-bottom">
-      <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}">
-        <i class="material-icons">{{i.icon}}</i>
-        <span class="nav-bottom-text">{{i.tag}}</span>
-      </div>
-    </div>
-  </div>
+<div ng-include="'page_header.php'"></div>
 
 </body>
 </html>

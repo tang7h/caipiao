@@ -13,7 +13,10 @@
       bbs = {tag:'说说', icon:'message', address:'bbs/index.php', show:false},
       mimi = {tag:'米米', icon:'account_balance_wallet', address:'', show:false},
       me = {tag:'我的', icon:'account_circle', address:'member.php', show:false}
-    ]
+    ];
+    $scope.tools = {
+      show: false
+    }
     $scope.index = 1;
     $scope.turn = function(n){
       // 页面显示
@@ -31,15 +34,28 @@
     $scope.goto = function(url){
       location = url;
     }
+    console.log(location.pathname);
+    switch (location.pathname) {
+      case '/football/hunhe_spf.php': $scope.index = 1;
+      $scope.turn($scope.index);
+      break;
+      case '/bbs/index.php': $scope.index = 2;
+      $scope.turn($scope.index);
+      break;
+      case 'member.php': $scope.index = 4;
+      $scope.turn($scope.index);
+      break;
+      default:
+
+    }
+
     $scope.overlays = {
       login: {
         url:'usr.php',
         show: ''
       }
     }
-    $scope.tools = {
-      show: false
-    }
+
     $scope.rules = {
       values: ['8串1'],
       value: '8串1'
@@ -59,7 +75,7 @@
     $scope.currentTime = function(){
       return moment().format('YYYY-MM-DD HH:mm:ss');
   }
-    $http.get('http://positemall.cn/bbs/data.php').success(function(response){
+    $http.get('data.php').success(function(response){
       $scope.flowData = prettify(response);
     });
     function prettify(data) {

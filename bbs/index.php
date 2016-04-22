@@ -4,7 +4,7 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
 // print_r($pidname);
 ?>
 <!DOCTYPE html>
-<html ng-app="universe">
+<html ng-app="universe" ng-controller="universeCtrl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
@@ -101,6 +101,8 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
   </div>
 
 </div>
+<div ng-include="'page_header.php'"></div>
+
 <script>
 
 $('#btn-publish').on(touchEv,function(){

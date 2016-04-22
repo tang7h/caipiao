@@ -178,8 +178,8 @@ $(document).ready(function(){
   $('#btn-buy').on('click',function(){
       var postData = {'ball':JSON.stringify(oLottery)};
       console.log(postData);
-      $.post('http://positemall.cn/football/plan_data.php',postData).success(function(data){
-      $('#stage-dialog').load('http://positemall.cn/football/see_plan.php').addClass('show');
+      $.post('plan_data.php',postData).success(function(data){
+      $('#stage-dialog').load('see_plan.php').addClass('show');
       })
   })
 

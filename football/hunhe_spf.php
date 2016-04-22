@@ -3,6 +3,7 @@ header("Content-Type:text/html;charset=utf-8");
 include ('../config.php');
 ?>
 <!DOCTYPE html>
+<html ng-app="universe" ng-controller="universeCtrl">
 <head>
 	<title></title>
 	<!-- 声明文档使用的字符编码 -->
@@ -16,7 +17,7 @@ include ('../config.php');
 	<script src="../js/jquery-2.2.2.min.js"></script>
 	<script src="../js/angular.min.js"></script>
 	<!-- <script src="js/moment.js"></script> -->
-	<!-- <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script> -->
+	<script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
 	<script src="../js/caipiaoCtrl.js"></script>
 	<script src="../js/buy.js"></script>
 </head>
@@ -98,15 +99,17 @@ include ('../config.php');
 
 		?>
 	</form>
+
 	<!-- 底部导航和 floating action button -->
 	  <div class="section-bottom">
 	    <!-- 底部导航 -->
-	    <!-- <div class="nav-bottom">
-	      <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}">
+	    <div class="nav-bottom">
+	      <!-- <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}"> -->
+	      <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="goto('http://positemall.cn/'+i.address)" data-stage="{{i.name}}">
 	        <i class="material-icons">{{i.icon}}</i>
 	        <span class="nav-bottom-text">{{i.tag}}</span>
 	      </div>
-	    </div> -->
+	    </div>
 	    <!-- 底部工具栏 -->
 	  	<section id="toolbar-buy" ng-show="tools.show">
 	  		<i class="material-icons" id="btn-trolly-clean">delete</i>
@@ -129,6 +132,7 @@ include ('../config.php');
 	    </div>
 
 	  </div>
+
 	  <div id="stage-dialog"></div>
 </body>
 </html>
