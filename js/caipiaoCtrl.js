@@ -34,7 +34,6 @@
     $scope.goto = function(url){
       location = url;
     }
-    console.log(location.pathname);
     switch (location.pathname) {
       case '/football/hunhe_spf.php': $scope.index = 1;
       $scope.turn($scope.index);
@@ -59,9 +58,6 @@
     $scope.rules = {
       values: ['8串1'],
       value: '8串1'
-    }
-    $scope.user = {
-      username : 'tang7h'
     }
 
     $scope.calcStyle = function(b){
