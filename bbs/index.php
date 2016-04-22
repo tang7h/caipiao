@@ -4,11 +4,20 @@ $pidname = $_SESSION['member'];//通过session取得用户名赋值到pidname
 // print_r($pidname);
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="universe">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
   <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" type="text/css" href="../css/caipiao.css">
+  <script src="../js/jquery-2.2.2.min.js"></script>
+  <script src="../js/angular.min.js"></script>
+  <script src="../js/moment.js"></script>
+  <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
+  <script src="../js/caipiaoCtrl.js"></script>
+
   <script type="text/javascript" src="../js/bbs.js"></script>
+
 </head>
 <body id="page-flow">
   <div id="stage" ng-controller="flowCtrl" data-username="<?php echo "$pidname";?>">
