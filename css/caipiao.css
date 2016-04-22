@@ -294,6 +294,7 @@ ul.scroll-news-list {
 	flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+	overflow: hidden;
 }
 .nav-item-icon {
 	display: flex;
@@ -909,7 +910,7 @@ input[type=checkbox]+span {
 	z-index: -1;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(255,255,255,.54);
+	background: rgba(220,220,220,.7);
 	animation: mask .3s;
 }
 @keyframes mask {
@@ -920,7 +921,7 @@ input[type=checkbox]+span {
 @supports(-webkit-backdrop-filter: blur(16px)){
 	.dialog-mask {
 		-webkit-backdrop-filter: blur(16px);
-		background: rgba(0,0,0,.54);
+		background: rgba(220,220,220,.7);
 	}
 
 }
