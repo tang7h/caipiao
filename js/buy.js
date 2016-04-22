@@ -41,7 +41,7 @@ $(document).ready(function(){
     {
       dom: $('#btn-buy'),
       update: function(){
-        if(oLottery.nGames>=8){
+        if(oLottery.nGames>=1){
           this.dom.removeAttr('disabled');
         }else{
           this.dom.attr('disabled','');
