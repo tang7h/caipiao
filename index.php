@@ -27,7 +27,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html ng-app="universe" ng-controller="universeCtrl">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
@@ -37,6 +37,11 @@
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
 	<title>彩票</title>
 	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
+	<script src="js/jquery-2.2.2.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<!-- <script src="js/moment.js"></script> -->
+	<script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
+	<script src="js/caipiaoCtrl.js"></script>
 </head>
 <body>
 	<!-- 顶部轮播 -->
@@ -168,6 +173,16 @@
 		</div>
 		</a>
 	</div>
+
+	<div class="section-bottom">
+    <!-- 底部导航 -->
+    <div class="nav-bottom">
+      <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}">
+        <i class="material-icons">{{i.icon}}</i>
+        <span class="nav-bottom-text">{{i.tag}}</span>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -28,6 +28,9 @@
         $scope.tools.show = false;
       }
     }
+    $scope.goto = function(url){
+      location = url;
+    }
     $scope.overlays = {
       login: {
         url:'usr.php',

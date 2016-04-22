@@ -2,7 +2,8 @@
   <div class="section-bottom">
     <!-- 底部导航 -->
     <div class="nav-bottom">
-      <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}">
+      <!-- <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="turn($index)" data-stage="{{i.name}}"> -->
+      <div class="nav-bottom-item {{i.show}}" ng-repeat="i in pages" ng-click="goto('http://positemall.cn/'+i.address)" data-stage="{{i.name}}">
         <i class="material-icons">{{i.icon}}</i>
         <span class="nav-bottom-text">{{i.tag}}</span>
       </div>
