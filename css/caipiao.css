@@ -952,7 +952,7 @@ input[type=checkbox]+span {
 #select-rule,
 #input-multiple {
 	color: #fff;
-	background: rgba(0, 0, 0, 0.12);
+	background: #242424;
 	height: 36px;
 	padding: 8px;
 	margin: 4px;

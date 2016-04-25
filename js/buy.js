@@ -49,12 +49,91 @@ $(document).ready(function(){
       }
     }
   )
-
+  var mxn = [
+    [],
+    [],
+    [
+      { name : '3串1', m : '3', n : '1' },
+      { name : '3串3', m : '3', n : '3' },
+      { name : '3串4', m : '3', n : '4' }
+    ],
+    [
+      { name : '4串1', m : '4', n : '1' },
+      { name : '4串4', m : '4', n : '4' },
+      { name : '4串5', m : '4', n : '5' },
+      { name : '4串6', m : '4', n : '6' },
+      { name : '4串11', m : '4', n : '11' }
+    ],
+    [
+      { name : '5串1', m : '5', n : '1' },
+      { name : '5串5', m : '5', n : '5' },
+      { name : '5串6', m : '5', n : '6' },
+      { name : '5串10', m : '5', n : '10' },
+      { name : '5串16', m : '5', n : '16' },
+      { name : '5串20', m : '5', n : '20' },
+      { name : '5串26', m : '5', n : '26' }
+    ],
+    [
+      { name : '6串1', m : '6', n : '1' },
+      { name : '6串6', m : '6', n : '6' },
+      { name : '6串7', m : '6', n : '7' },
+      { name : '6串15', m : '6', n : '15' },
+      { name : '6串20', m : '6', n : '20' },
+      { name : '6串22', m : '6', n : '22' },
+      { name : '6串35', m : '6', n : '35' },
+      { name : '6串42', m : '6', n : '42' },
+      { name : '6串50', m : '6', n : '50' },
+      { name : '6串57', m : '6', n : '57' }
+    ],
+    [
+      { name : '7串1', m : '7', n : '1' },
+      { name : '7串7', m : '7', n : '7' },
+      { name : '7串8', m : '7', n : '8' },
+      { name : '7串21', m : '7', n : '21' },
+      { name : '7串35', m : '7', n : '35' },
+      { name : '7串120', m : '6', n : '120' }
+    ],
+    [
+      { name : '8串1', m : '8', n : '1' },
+      { name : '8串8', m : '8', n : '8' },
+      { name : '8串9', m : '8', n : '9' },
+      { name : '8串28', m : '8', n : '28' },
+      { name : '8串56', m : '8', n : '56' },
+      { name : '8串70', m : '8', n : '70' },
+      { name : '8串247', m : '8', n : '247' }
+    ]
+  ]
+  var oSelectRule = {
+    dom: $('#select-rule'),
+    update: function(){
+      // 取串法数据
+      var rules = mxn[oLottery.nGames-1];
+      //查询localstorage
+      var val = localStorage.oLotteryMXN || null;
+      console.log(val);
+      // 清空选项
+      $('#select-rule').html('')
+      // 生成选项
+      if(rules){
+        for(var i=0; i<rules.length; i++){
+          var optionItem = $('<option>'+rules[i].name+'</option>');
+          $('#select-rule').append(optionItem);
+        }
+        for(var i=0; i<rules.length; i++){
+          if(rules[i]==val){
+            $('#select-rule').val(val);
+          }
+        }
+        oLottery.mxn = $('#select-rule').val();
+      }
+    }
+  }
   var oLottery = new Object({
     id : 123456,
     time : new Date(),
     nLottery : 0,
     nGames : 0,
+    mxn : '',
     nMultiple: 1,
     data : [],
     update : function(){
@@ -77,6 +156,7 @@ $(document).ready(function(){
           }
         }
         this.nGames = games;
+        $('.nGames').val(games);
         this.data[i]={
           'gameId' : gameId,
           'selection' : selection
@@ -88,11 +168,11 @@ $(document).ready(function(){
       // 计算场次
       this.fCount();
       // 写入localstorage
-      localStorage.oLottery = JSON.stringify(this.data);
-      // console.log(JSON.stringify(this));
-      // console.log(this.nLottery+'注');
+      localStorage.oLotteryData = JSON.stringify(this.data);
+      localStorage.oLotteryMXN = this.mxn;
       oCount.update();
       oBtnBuy.update();
+      oSelectRule.update();
     },
     fCount : function(){
       var lottery = 0;//初始化只有一种情况
@@ -135,11 +215,17 @@ $(document).ready(function(){
     }
 
   });
-  if(localStorage.oLottery){//如果有本地存储
-    oLottery.data = JSON.parse(localStorage.oLottery);//取值
-    oLottery.render();//渲染
-    oLottery.update();
+  if(localStorage.oLotteryMXN){//如果有本地存储
+    oLottery.mxn = localStorage.oLotteryMXN;//取值
   }
+  if(localStorage.oLotteryData){//如果有本地存储
+    oLottery.data = JSON.parse(localStorage.oLotteryData);//取值
+    oLottery.render();//渲染
+  }
+  $('#select-rule').change(function(){
+    oLottery.mxn = $('#select-rule').val();
+    localStorage.oLotteryMXN = $('#select-rule').val();
+  })
 
   // 选择
   if(!isSupportTouch){

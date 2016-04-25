@@ -15,7 +15,7 @@ include ('../config.php');
 	<meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
 	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 	<script src="../js/jquery-2.2.2.min.js"></script>
-	<script src="../js/angular.min.js"></script>
+	<script src="../js/angular.js"></script>
 	<!-- <script src="js/moment.js"></script> -->
 	<script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
 	<script src="../js/caipiaoCtrl.js"></script>
@@ -53,29 +53,29 @@ include ('../config.php');
 
 					<div class="changci_header">
 						<div class="row">
-							<div class="cell">
+							<div class="cell" ng-click="countGames()">
 								<p>胜</p>
 								<p><?php echo  $row['current3']?></p>
 							</div>
-							<div class="cell">
+							<div class="cell" ng-click="countGames()">
 								<p>平</p>
 								<p><?php echo  $row['current1']?></p>
 							</div>
-							<div class="cell">
+							<div class="cell" ng-click="countGames()">
 								<p>负</p>
 								<p><?php echo  $row['current0']?></p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="cell">
+							<div class="cell" ng-click="countGames()">
 								<p>让胜</p>
 								<p><?php echo  $current_rqspf['2']?><span>(<?php echo  $row['handicap']?>)</span></p>
 							</div>
-							<div class="cell">
+							<div class="cell" ng-click="countGames()">
 								<p>让平</p>
 								<p><?php echo  $current_rqspf['1']?><span>(<?php echo  $row['handicap']?>)</span></p>
 							</div>
-							<div class="cell">
+							<div class="cell" ng-click="countGames()">
 								<p>让负</p>
 								<p><?php echo  $current_rqspf['0']?><span>(<?php echo  $row['handicap']?>)</span></p>
 							</div>
@@ -113,14 +113,24 @@ include ('../config.php');
 	    <!-- 底部工具栏 -->
 	  	<section id="toolbar-buy" ng-show="tools.show">
 	  		<i class="material-icons" id="btn-trolly-clean">delete</i>
-	      <select id="select-rule" ng-model="rules.value" ng-options="i for i in rules.values">
+				<!-- 选择串法 -->
+	      <!-- <select id="select-rule" ng-model="mxnSelection" ng-options="i.name for i in mxns | filter: nGames+'串'">
+					<option value="">串法</option>
+	      </select> -->
+	      <select id="select-rule">
+					<option value="">串法</option>
 	      </select>
+				<!-- 选择倍数 -->
 	      <div class="">
 	        <input type="number" id="input-multiple" name="" value="1" min="1" max="1000" step="1">倍
 	      </div>
+				<!-- 提示信息 -->
 	  		<div class="desc">
 	  			<span id="lotteries-count"></span>
 	  		</div>
+				<!-- 选择串法测试 -->
+				<span>{{mxnSelection.name}}</span>
+				<!-- 确认按钮 -->
 	  		<button type="button" name="button" class="md-btn md-btn-primary" id="btn-buy" disabled>选好了</button>
 	  	</section>
 	    <div class="snackbar" ng-show="tools.show">
