@@ -23,21 +23,21 @@ $result=mysql_query($sql,$conn);
 <body>
 	<form method="post" action="?action=save" enctype="multipart/form-data" class="section with-margin with-padding">
 		<div class="form-group sex">
-			<label>标题：</label>
-			<input name="title" type="text" id="title">
+			<input name="" type="text" style="flex: 1 1 100%" placeholder="来源">
 		</div>
 		<div class="form-group sex">
-			<label>内容：</label>
-			<input name="text" type="text" id="text">
+			<input name="title" type="text" style="flex: 1 1 100%" placeholder="标题">
 		</div>
 		<div class="form-group sex">
-			<label>图片：</label>
+			<textarea name="text" type="text" style="width:60em;height:10em;" placeholder="内容"></textarea>
+		</div>
+		<div class="form-group sex">
+			<label>图片</label>
 			<input name="file" type="file" accept="image/*">
 		</div>
 		<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 		<div class="form-group sex">
-			<label>时间：</label>
-			<input name="time" type="text" id="time" value="<?php echo date('Y-m-d'); ?>">
+			<input name="time" type="text" value="<?php echo date('Y-m-d'); ?>" class="hide">
 		</div>
 
 		<input type="submit" value="上 传" name="upload" class="md-btn md-btn-primary btn-block">
