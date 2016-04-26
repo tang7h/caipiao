@@ -44,8 +44,8 @@
 	<link rel="stylesheet" type="text/css" href="css/caipiao.css">
 	<script src="js/jquery-2.2.2.min.js"></script>
 	<script src="js/angular.min.js"></script>
-	<!-- <script src="js/moment.js"></script> -->
-	<script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
+	<script src="js/moment.js"></script>
+	<!-- <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script> -->
 	<script src="js/caipiaoCtrl.js"></script>
 </head>
 <body>
@@ -73,7 +73,7 @@
 
 	<!-- 快捷入口图标 -->
 	<div class="section-nav-icons section">
-		<a href="#" class="nav-item">
+		<a href="http://www.positemall.cn/weixinpay/index.php" class="nav-item">
 			<div class="nav-item-icon">
 				<i class="material-icons md-36">date_range</i>
 			</div>
@@ -91,13 +91,13 @@
 			</div>
 			<div class="nav-item-label">开场哨</div>
 		</a>
-		<a href="http://positemall.cn/article/article.php" class="nav-item">
+		<a href="./article/article.php" class="nav-item">
 			<div class="nav-item-icon">
 				<i class="material-icons md-36">toc</i>
 			</div>
 			<div class="nav-item-label">球市新闻</div>
 		</a>
-		<a href="#" class="nav-item">
+		<a href="./paycheck.php" class="nav-item">
 			<div class="nav-item-icon">
 				<i class="material-icons md-36">help_outline</i>
 			</div>

@@ -16,8 +16,8 @@ include ('../config.php');
 	<link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 	<script src="../js/jquery-2.2.2.min.js"></script>
 	<script src="../js/angular.js"></script>
-	<!-- <script src="js/moment.js"></script> -->
-	<script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script>
+	<script src="../js/moment.js"></script>
+	<!-- <script type="text/javascript" src="http://momentjs.cn/downloads/moment-with-locales.min.js"></script> -->
 	<script src="../js/caipiaoCtrl.js"></script>
 	<script src="../js/buy.js"></script>
 </head>
