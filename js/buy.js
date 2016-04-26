@@ -32,8 +32,7 @@ $(document).ready(function(){
     {
       dom: $('#lotteries-count'),
       update: function(){
-        this.dom.html('已选'+oLottery.nGames +'场');
-        // this.dom.html(oLottery.nLottery +'注 共'+oLottery.nLottery*oLottery.nMultiple*2+'元');
+        this.dom.html(oLottery.nLottery * oLottery.mxnN +'注');
       }
     }
   )
@@ -51,7 +50,9 @@ $(document).ready(function(){
   )
   var mxn = [
     [],
-    [],
+    [
+      { name : '2串1', m : '2', n : '1' },
+    ],
     [
       { name : '3串1', m : '3', n : '1' },
       { name : '3串3', m : '3', n : '3' },
@@ -110,21 +111,21 @@ $(document).ready(function(){
       var rules = mxn[oLottery.nGames-1];
       //查询localstorage
       var val = localStorage.oLotteryMXN || null;
-      console.log(val);
       // 清空选项
       $('#select-rule').html('')
       // 生成选项
       if(rules){
         for(var i=0; i<rules.length; i++){
-          var optionItem = $('<option>'+rules[i].name+'</option>');
+          var optionItem = $('<option value='+JSON.stringify(rules[i])+'>'+rules[i].name+'</option>');
           $('#select-rule').append(optionItem);
         }
         for(var i=0; i<rules.length; i++){
-          if(rules[i]==val){
+          if(JSON.stringify(rules[i])==val){
             $('#select-rule').val(val);
           }
         }
-        oLottery.mxn = $('#select-rule').val();
+        oLottery.mxn = JSON.parse($('#select-rule').val()).name;
+        oLottery.mxnN = JSON.parse($('#select-rule').val()).n;
       }
     }
   }
@@ -134,7 +135,9 @@ $(document).ready(function(){
     nLottery : 0,
     nGames : 0,
     mxn : '',
+    mxnN : 1,
     nMultiple: 1,
+    price : 0,
     data : [],
     update : function(){
       var items = $('.range_match');
@@ -167,12 +170,19 @@ $(document).ready(function(){
       this.clean();
       // 计算场次
       this.fCount();
+      // 获取串法
+        // this.mxn = $('#select-rule').val();
+        // this.mxnN = $('#select-rule').val();
+      // 更新串法
+      oSelectRule.update();
+      //计算价格
+      this.price = this.mxnN * this.nLottery * this.nMultiple * 2;
+      // 更新提示文本
+      oCount.update();
+      // 更新按钮状态
+      oBtnBuy.update();
       // 写入localstorage
       localStorage.oLotteryData = JSON.stringify(this.data);
-      localStorage.oLotteryMXN = this.mxn;
-      oCount.update();
-      oBtnBuy.update();
-      oSelectRule.update();
     },
     fCount : function(){
       var lottery = 0;//初始化只有一种情况
@@ -200,7 +210,6 @@ $(document).ready(function(){
           }
         }
       }
-      oCount.update();
       oLottery.update();
     },
     clean : function(){
@@ -223,8 +232,9 @@ $(document).ready(function(){
     oLottery.render();//渲染
   }
   $('#select-rule').change(function(){
-    oLottery.mxn = $('#select-rule').val();
+    // oLottery.mxn = $('#select-rule').val();
     localStorage.oLotteryMXN = $('#select-rule').val();
+    oLottery.update();
   })
 
   // 选择
