@@ -2,11 +2,11 @@
 //header("Content-Type:text/html;charset=utf-8");
 require_once ('../config.php');
 
-$uid=$_SESSION['member'];//用uid来取代session取得用户名
+$uid=$_SESSION['openid'];//用uid来取代session取得用户名
 
   $id=$_GET['id'];
   //echo $id;
-  $sql="SELECT `title`,`text`,`pic`,`id`,`time` from news_info WHERE `id`=$id ORDER BY id desc";
+  $sql="SELECT `title`,`text`,`pic`,`id`,`time`,`laiyuan` from news_info WHERE `id`=$id ORDER BY id desc";
   $rs = mysql_query($sql);
   if ($rs) {
     while ($row = mysql_fetch_assoc($rs)) {
@@ -33,9 +33,7 @@ $id = $data[0][id];//因为下方又一次用到变量$data.所以在此设置�
   <script type="text/javascript" src="../js/bbs.js"></script>
   <title>文章</title>
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-  <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  <script src="../js/jquery-2.2.2.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 </head>
 <body class="article">
@@ -51,7 +49,7 @@ $id = $data[0][id];//因为下方又一次用到变量$data.所以在此设置�
     <h1><?php echo ''.$data[0]['title'].'';?></h1>
     <div class="article-info">
       <span class="article-time"><?php echo ''.$data[0]['time'].'';?></span>
-      <span class="article-source">新闻来源</span>
+      <span class="article-source">新闻来源:<?php echo ''.$data[0]['laiyuan'].'';?></span>
     </div>
     <img src="../<?php echo ''.$data[0]['pic'].'';?>" alt="示例图片">
     <p><?php echo ''.$data[0]['text'].'';?></p>
@@ -76,17 +74,17 @@ $sql = "select * from `bbs_post` where `threadid` ='1' AND pid=$pid order by id 
 </div>
 <?php
 //根据用户名取得头像
-$sql = "SELECT `member_img` FROM `member` WHERE `member_user`='$uid'";
+$sql = "SELECT `member_img`,`member_name` FROM `member` WHERE `member_user`='$uid'";
 $result = mysql_query($sql);
 $data = mysql_fetch_assoc($result);
-// print_r($data['member_img']);
+// print_r($data['member_name']);
 // die;
 ?>
 <div class="add-comment">
-  <div class="comment-avatar" style="background-image:url(../<?php echo ''.$data['member_img'].'';?>)"></div>
-  <input sype="text" name="post_content" id="post_content" class="comment-textarea" placeholder="发表评论"></input>
-  <input type="button" onclick="submitPost()" value="发布" class="comment-send">
-  <input type="text" name="username" id="username" value="<?php echo ''.$uid.'';?>" class="hide">
+  <div class="comment-avatar" style="background-image:url(<?php echo ''.$data['member_img'].'';?>)"></div>
+  <input sype="text" name="post_content" id="post_content" class="comment-textarea"></input>
+  <input type="button" onclick="submitPost()" value="提交" class="comment-send">
+  <input type="text" name="username" id="username" value="<?php echo ''.$data['member_name'].'';?>" class="hide">
   <input type="text" name="post_pid" id="post_pid" value="<?php echo ''.$id.'';?>" class="hide">
   <input type="text" name="post_pid" id="threadid" value="1" class="hide">
 </div>
