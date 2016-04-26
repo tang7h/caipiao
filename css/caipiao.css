@@ -19,6 +19,7 @@
   font-weight: normal;
   font-style: normal;
   font-size: 24px;  /* Preferred icon size */
+	width: 24px;
 	overflow: hidden;
   display: inline-block;
   line-height: 1;
@@ -40,10 +41,10 @@
   font-feature-settings: 'liga';
 }
 /* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-18 { font-size: 18px; width: 18px;}
 .material-icons.md-24 { font-size: 24px; width: 24px;}
 .material-icons.md-36 { font-size: 36px; width: 36px;}
-.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-48 { font-size: 48px; width: 48px;}
 
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
