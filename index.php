@@ -179,6 +179,9 @@
 		</a>
 	</div>
 
+<div class="eof">
+	<a href="article/article.php">浏览更多</a>
+</div>
 <div ng-include="'page_header.php'"></div>
 
 </body>
