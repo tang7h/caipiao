@@ -16,21 +16,9 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="Keywords" content="彩票,体育彩票,足球彩票,手机彩票,wap彩票,手机预定彩票"/>
   <title>文章</title>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-  <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 </head>
 <body>
-  <header class="section-top">
-    <a href="http://positemall.cn/">
-      <i class="material-icons">arrow_back</i>
-    </a>
-    <a href="#">
-      <i class="material-icons">share</i>
-    </a>
-  </header>
     <!-- 文章列表 -->
   <div class="article-list">
   <?php
@@ -55,9 +43,6 @@
       }
   ?>
   </div>
-<?php
-  include('../page_header.php');
-?>
 
 </body>
 </html>
