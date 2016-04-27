@@ -124,8 +124,15 @@ $(document).ready(function(){
             $('#select-rule').val(val);
           }
         }
-        oLottery.mxn = JSON.parse($('#select-rule').val()).name;
-        oLottery.mxnN = JSON.parse($('#select-rule').val()).n;
+        mxnT = JSON.parse($('#select-rule').val());
+        if(mxnT){
+          if('name' in mxnT){
+            oLottery.mxn = mxnT.name;
+          }
+          if('n' in mxnT){
+            oLottery.mxnN = mxnT.n;
+          }
+        }
       }
     }
   }
