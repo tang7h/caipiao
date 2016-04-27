@@ -37,14 +37,6 @@ $id = $data[0][id];//因为下方又一次用到变量$data.所以在此设置�
   <link rel="stylesheet" type="text/css" href="../css/caipiao.css">
 </head>
 <body class="article">
-  <header class="section-top">
-    <a href="javascript:history.back();">
-      <i class="material-icons">arrow_back</i>
-    </a>
-    <a href="#">
-      <i class="material-icons">share</i>
-    </a>
-  </header>
   <article class="article">
     <h1><?php echo ''.$data[0]['title'].'';?></h1>
     <div class="article-info">
