@@ -1682,3 +1682,34 @@ section.publish a {
 .publish-tools {
 	margin: 16px;
 }
+
+
+/*充值*/
+.recharge {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 8px;
+}
+
+.recharge-item {
+	flex: 1 1 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 30%;
+	height: 4em;
+	font-size: 1.28em;
+	margin: 1.5%;
+	color: #00C853;
+	background: #fff;
+	border: 1px solid;
+	border-radius: 5px;
+}
+.recharge-item:active {
+	color: #fff;
+	background: #00C853;
+}
+.balance {
+	padding: 16px 14px 0;
+	font-size: 18px;
+}
